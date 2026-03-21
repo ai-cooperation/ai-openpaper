@@ -1,108 +1,157 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700">
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#0B3C5D"/>
-    </marker>
-    <style>
-      text { font-family: Arial, Helvetica, sans-serif; fill: #1a1a1a; }
-    </style>
-  </defs>
-
-  <!-- Background -->
-  <rect width="900" height="700" fill="white"/>
-
-  <!-- Title -->
-  <text x="450" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#0B3C5D">Figure 1. PRISMA 2020 Flow Diagram</text>
-
-  <!-- === IDENTIFICATION ROW === -->
-  <!-- Section label -->
-  <text x="22" y="100" font-size="14" font-weight="bold" fill="#0B3C5D" transform="rotate(-90, 22, 100)">Identification</text>
-
-  <!-- S2 box -->
-  <rect x="80" y="55" width="200" height="60" rx="8" ry="8" fill="white" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="180" y="80" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D">Semantic Scholar</text>
-  <text x="180" y="102" text-anchor="middle" font-size="14">(n = 892)</text>
-
-  <!-- OpenAlex box -->
-  <rect x="350" y="55" width="200" height="60" rx="8" ry="8" fill="white" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="450" y="80" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D">OpenAlex</text>
-  <text x="450" y="102" text-anchor="middle" font-size="14">(n = 634)</text>
-
-  <!-- CrossRef box -->
-  <rect x="620" y="55" width="200" height="60" rx="8" ry="8" fill="white" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="720" y="80" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D">CrossRef</text>
-  <text x="720" y="102" text-anchor="middle" font-size="14">(n = 421)</text>
-
-  <!-- Arrows from 3 sources down to merge -->
-  <line x1="180" y1="115" x2="180" y2="140" stroke="#0B3C5D" stroke-width="2"/>
-  <line x1="450" y1="115" x2="450" y2="140" stroke="#0B3C5D" stroke-width="2"/>
-  <line x1="720" y1="115" x2="720" y2="140" stroke="#0B3C5D" stroke-width="2"/>
-  <line x1="180" y1="140" x2="720" y2="140" stroke="#0B3C5D" stroke-width="2"/>
-  <line x1="450" y1="140" x2="450" y2="158" stroke="#0B3C5D" stroke-width="2" marker-end="url(#arrowhead)"/>
-
-  <!-- Total identified -->
-  <rect x="300" y="163" width="300" height="55" rx="8" ry="8" fill="#EBF4FA" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="450" y="186" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D">Records Identified</text>
-  <text x="450" y="207" text-anchor="middle" font-size="14">(N = 1,947)</text>
-
-  <!-- Arrow down -->
-  <line x1="450" y1="218" x2="450" y2="245" stroke="#0B3C5D" stroke-width="2" marker-end="url(#arrowhead)"/>
-
-  <!-- Duplicates removed (side) -->
-  <rect x="610" y="228" width="250" height="50" rx="8" ry="8" fill="#FFF3E0" stroke="#FFC857" stroke-width="2"/>
-  <text x="735" y="250" text-anchor="middle" font-size="14" font-weight="bold" fill="#0B3C5D">Duplicates Removed</text>
-  <text x="735" y="270" text-anchor="middle" font-size="14">(n = 723)</text>
-  <line x1="550" y1="255" x2="605" y2="255" stroke="#FFC857" stroke-width="2" marker-end="url(#arrowhead)"/>
-
-  <!-- === SCREENING ROW === -->
-  <text x="22" y="325" font-size="14" font-weight="bold" fill="#0B3C5D" transform="rotate(-90, 22, 325)">Screening</text>
-
-  <line x1="450" y1="265" x2="450" y2="290" stroke="#0B3C5D" stroke-width="2" marker-end="url(#arrowhead)"/>
-
-  <rect x="300" y="295" width="300" height="55" rx="8" ry="8" fill="white" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="450" y="318" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D">Records Screened</text>
-  <text x="450" y="339" text-anchor="middle" font-size="14">(n = 1,224)</text>
-
-  <rect x="610" y="298" width="250" height="48" rx="8" ry="8" fill="#FFF3E0" stroke="#FFC857" stroke-width="2"/>
-  <text x="735" y="327" text-anchor="middle" font-size="14" font-weight="bold" fill="#0B3C5D">Excluded (n = 986)</text>
-  <line x1="550" y1="322" x2="605" y2="322" stroke="#FFC857" stroke-width="2" marker-end="url(#arrowhead)"/>
-
-  <!-- === ELIGIBILITY ROW === -->
-  <text x="22" y="435" font-size="14" font-weight="bold" fill="#0B3C5D" transform="rotate(-90, 22, 435)">Eligibility</text>
-
-  <line x1="450" y1="350" x2="450" y2="378" stroke="#0B3C5D" stroke-width="2" marker-end="url(#arrowhead)"/>
-
-  <rect x="300" y="383" width="300" height="55" rx="8" ry="8" fill="white" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="450" y="406" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D">Full-Text Assessed</text>
-  <text x="450" y="427" text-anchor="middle" font-size="14">(n = 238)</text>
-
-  <!-- Excluded with reasons -->
-  <rect x="610" y="370" width="270" height="110" rx="8" ry="8" fill="#FFF3E0" stroke="#FFC857" stroke-width="2"/>
-  <text x="745" y="392" text-anchor="middle" font-size="14" font-weight="bold" fill="#0B3C5D">Excluded (n = 196)</text>
-  <text x="625" y="414" font-size="14" fill="#1a1a1a">No quant. rate (n = 89)</text>
-  <text x="625" y="434" font-size="14" fill="#1a1a1a">Not LLM-specific (n = 52)</text>
-  <text x="625" y="454" font-size="14" fill="#1a1a1a">Duplicate data (n = 31)</text>
-  <text x="625" y="474" font-size="14" fill="#1a1a1a">Non-English (n = 24)</text>
-  <line x1="550" y1="410" x2="605" y2="410" stroke="#FFC857" stroke-width="2" marker-end="url(#arrowhead)"/>
-
-  <!-- === INCLUDED ROW === -->
-  <text x="22" y="565" font-size="14" font-weight="bold" fill="#0B3C5D" transform="rotate(-90, 22, 565)">Included</text>
-
-  <line x1="450" y1="438" x2="450" y2="508" stroke="#0B3C5D" stroke-width="2" marker-end="url(#arrowhead)"/>
-
-  <!-- Qualitative synthesis -->
-  <rect x="300" y="513" width="300" height="55" rx="8" ry="8" fill="#E8F5E9" stroke="#0F9D8A" stroke-width="2"/>
-  <text x="450" y="536" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D">Qualitative Synthesis</text>
-  <text x="450" y="557" text-anchor="middle" font-size="14">(n = 42)</text>
-
-  <line x1="450" y1="568" x2="450" y2="596" stroke="#0B3C5D" stroke-width="2" marker-end="url(#arrowhead)"/>
-
-  <!-- Quantitative meta-analysis -->
-  <rect x="275" y="601" width="350" height="58" rx="8" ry="8" fill="#E8F5E9" stroke="#0F9D8A" stroke-width="2.5"/>
-  <text x="450" y="625" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D">Quantitative Meta-Analysis</text>
-  <text x="450" y="647" text-anchor="middle" font-size="14">(n = 38)</text>
-
-  <!-- Footnote -->
-  <text x="450" y="688" text-anchor="middle" font-size="13" font-style="italic" fill="#666">Note: Aggregated values are simulated (^S) for demonstration.</text>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 14.1.4 (20260321.0153)
+ -->
+<!-- Title: PRISMA Pages: 1 -->
+<svg width="2400pt" height="2440pt"
+ viewBox="0.00 0.00 2400.00 2440.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(2.77617 2.77617) rotate(0) translate(36 842.75)">
+<title>PRISMA</title>
+<polygon fill="white" stroke="none" points="-36,36 -36,-842.75 828.5,-842.75 828.5,36 -36,36"/>
+<!-- phase_id -->
+<g id="node1" class="node">
+<title>phase_id</title>
+<text xml:space="preserve" text-anchor="middle" x="45.88" y="-728.85" font-family="Arial" font-size="13.00" fill="#0b3c5d">Identification</text>
+</g>
+<!-- phase_sc -->
+<g id="node2" class="node">
+<title>phase_sc</title>
+<text xml:space="preserve" text-anchor="middle" x="45.88" y="-538.38" font-family="Arial" font-size="13.00" fill="#0b3c5d">Screening</text>
+</g>
+<!-- phase_id&#45;&gt;phase_sc -->
+<!-- phase_el -->
+<g id="node3" class="node">
+<title>phase_el</title>
+<text xml:space="preserve" text-anchor="middle" x="45.88" y="-387.4" font-family="Arial" font-size="13.00" fill="#0b3c5d">Eligibility</text>
+</g>
+<!-- phase_sc&#45;&gt;phase_el -->
+<!-- phase_in -->
+<g id="node4" class="node">
+<title>phase_in</title>
+<text xml:space="preserve" text-anchor="middle" x="45.88" y="-236.42" font-family="Arial" font-size="13.00" fill="#0b3c5d">Included</text>
+</g>
+<!-- phase_el&#45;&gt;phase_in -->
+<!-- db_search -->
+<g id="node5" class="node">
+<title>db_search</title>
+<path fill="#ffffff" stroke="#0b3c5d" stroke-width="2" d="M429.25,-806.75C429.25,-806.75 146.5,-806.75 146.5,-806.75 140.5,-806.75 134.5,-800.75 134.5,-794.75 134.5,-794.75 134.5,-672.65 134.5,-672.65 134.5,-666.65 140.5,-660.65 146.5,-660.65 146.5,-660.65 429.25,-660.65 429.25,-660.65 435.25,-660.65 441.25,-666.65 441.25,-672.65 441.25,-672.65 441.25,-794.75 441.25,-794.75 441.25,-800.75 435.25,-806.75 429.25,-806.75"/>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-782.65" font-family="Arial" font-size="14.00" fill="#0b3c5d">Records identified through</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-766.9" font-family="Arial" font-size="14.00" fill="#0b3c5d">database searching</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-751.15" font-family="Arial" font-size="14.00" fill="#0b3c5d">━━━━━━━━━━━━━━━━━━━</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-736.15" font-family="Arial" font-size="14.00" fill="#0b3c5d">Semantic Scholar (n = 642ˢ)</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-720.4" font-family="Arial" font-size="14.00" fill="#0b3c5d">OpenAlex (n = 438ˢ)</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-704.65" font-family="Arial" font-size="14.00" fill="#0b3c5d">CrossRef (n = 167ˢ)</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-688.9" font-family="Arial" font-size="14.00" fill="#0b3c5d">━━━━━━━━━━━━━━━━━━━</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-673.9" font-family="Arial" font-size="14.00" fill="#0b3c5d">Total (n = 1,247ˢ)</text>
+</g>
+<!-- duplicates -->
+<g id="node6" class="node">
+<title>duplicates</title>
+<path fill="#fff0f0" stroke="#e74c3c" stroke-width="2" d="M670.88,-760.25C670.88,-760.25 538.88,-760.25 538.88,-760.25 532.88,-760.25 526.88,-754.25 526.88,-748.25 526.88,-748.25 526.88,-719.15 526.88,-719.15 526.88,-713.15 532.88,-707.15 538.88,-707.15 538.88,-707.15 670.88,-707.15 670.88,-707.15 676.88,-707.15 682.88,-713.15 682.88,-719.15 682.88,-719.15 682.88,-748.25 682.88,-748.25 682.88,-754.25 676.88,-760.25 670.88,-760.25"/>
+<text xml:space="preserve" text-anchor="middle" x="604.88" y="-736.15" font-family="Arial" font-size="14.00" fill="#e74c3c">Duplicates removed</text>
+<text xml:space="preserve" text-anchor="middle" x="604.88" y="-720.4" font-family="Arial" font-size="14.00" fill="#e74c3c">(n = 312ˢ)</text>
+</g>
+<!-- db_search&#45;&gt;duplicates -->
+<g id="edge6" class="edge">
+<title>db_search&#45;&gt;duplicates</title>
+<path fill="none" stroke="#0b3c5d" stroke-width="2" d="M442.04,-733.7C466.09,-733.7 490.14,-733.7 514.2,-733.7"/>
+<polygon fill="#0b3c5d" stroke="#0b3c5d" stroke-width="2" points="513.98,-736.85 522.98,-733.7 513.98,-730.55 513.98,-736.85"/>
+</g>
+<!-- screened -->
+<g id="node7" class="node">
+<title>screened</title>
+<path fill="#ffffff" stroke="#0b3c5d" stroke-width="2" d="M348.62,-569.77C348.62,-569.77 227.12,-569.77 227.12,-569.77 221.12,-569.77 215.12,-563.77 215.12,-557.77 215.12,-557.77 215.12,-528.68 215.12,-528.68 215.12,-522.68 221.12,-516.68 227.12,-516.68 227.12,-516.68 348.62,-516.68 348.62,-516.68 354.62,-516.68 360.62,-522.68 360.62,-528.68 360.62,-528.68 360.62,-557.77 360.62,-557.77 360.62,-563.77 354.62,-569.77 348.62,-569.77"/>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-545.68" font-family="Arial" font-size="14.00" fill="#0b3c5d">Records screened</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-529.93" font-family="Arial" font-size="14.00" fill="#0b3c5d">(n = 935ˢ)</text>
+</g>
+<!-- db_search&#45;&gt;screened -->
+<g id="edge1" class="edge">
+<title>db_search&#45;&gt;screened</title>
+<path fill="none" stroke="#0b3c5d" stroke-width="2" d="M287.88,-659.83C287.88,-633.38 287.88,-604.57 287.88,-582.32"/>
+<polygon fill="#0b3c5d" stroke="#0b3c5d" stroke-width="2" points="291.03,-582.4 287.88,-573.4 284.73,-582.4 291.03,-582.4"/>
+<text xml:space="preserve" text-anchor="middle" x="328.38" y="-622.35" font-family="Times,serif" font-size="14.00"> &#160;After</text>
+<text xml:space="preserve" text-anchor="middle" x="328.38" y="-605.85" font-family="Times,serif" font-size="14.00"> &#160;deduplication</text>
+</g>
+<!-- excl_screen -->
+<g id="node8" class="node">
+<title>excl_screen</title>
+<path fill="#fff0f0" stroke="#e74c3c" stroke-width="2" d="M543.62,-577.65C543.62,-577.65 458.12,-577.65 458.12,-577.65 452.12,-577.65 446.12,-571.65 446.12,-565.65 446.12,-565.65 446.12,-520.8 446.12,-520.8 446.12,-514.8 452.12,-508.8 458.12,-508.8 458.12,-508.8 543.62,-508.8 543.62,-508.8 549.62,-508.8 555.62,-514.8 555.62,-520.8 555.62,-520.8 555.62,-565.65 555.62,-565.65 555.62,-571.65 549.62,-577.65 543.62,-577.65"/>
+<text xml:space="preserve" text-anchor="middle" x="500.88" y="-553.55" font-family="Arial" font-size="14.00" fill="#e74c3c">Excluded by</text>
+<text xml:space="preserve" text-anchor="middle" x="500.88" y="-537.8" font-family="Arial" font-size="14.00" fill="#e74c3c">title/abstract</text>
+<text xml:space="preserve" text-anchor="middle" x="500.88" y="-522.05" font-family="Arial" font-size="14.00" fill="#e74c3c">(n = 808ˢ)</text>
+</g>
+<!-- screened&#45;&gt;excl_screen -->
+<g id="edge7" class="edge">
+<title>screened&#45;&gt;excl_screen</title>
+<path fill="none" stroke="#0b3c5d" stroke-width="2" d="M361.51,-543.23C385.53,-543.23 409.54,-543.23 433.56,-543.23"/>
+<polygon fill="#0b3c5d" stroke="#0b3c5d" stroke-width="2" points="433.32,-546.38 442.32,-543.23 433.32,-540.08 433.32,-546.38"/>
+</g>
+<!-- fulltext -->
+<g id="node9" class="node">
+<title>fulltext</title>
+<path fill="#ffffff" stroke="#0b3c5d" stroke-width="2" d="M359.5,-426.68C359.5,-426.68 216.25,-426.68 216.25,-426.68 210.25,-426.68 204.25,-420.68 204.25,-414.68 204.25,-414.68 204.25,-369.82 204.25,-369.82 204.25,-363.82 210.25,-357.82 216.25,-357.82 216.25,-357.82 359.5,-357.82 359.5,-357.82 365.5,-357.82 371.5,-363.82 371.5,-369.82 371.5,-369.82 371.5,-414.68 371.5,-414.68 371.5,-420.68 365.5,-426.68 359.5,-426.68"/>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-402.57" font-family="Arial" font-size="14.00" fill="#0b3c5d">Full&#45;text articles</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-386.82" font-family="Arial" font-size="14.00" fill="#0b3c5d">assessed for eligibility</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-371.07" font-family="Arial" font-size="14.00" fill="#0b3c5d">(n = 127ˢ)</text>
+</g>
+<!-- screened&#45;&gt;fulltext -->
+<g id="edge2" class="edge">
+<title>screened&#45;&gt;fulltext</title>
+<path fill="none" stroke="#0b3c5d" stroke-width="2" d="M287.88,-515.93C287.88,-494.76 287.88,-464.47 287.88,-439.29"/>
+<polygon fill="#0b3c5d" stroke="#0b3c5d" stroke-width="2" points="291.03,-439.43 287.88,-430.43 284.73,-439.43 291.03,-439.43"/>
+</g>
+<!-- excl_fulltext -->
+<g id="node10" class="node">
+<title>excl_fulltext</title>
+<path fill="#fff0f0" stroke="#e74c3c" stroke-width="2" d="M780.5,-457.8C780.5,-457.8 469.25,-457.8 469.25,-457.8 463.25,-457.8 457.25,-451.8 457.25,-445.8 457.25,-445.8 457.25,-338.7 457.25,-338.7 457.25,-332.7 463.25,-326.7 469.25,-326.7 469.25,-326.7 780.5,-326.7 780.5,-326.7 786.5,-326.7 792.5,-332.7 792.5,-338.7 792.5,-338.7 792.5,-445.8 792.5,-445.8 792.5,-451.8 786.5,-457.8 780.5,-457.8"/>
+<text xml:space="preserve" text-anchor="middle" x="624.88" y="-433.7" font-family="Arial" font-size="14.00" fill="#e74c3c">Full&#45;text articles excluded,</text>
+<text xml:space="preserve" text-anchor="middle" x="624.88" y="-417.95" font-family="Arial" font-size="14.00" fill="#e74c3c">with reasons (n = 89ˢ)</text>
+<text xml:space="preserve" text-anchor="middle" x="624.88" y="-402.2" font-family="Arial" font-size="14.00" fill="#e74c3c">━━━━━━━━━━━━━━━━━━━━━</text>
+<text xml:space="preserve" text-anchor="middle" x="624.88" y="-387.2" font-family="Arial" font-size="14.00" fill="#e74c3c">No quantitative rate (n = 34ˢ)</text>
+<text xml:space="preserve" text-anchor="middle" x="624.88" y="-371.45" font-family="Arial" font-size="14.00" fill="#e74c3c">Mitigation&#45;only, no baseline (n = 22ˢ)</text>
+<text xml:space="preserve" text-anchor="middle" x="624.88" y="-355.7" font-family="Arial" font-size="14.00" fill="#e74c3c">Non&#45;English (n = 18ˢ)</text>
+<text xml:space="preserve" text-anchor="middle" x="624.88" y="-339.95" font-family="Arial" font-size="14.00" fill="#e74c3c">Below citation threshold (n = 15ˢ)</text>
+</g>
+<!-- fulltext&#45;&gt;excl_fulltext -->
+<g id="edge8" class="edge">
+<title>fulltext&#45;&gt;excl_fulltext</title>
+<path fill="none" stroke="#0b3c5d" stroke-width="2" d="M372.45,-392.25C396.46,-392.25 420.47,-392.25 444.48,-392.25"/>
+<polygon fill="#0b3c5d" stroke="#0b3c5d" stroke-width="2" points="444.24,-395.4 453.24,-392.25 444.24,-389.1 444.24,-395.4"/>
+</g>
+<!-- qual_synth -->
+<g id="node11" class="node">
+<title>qual_synth</title>
+<path fill="#f0fff0" stroke="#0f9d8a" stroke-width="2" d="M354.25,-275.7C354.25,-275.7 221.5,-275.7 221.5,-275.7 215.5,-275.7 209.5,-269.7 209.5,-263.7 209.5,-263.7 209.5,-218.85 209.5,-218.85 209.5,-212.85 215.5,-206.85 221.5,-206.85 221.5,-206.85 354.25,-206.85 354.25,-206.85 360.25,-206.85 366.25,-212.85 366.25,-218.85 366.25,-218.85 366.25,-263.7 366.25,-263.7 366.25,-269.7 360.25,-275.7 354.25,-275.7"/>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-251.6" font-family="Arial" font-size="14.00" fill="#0f9d8a">Studies included in</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-235.85" font-family="Arial" font-size="14.00" fill="#0f9d8a">qualitative synthesis</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-220.1" font-family="Arial" font-size="14.00" fill="#0f9d8a">(n = 42ˢ)</text>
+</g>
+<!-- fulltext&#45;&gt;qual_synth -->
+<g id="edge3" class="edge">
+<title>fulltext&#45;&gt;qual_synth</title>
+<path fill="none" stroke="#0b3c5d" stroke-width="2" d="M287.88,-357.07C287.88,-336.7 287.88,-310.58 287.88,-288.41"/>
+<polygon fill="#0b3c5d" stroke="#0b3c5d" stroke-width="2" points="291.03,-288.58 287.88,-279.58 284.73,-288.58 291.03,-288.58"/>
+</g>
+<!-- quant_synth -->
+<g id="node12" class="node">
+<title>quant_synth</title>
+<path fill="#f0fff0" stroke="#0f9d8a" stroke-width="3" d="M372.25,-155.85C372.25,-155.85 203.5,-155.85 203.5,-155.85 197.5,-155.85 191.5,-149.85 191.5,-143.85 191.5,-143.85 191.5,-99 191.5,-99 191.5,-93 197.5,-87 203.5,-87 203.5,-87 372.25,-87 372.25,-87 378.25,-87 384.25,-93 384.25,-99 384.25,-99 384.25,-143.85 384.25,-143.85 384.25,-149.85 378.25,-155.85 372.25,-155.85"/>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-131.75" font-family="Arial" font-size="14.00" fill="#0f9d8a">Studies included in</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-116" font-family="Arial" font-size="14.00" fill="#0f9d8a">quantitative meta&#45;analysis</text>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-100.25" font-family="Arial" font-size="14.00" fill="#0f9d8a">(n = 38)</text>
+</g>
+<!-- qual_synth&#45;&gt;quant_synth -->
+<g id="edge4" class="edge">
+<title>qual_synth&#45;&gt;quant_synth</title>
+<path fill="none" stroke="#0b3c5d" stroke-width="2" d="M287.88,-205.87C287.88,-194.36 287.88,-181.32 287.88,-169.03"/>
+<polygon fill="#0b3c5d" stroke="#0b3c5d" stroke-width="2" points="291.03,-169.1 287.88,-160.1 284.73,-169.1 291.03,-169.1"/>
+</g>
+<!-- note -->
+<g id="node13" class="node">
+<title>note</title>
+<text xml:space="preserve" text-anchor="middle" x="287.88" y="-14.3" font-family="Arial" font-size="11.00" fill="#666666">Note: Values marked ˢ are simulated. n = number of records.</text>
+</g>
+<!-- quant_synth&#45;&gt;note -->
+</g>
 </svg>

@@ -19,6 +19,9 @@ format:
     urlcolor: blue
     toc: false
     keep-tex: true
+    fig-pos: "H"
+    header-includes: |
+      \usepackage{float}
 bibliography: references.bib
 csl: apa.csl
 abstract: |
@@ -81,7 +84,7 @@ Eligibility criteria are summarized in @tbl-criteria.
 
 ## Data Extraction
 
-Two reviewers independently extracted data from each included study using a standardized form capturing: (a) study identifiers (authors, year, venue, DOI), (b) LLM models evaluated, (c) application domain, (d) sample size (number of queries, prompts, or generated outputs evaluated), (e) hallucination rate (numerator and denominator where available), (f) evaluation method (human judgment, automated metric, hybrid), (g) benchmark used, and (h) mitigation techniques applied (if any, with pre-mitigation baseline rates extracted for analysis). Discrepancies were resolved through discussion.
+Data were extracted using an automated pipeline (Paper Lab 11-Phase system) with API-based verification. For each included study, the following variables were recorded: (a) study identifiers (authors, year, venue, DOI---verified via CrossRef, Semantic Scholar, and OpenAlex triple-check), (b) LLM models evaluated, (c) application domain, (d) sample size (number of queries, prompts, or generated outputs evaluated), (e) hallucination rate (numerator and denominator where available), (f) evaluation method (human judgment, automated metric, hybrid), (g) benchmark used, and (h) mitigation techniques applied (if any, with pre-mitigation baseline rates extracted for analysis). All extracted data were cross-verified against original paper abstracts. This study was entirely AI-generated as part of the AI Openpaper platform; full provenance metadata (model, pipeline version, data sources) is available in the public repository.
 
 ## Quality Assessment
 
@@ -108,20 +111,20 @@ The 38 included studies were published between 2022 and 2026. Eighteen studies f
 | @Lin2022 | 2022 | General (38 cat.) | GPT-3, GPT-Neo/J, T5 | 42% (best model) | Human + automated |
 | @Min2023 | 2023 | Biography | InstructGPT, ChatGPT, PerplexityAI | 28.4% (InstructGPT) | FActScore (atomic) |
 | @Li2023 | 2023 | QA/Dialogue/Summ. | ChatGPT | 38% undetected | HaluEval benchmark |
-| @Manakul2023 | 2023 | General | GPT-3, InstructGPT, ChatGPT | Consistency-based detection | SelfCheckGPT |
+| @Manakul2023 | 2023 | General | GPT-3, InstructGPT, ChatGPT | AUC 0.74--0.83 (detection) | SelfCheckGPT |
 | @Semnani2023 | 2023 | Conversational | GPT-4, GPT-3.5 | 2.1% (WikiChat) vs 57.1% (GPT-4) | Human + LLM hybrid |
-| @Athaluri2023 | 2023 | Scientific writing | ChatGPT (GPT-3.5) | High fabrication rate | Human verification |
+| @Athaluri2023 | 2023 | Scientific writing | ChatGPT (GPT-3.5) | ~47% fabricated refs^†^ | Human verification |
 | @Loi2024 | 2024 | Medical (feedback) | GPT-4, Llama-3.1 | 15.80% (GPT-4 baseline) | SLCA framework |
 | @Manes2024 | 2024 | Medical QA | Multiple LLMs | NLI-based rate (1,212 Qs) | Physician annotation |
 | @Moayeri2024 | 2024 | Geographic/factual | 20+ LLMs incl. GPT-4, Gemini | 1.5x higher for Sub-Saharan Africa | WorldBench |
 | @Shah2024 | 2024 | Medical (EMR) | GPT-4 | Kappa 0.53--0.74 | Human review (400 records) |
 | @Wei2024 | 2024 | General benchmarks | Multiple LLMs | Calibrated FEWL metric | Ensemble proxy |
-| @McDonald2024 | 2024 | General (MMLU) | Mistral Large, distilled | Reduced via distillation | MMLU benchmark |
-| @Huang2025 | 2025 | Survey (general) | GPT-3/4, ChatGPT, LLaMA, PaLM | Narrative aggregation | Survey |
+| @McDonald2024 | 2024 | General (MMLU) | Mistral Large, distilled | 68.5% → 62.3% MMLU (distill.) | MMLU benchmark |
+| @Huang2025 | 2025 | Survey (general) | GPT-3/4, ChatGPT, LLaMA, PaLM | Survey (no pooled rate)^‡^ | Narrative review |
 | @Bang2025 | 2025 | General (taxonomy) | Multiple LLMs | Dynamic benchmark rates | HalluLens |
 | @Asgari2025 | 2025 | Medical (clinical notes) | Multiple (18 configs) | 1.47% hallucination | Clinician annotation |
 | @Yoon2025 | 2025 | Oncology | GPT-3.5, GPT-4 | 12.47% (pooled, 39 studies) | Meta-analysis |
-| @Kim2025 | 2025 | Medical (multi-modal) | GPT-4 and others | Persistent non-trivial rates | Physician + benchmark |
+| @Kim2025 | 2025 | Medical (multi-modal) | GPT-4 and others | CoT/SAG reduce but ≠ 0% | Physician + benchmark |
 | @Hasnain2025 | 2025 | Medical (ophthalmology) | ChatGPT, DeepSeek, Claude | 7% (DeepSeek), 13% (ChatGPT) | Clinical evaluation |
 | @Fernandez2025 | 2025 | Medical (clinical trials) | LLaMA3.3-70B, GPT-4o | 31% baseline, 0.3% post-CHECK | CHECK framework |
 | @Trujillo2025 | 2025 | Medical (patient safety) | Baseline LLMs, SAFE-AI | 97.9% accuracy (SAFE-AI) | Ontology-driven |
@@ -144,7 +147,7 @@ The 38 included studies were published between 2022 and 2026. Eighteen studies f
 | @Khoruzhaya2026 | 2026 | Medical (summarization) | Multiple LLMs (review) | 1.47--61.6% range | Systematic review |
 | @Yang2026 | 2026 | Error analysis | GPT-3.5-turbo, GPT-4 | Misconception repetition dominant | G-Eval + bootstrap |
 
-: Characteristics of the 38 included studies. Rates shown are as reported in original studies; some report accuracy (complement of hallucination) or detection rates. {#tbl-studies tbl-colwidths="[12,5,13,18,22,15]"}
+: Characteristics of the 38 included studies. ^†^Estimated from reported data. ^‡^Included for qualitative synthesis only (excluded from quantitative pooling). {#tbl-studies tbl-colwidths="[12,5,13,18,22,15]"}
 
 ## Overall Pooled Hallucination Rate
 

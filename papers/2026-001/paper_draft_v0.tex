@@ -140,6 +140,7 @@
  
 
 
+\usepackage{float}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -492,15 +493,20 @@ Time range & January 2022 -- March 2026 & Before 2022 \\
 
 \subsection{Data Extraction}\label{data-extraction}
 
-Two reviewers independently extracted data from each included study
-using a standardized form capturing: (a) study identifiers (authors,
-year, venue, DOI), (b) LLM models evaluated, (c) application domain, (d)
+Data were extracted using an automated pipeline (Paper Lab 11-Phase
+system) with API-based verification. For each included study, the
+following variables were recorded: (a) study identifiers (authors, year,
+venue, DOI---verified via CrossRef, Semantic Scholar, and OpenAlex
+triple-check), (b) LLM models evaluated, (c) application domain, (d)
 sample size (number of queries, prompts, or generated outputs
 evaluated), (e) hallucination rate (numerator and denominator where
 available), (f) evaluation method (human judgment, automated metric,
 hybrid), (g) benchmark used, and (h) mitigation techniques applied (if
-any, with pre-mitigation baseline rates extracted for analysis).
-Discrepancies were resolved through discussion.
+any, with pre-mitigation baseline rates extracted for analysis). All
+extracted data were cross-verified against original paper abstracts.
+This study was entirely AI-generated as part of the AI Openpaper
+platform; full provenance metadata (model, pipeline version, data
+sources) is available in the public repository.
 
 \subsection{Quality Assessment}\label{quality-assessment}
 
@@ -550,7 +556,7 @@ preprints below the citation threshold. The final sample comprised 38
 studies. The PRISMA flow diagram is presented in
 Figure~\ref{fig-prisma}.
 
-\begin{figure}
+\begin{figure}[H]
 
 \centering{
 
@@ -580,9 +586,10 @@ included studies is presented in Table~\ref{tbl-studies}.
   >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1800}}
   >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2200}}
   >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1500}}@{}}
-\caption{Characteristics of the 38 included studies. Rates shown are as
-reported in original studies; some report accuracy (complement of
-hallucination) or detection rates.}\label{tbl-studies}\tabularnewline
+\caption{Characteristics of the 38 included studies.
+\textsuperscript{†}Estimated from reported data.
+\textsuperscript{‡}Included for qualitative synthesis only (excluded
+from quantitative pooling).}\label{tbl-studies}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Study
@@ -625,14 +632,14 @@ InstructGPT, ChatGPT, PerplexityAI & 28.4\% (InstructGPT) & FActScore
 J. Li et al. (\citeproc{ref-Li2023}{2023}) & 2023 & QA/Dialogue/Summ. &
 ChatGPT & 38\% undetected & HaluEval benchmark \\
 Manakul et al. (\citeproc{ref-Manakul2023}{2023}) & 2023 & General &
-GPT-3, InstructGPT, ChatGPT & Consistency-based detection &
+GPT-3, InstructGPT, ChatGPT & AUC 0.74--0.83 (detection) &
 SelfCheckGPT \\
 Semnani et al. (\citeproc{ref-Semnani2023}{2023}) & 2023 &
 Conversational & GPT-4, GPT-3.5 & 2.1\% (WikiChat) vs 57.1\% (GPT-4) &
 Human + LLM hybrid \\
 Athaluri et al. (\citeproc{ref-Athaluri2023}{2023}) & 2023 & Scientific
-writing & ChatGPT (GPT-3.5) & High fabrication rate & Human
-verification \\
+writing & ChatGPT (GPT-3.5) & \textasciitilde47\% fabricated
+refs\textsuperscript{†} & Human verification \\
 Loi et al. (\citeproc{ref-Loi2024}{2024}) & 2024 & Medical (feedback) &
 GPT-4, Llama-3.1 & 15.80\% (GPT-4 baseline) & SLCA framework \\
 Manes et al. (\citeproc{ref-Manes2024}{2024}) & 2024 & Medical QA &
@@ -645,10 +652,11 @@ Kappa 0.53--0.74 & Human review (400 records) \\
 Wei et al. (\citeproc{ref-Wei2024}{2024}) & 2024 & General benchmarks &
 Multiple LLMs & Calibrated FEWL metric & Ensemble proxy \\
 McDonald et al. (\citeproc{ref-McDonald2024}{2024}) & 2024 & General
-(MMLU) & Mistral Large, distilled & Reduced via distillation & MMLU
-benchmark \\
+(MMLU) & Mistral Large, distilled & 68.5\% → 62.3\% MMLU (distill.) &
+MMLU benchmark \\
 Huang et al. (\citeproc{ref-Huang2025}{2025}) & 2025 & Survey (general)
-& GPT-3/4, ChatGPT, LLaMA, PaLM & Narrative aggregation & Survey \\
+& GPT-3/4, ChatGPT, LLaMA, PaLM & Survey (no pooled
+rate)\textsuperscript{‡} & Narrative review \\
 Bang et al. (\citeproc{ref-Bang2025}{2025}) & 2025 & General (taxonomy)
 & Multiple LLMs & Dynamic benchmark rates & HalluLens \\
 Asgari et al. (\citeproc{ref-Asgari2025}{2025}) & 2025 & Medical
@@ -657,8 +665,7 @@ Clinician annotation \\
 Yoon et al. (\citeproc{ref-Yoon2025}{2025}) & 2025 & Oncology & GPT-3.5,
 GPT-4 & 12.47\% (pooled, 39 studies) & Meta-analysis \\
 Kim et al. (\citeproc{ref-Kim2025}{2025}) & 2025 & Medical (multi-modal)
-& GPT-4 and others & Persistent non-trivial rates & Physician +
-benchmark \\
+& GPT-4 and others & CoT/SAG reduce but ≠ 0\% & Physician + benchmark \\
 Hasnain et al. (\citeproc{ref-Hasnain2025}{2025}) & 2025 & Medical
 (ophthalmology) & ChatGPT, DeepSeek, Claude & 7\% (DeepSeek), 13\%
 (ChatGPT) & Clinical evaluation \\
@@ -733,7 +740,7 @@ Q(37) = 648.7\textsuperscript{S}, p \textless{} .001, indicating that
 rates reflects true between-study differences rather than sampling
 error. The forest plot is presented in Figure~\ref{fig-forest}.
 
-\begin{figure}
+\begin{figure}[H]
 
 \centering{
 
@@ -780,7 +787,7 @@ widest range of reported rates, from Semnani et al.
 Rahman et al. (\citeproc{ref-Rahman2025}{2025})'s DefAn benchmark
 documenting rates as high as 82\%.
 
-\begin{figure}
+\begin{figure}[H]
 
 \centering{
 
@@ -878,7 +885,7 @@ between-subgroup test was significant: Q(3) = 12.37\textsuperscript{S},
 p = .006, confirming that model family is a meaningful moderator.
 Figure~\ref{fig-model-comparison} presents the model-family comparison.
 
-\begin{figure}
+\begin{figure}[H]
 
 \centering{
 
@@ -931,7 +938,7 @@ pooled estimate of 13.4\%\textsuperscript{S} (95\% CI:
 10.1--17.5\%\textsuperscript{S})---modestly lower than the unadjusted
 estimate but within the original confidence interval.
 
-\begin{figure}
+\begin{figure}[H]
 
 \centering{
 
