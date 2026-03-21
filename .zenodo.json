@@ -1,0 +1,21 @@
+{
+  "title": "AI Openpaper Archive",
+  "description": "AI-generated meta-analysis and systematic review papers with AI peer review. A capability demonstration platform, not a formal academic journal.",
+  "upload_type": "publication",
+  "publication_type": "workingpaper",
+  "creators": [
+    {
+      "name": "AI Cooperation",
+      "affiliation": "cooperation.tw"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "keywords": [
+    "AI-generated research",
+    "meta-analysis",
+    "systematic review",
+    "AI peer review",
+    "open access",
+    "large language models"
+  ]
+}

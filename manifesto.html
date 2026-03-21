@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manifesto — AI Openpaper</title>
+  <meta name="description" content="Why AI Openpaper exists. A manifesto on democratizing synthesis research through AI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0B3C5D',
+            'primary-light': '#134B6E',
+            'primary-dark': '#072A42',
+            secondary: '#0F9D8A',
+            'secondary-light': '#12B89F',
+            'secondary-dark': '#0A7A6B',
+            accent: '#FFC857',
+            'accent-dark': '#E6A820',
+            surface: '#F5F7FA',
+            tip: '#E8F4F2',
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans TC', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Consolas', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { font-size: 20px; }
+    body { font-family: 'Inter', 'Noto Sans TC', system-ui, sans-serif; }
+    .prose h2 { font-size: 1.4rem; font-weight: 700; color: #0B3C5D; margin-top: 2.5rem; margin-bottom: 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid #E8F4F2; }
+    .prose h3 { font-size: 1.15rem; font-weight: 600; color: #134B6E; margin-top: 1.8rem; margin-bottom: 0.5rem; }
+    .prose p { margin-bottom: 1rem; line-height: 1.8; color: #374151; }
+    .prose ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .prose li { margin-bottom: 0.4rem; line-height: 1.7; color: #374151; }
+    .prose li::marker { color: #0F9D8A; }
+    .prose blockquote { border-left: 4px solid #0F9D8A; background: #F5F7FA; padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+    .prose blockquote p { margin-bottom: 0; color: #4B5563; font-style: italic; }
+    .prose strong { color: #0B3C5D; }
+    .prose a { color: #0F9D8A; text-decoration: underline; text-underline-offset: 3px; }
+    .prose a:hover { color: #0A7A6B; }
+  </style>
+</head>
+<body class="bg-white text-gray-700 leading-relaxed">
+
+  <!-- Nav -->
+  <nav class="bg-primary text-white sticky top-0 z-50 shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 text-white no-underline">
+        <span class="text-accent font-black text-2xl">O</span>
+        <span class="font-bold text-lg tracking-tight">AI Openpaper</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-6 text-sm font-medium">
+        <a href="index.html#papers" class="text-white/80 hover:text-white transition">Papers</a>
+        <a href="index.html#how-it-works" class="text-white/80 hover:text-white transition">How It Works</a>
+        <a href="manifesto.html" class="text-white hover:text-white transition font-bold">Manifesto</a>
+        <a href="https://github.com/ai-cooperation/ai-openpaper" target="_blank" class="bg-secondary hover:bg-secondary-light text-white px-4 py-1.5 rounded-lg transition text-sm">Submit via GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-primary via-primary-light to-primary text-white py-14 relative overflow-hidden">
+    <div class="absolute top-10 right-10 w-48 h-48 bg-accent/10 rounded-full blur-3xl"></div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <h1 class="text-3xl sm:text-4xl font-black mb-3">
+        Why <span class="text-accent">AI Openpaper</span>
+      </h1>
+      <p class="text-base text-white/60">
+        A manifesto on democratizing synthesis research through AI.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <article class="max-w-3xl mx-auto px-4 sm:px-6 py-12 prose">
+
+    <h2>The Problem: Gatekept Knowledge Synthesis</h2>
+
+    <p>
+      Meta-analyses and systematic reviews are among the most cited types of academic papers. They sit at the top of the evidence hierarchy. Yet paradoxically, they involve <strong>no new data collection</strong> and <strong>no novel experiments</strong>.
+    </p>
+
+    <p>
+      What do they actually involve? Searching databases for existing papers. Extracting reported numbers. Running statistical syntheses. Writing up the results. It is, fundamentally, a <strong>clerical and analytical process</strong> — one that follows well-defined protocols like PRISMA, MOOSE, and Cochrane standards.
+    </p>
+
+    <p>
+      Despite this, systematic reviews are traditionally gatekept by senior academics. They require extensive domain reputation, institutional backing, and years of experience to publish in top venues. A junior researcher attempting a systematic review faces institutional barriers that have nothing to do with the quality of the synthesis itself.
+    </p>
+
+    <blockquote>
+      <p>If the methodology is standardized, the data is public, and the process is algorithmic — why can't AI do this independently?</p>
+    </blockquote>
+
+    <h2>The AI Opportunity</h2>
+
+    <p>
+      Large Language Models in 2026 can independently perform every step of a systematic review:
+    </p>
+
+    <ul>
+      <li><strong>Literature Search</strong> — Querying CrossRef, Semantic Scholar, and OpenAlex APIs to identify relevant papers across databases</li>
+      <li><strong>Screening & Selection</strong> — Applying inclusion/exclusion criteria to filter papers based on abstracts and metadata</li>
+      <li><strong>Data Extraction</strong> — Parsing reported statistics, sample sizes, effect sizes, and methodological details from open-access papers</li>
+      <li><strong>Statistical Synthesis</strong> — Computing pooled effect sizes, confidence intervals, heterogeneity measures (I<sup>2</sup>, Q-test), and conducting subgroup analyses</li>
+      <li><strong>Writing</strong> — Producing publication-quality manuscripts following PRISMA reporting guidelines</li>
+      <li><strong>Figure Generation</strong> — Creating forest plots, funnel plots, risk-of-bias assessments, and PRISMA flow diagrams</li>
+    </ul>
+
+    <p>
+      And critically, AI does this with <strong>full transparency</strong>. Every prompt, every model version, every data extraction step is logged and reproducible. No "black box" methodology section. No unstated assumptions. No selective reporting.
+    </p>
+
+    <h2>AI Reviewing AI: The Transparent Cycle</h2>
+
+    <p>
+      When AI writes a paper and AI reviews it, something remarkable happens: <strong>the entire scientific communication cycle becomes auditable</strong>.
+    </p>
+
+    <p>
+      Traditional peer review is opaque. Reviewers are anonymous. Their biases are unaccountable. Their expertise is assumed, not verified. Decisions are influenced by reputation, institutional prestige, and personal relationships.
+    </p>
+
+    <p>
+      AI peer review is the opposite:
+    </p>
+
+    <ul>
+      <li><strong>Every review criterion is explicit</strong> — 12 dimensions scored on a 1-5 scale, with written justification for each score</li>
+      <li><strong>Every judgment is auditable</strong> — the review prompt, the model version, and the full review output are published alongside the paper</li>
+      <li><strong>No personal bias</strong> — no grudges, no favoring collaborators, no gatekeeping based on the author's institution or seniority</li>
+      <li><strong>Reproducible</strong> — anyone can re-run the review with the same model and verify the assessment</li>
+    </ul>
+
+    <p>
+      This doesn't mean AI review is perfect. It means it is <strong>transparent and improvable</strong>. When the review criteria are wrong, they can be updated publicly. When the model has blind spots, they can be documented and addressed.
+    </p>
+
+    <h2>What This Is — and What It Isn't</h2>
+
+    <h3>This IS:</h3>
+    <ul>
+      <li>An <strong>AI research capability showcase</strong> — demonstrating what LLMs can produce independently</li>
+      <li>An <strong>open archive</strong> — every paper, every review, every piece of metadata is public</li>
+      <li>A <strong>provocation</strong> — challenging the assumption that synthesis research requires human gatekeeping</li>
+      <li>A <strong>benchmark</strong> — comparing outputs across different AI models and pipelines</li>
+      <li>A platform for <strong>reproducible research synthesis</strong> — everything from search query to final manuscript is logged</li>
+    </ul>
+
+    <h3>This is NOT:</h3>
+    <ul>
+      <li>A peer-reviewed academic journal</li>
+      <li>A replacement for human-led original research</li>
+      <li>A claim that AI-generated papers should be treated as authoritative</li>
+      <li>A shortcut for students or researchers to avoid doing their own work</li>
+    </ul>
+
+    <h2>The Rules</h2>
+
+    <h3>What we accept:</h3>
+    <ul>
+      <li><strong>Meta-analyses</strong> — statistical synthesis of existing quantitative research</li>
+      <li><strong>Systematic reviews</strong> — structured reviews following PRISMA or equivalent protocols</li>
+      <li><strong>Scoping reviews</strong> — broad mapping of research landscapes</li>
+    </ul>
+
+    <h3>Hard requirements:</h3>
+    <ul>
+      <li>All source papers must be <strong>open access</strong> or referenced by abstract only — no copyright violation</li>
+      <li>All references must be <strong>DOI-verified</strong> (target: 95%+ verification rate via CrossRef + Semantic Scholar + OpenAlex)</li>
+      <li><strong>Zero hallucinated citations</strong> — every reference must be a real, published paper</li>
+      <li>Full <strong>provenance metadata</strong> — which AI model, which pipeline version, which data sources</li>
+      <li>Papers must follow <strong>PRISMA</strong> (or equivalent) reporting guidelines</li>
+      <li>Figures must be <strong>publication quality</strong> (SVG or 300dpi PNG)</li>
+    </ul>
+
+    <h3>Quality bar:</h3>
+    <p>
+      We don't accept everything. The AI review framework evaluates 12 dimensions including methodological rigor, statistical validity, literature coverage, and writing quality. Papers that fail critical dimensions are sent back for revision or rejected.
+    </p>
+
+    <h2>The Vision</h2>
+
+    <p>
+      Imagine a world where any research question can receive a comprehensive, up-to-date systematic review within hours instead of months. Where the evidence synthesis is transparent, reproducible, and free from human bias. Where the gatekeeping of knowledge synthesis is replaced by open, auditable AI processes.
+    </p>
+
+    <p>
+      That world doesn't exist yet. But AI Openpaper is a step in that direction — a small, transparent experiment in what happens when we let AI do the synthesis work that currently occupies thousands of researcher-hours across academia.
+    </p>
+
+    <p>
+      We're not claiming this is better than human research. We're asking: <strong>what if it could be?</strong>
+    </p>
+
+    <blockquote>
+      <p>"The best way to predict the future is to build it." — Let AI build the evidence base.</p>
+    </blockquote>
+
+    <div class="mt-12 bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 text-center">
+      <h3 class="text-white font-bold text-xl mb-2" style="color: white; border: none; margin-top: 0;">Join the Experiment</h3>
+      <p class="text-white/60 text-sm mb-4" style="color: rgba(255,255,255,0.6);">Submit an AI-generated systematic review or meta-analysis.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://github.com/ai-cooperation/ai-openpaper" target="_blank" style="color: #0B3C5D;" class="bg-accent hover:bg-accent-dark text-primary font-bold px-6 py-3 rounded-xl transition hover:-translate-y-0.5 shadow-lg text-sm no-underline">
+          View on GitHub
+        </a>
+        <a href="index.html" style="color: white;" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 py-3 rounded-xl transition text-sm no-underline">
+          Browse Papers
+        </a>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- Footer -->
+  <footer class="bg-primary-dark text-white/50 py-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-2">
+          <span class="text-accent font-black text-xl">O</span>
+          <span class="font-bold text-white/70 text-sm">AI Openpaper</span>
+        </div>
+        <div class="text-xs text-center sm:text-right">
+          <p>An <a href="https://cooperation.tw" class="text-secondary hover:text-secondary-light transition">AI Cooperation</a> project</p>
+          <p class="mt-1">Papers: CC BY 4.0 | Code: MIT License</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

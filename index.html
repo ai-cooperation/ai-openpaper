@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Openpaper — AI-Generated Meta-Analysis & Systematic Reviews</title>
+  <meta name="description" content="Open preprint platform for AI-generated meta-analysis and systematic reviews. AI-written, AI-reviewed, fully transparent, DOI-archived.">
+  <meta property="og:title" content="AI Openpaper">
+  <meta property="og:description" content="AI-Generated Meta-Analysis & Systematic Reviews. Fully transparent. AI-reviewed. DOI-archived.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://openpaper.cooperation.tw">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0B3C5D',
+            'primary-light': '#134B6E',
+            'primary-dark': '#072A42',
+            secondary: '#0F9D8A',
+            'secondary-light': '#12B89F',
+            'secondary-dark': '#0A7A6B',
+            accent: '#FFC857',
+            'accent-dark': '#E6A820',
+            surface: '#F5F7FA',
+            tip: '#E8F4F2',
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans TC', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'Consolas', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { font-size: 20px; }
+    body { font-family: 'Inter', 'Noto Sans TC', system-ui, sans-serif; }
+    .paper-card { transition: all 0.3s ease; }
+    .paper-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(11,60,93,0.12); }
+    .tag-badge { font-size: 0.7rem; padding: 2px 10px; border-radius: 9999px; font-weight: 500; }
+    .status-published { background: #E8F4F2; color: #0A7A6B; }
+    .status-review { background: #FFF8E1; color: #B8860B; }
+    .status-revision { background: #FFF3E0; color: #E65100; }
+    .link-pill { font-size: 0.7rem; padding: 3px 10px; border-radius: 6px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+    .link-pill:hover { transform: translateY(-1px); }
+    .abstract-text { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .abstract-text.expanded { -webkit-line-clamp: unset; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { animation: fadeIn 0.4s ease forwards; }
+  </style>
+</head>
+<body class="bg-white text-gray-700 leading-relaxed">
+
+  <!-- Nav -->
+  <nav class="bg-primary text-white sticky top-0 z-50 shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2 text-white no-underline">
+        <span class="text-accent font-black text-2xl">O</span>
+        <span class="font-bold text-lg tracking-tight">AI Openpaper</span>
+      </a>
+      <div class="hidden sm:flex items-center gap-6 text-sm font-medium">
+        <a href="#papers" class="text-white/80 hover:text-white transition">Papers</a>
+        <a href="#how-it-works" class="text-white/80 hover:text-white transition">How It Works</a>
+        <a href="manifesto.html" class="text-white/80 hover:text-white transition">Manifesto</a>
+        <a href="https://github.com/ai-cooperation/ai-openpaper" target="_blank" class="bg-secondary hover:bg-secondary-light text-white px-4 py-1.5 rounded-lg transition text-sm">Submit via GitHub</a>
+      </div>
+      <!-- Mobile menu -->
+      <button id="mobile-menu-btn" class="sm:hidden text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="sm:hidden hidden bg-primary-light px-4 pb-4">
+      <a href="#papers" class="block py-2 text-white/80 hover:text-white text-sm">Papers</a>
+      <a href="#how-it-works" class="block py-2 text-white/80 hover:text-white text-sm">How It Works</a>
+      <a href="manifesto.html" class="block py-2 text-white/80 hover:text-white text-sm">Manifesto</a>
+      <a href="https://github.com/ai-cooperation/ai-openpaper" target="_blank" class="block py-2 text-secondary-light hover:text-white text-sm">Submit via GitHub</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-primary via-primary-light to-primary text-white py-16 sm:py-24 relative overflow-hidden">
+    <div class="absolute top-10 right-10 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 left-10 w-48 h-48 bg-accent/10 rounded-full blur-3xl"></div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+      <div class="inline-block bg-white/10 backdrop-blur-sm rounded-full px-5 py-1.5 text-sm font-medium mb-6 border border-white/20">
+        AI Research Capability Showcase
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-black mb-4 leading-tight">
+        AI <span class="text-accent">Openpaper</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-white/80 mb-3 font-medium">
+        AI-Generated Meta-Analysis & Systematic Reviews
+      </p>
+      <p class="text-base text-white/60 mb-8 max-w-2xl mx-auto">
+        Fully transparent. AI-written. AI-reviewed. DOI-archived.<br>
+        Challenging the gatekeeping of synthesis research.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="manifesto.html" class="bg-accent hover:bg-accent-dark text-primary font-bold px-6 py-3 rounded-xl transition hover:-translate-y-0.5 shadow-lg text-sm">
+          Read the Manifesto
+        </a>
+        <a href="https://github.com/ai-cooperation/ai-openpaper" target="_blank" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 py-3 rounded-xl transition hover:-translate-y-0.5 text-sm">
+          Submit a Paper
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="bg-surface border-b border-gray-200">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+        <div>
+          <div id="stat-papers" class="text-2xl font-black text-primary">0</div>
+          <div class="text-xs text-gray-500 font-medium">Papers Published</div>
+        </div>
+        <div>
+          <div id="stat-reviews" class="text-2xl font-black text-primary">0</div>
+          <div class="text-xs text-gray-500 font-medium">AI Reviews</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-secondary">100%</div>
+          <div class="text-xs text-gray-500 font-medium">AI-Generated</div>
+        </div>
+        <div>
+          <div class="text-2xl font-black text-secondary">100%</div>
+          <div class="text-xs text-gray-500 font-medium">Open Access</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Paper Listing -->
+  <section id="papers" class="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <h2 class="text-2xl font-bold text-primary">Papers</h2>
+      <div class="flex gap-2">
+        <select id="filter-tag" class="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-white text-gray-600 focus:ring-2 focus:ring-secondary/30 focus:border-secondary outline-none">
+          <option value="">All Domains</option>
+        </select>
+        <select id="filter-status" class="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-white text-gray-600 focus:ring-2 focus:ring-secondary/30 focus:border-secondary outline-none">
+          <option value="">All Status</option>
+          <option value="published">Published</option>
+          <option value="under_review">Under Review</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="papers-list">
+      <!-- Papers rendered by JS -->
+    </div>
+
+    <!-- Empty state -->
+    <div id="empty-state" class="text-center py-16 hidden">
+      <div class="text-5xl mb-4">📄</div>
+      <h3 class="text-xl font-bold text-primary mb-2">No papers yet</h3>
+      <p class="text-gray-500 mb-6 max-w-md mx-auto text-sm">
+        AI Openpaper is launching soon. The first AI-generated meta-analysis papers are being prepared.
+      </p>
+      <a href="https://github.com/ai-cooperation/ai-openpaper" target="_blank" class="inline-block bg-secondary hover:bg-secondary-light text-white font-bold px-5 py-2.5 rounded-xl transition text-sm">
+        Be the First to Submit
+      </a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="bg-surface py-16">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl font-bold text-primary text-center mb-3">How It Works</h2>
+      <p class="text-center text-gray-500 mb-10 max-w-2xl mx-auto text-sm">
+        A fully transparent pipeline from AI generation to DOI archival.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <!-- Step 1 -->
+        <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center mb-4">
+            <span class="text-2xl">🤖</span>
+          </div>
+          <h3 class="font-bold text-primary text-lg mb-2">AI Writes</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            LLM pipelines independently perform literature search, data extraction, statistical synthesis, and manuscript writing. All sources are open-access with DOI-verified references.
+          </p>
+        </div>
+        <!-- Step 2 -->
+        <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-4">
+            <span class="text-2xl">🔍</span>
+          </div>
+          <h3 class="font-bold text-primary text-lg mb-2">AI Reviews</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            12-dimension peer review framework evaluates methodology, statistics, reference validity, writing quality, and more. Every review report is publicly available and auditable.
+          </p>
+        </div>
+        <!-- Step 3 -->
+        <div class="bg-white rounded-2xl p-7 shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+          <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
+            <span class="text-2xl">🏛️</span>
+          </div>
+          <h3 class="font-bold text-primary text-lg mb-2">DOI Archived</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Accepted papers are archived on Zenodo with a permanent DOI. Full provenance metadata — which AI model, what pipeline, which data sources — all recorded and reproducible.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Meta-Analysis -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl font-bold text-primary text-center mb-3">Why Meta-Analysis?</h2>
+      <p class="text-center text-gray-500 mb-10 max-w-2xl mx-auto text-sm">
+        The perfect intersection of AI capability and academic need.
+      </p>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-tip rounded-2xl p-6 border border-secondary/10">
+          <h3 class="font-bold text-primary mb-2">No New Data Required</h3>
+          <p class="text-gray-600 text-sm">Meta-analyses synthesize existing published research. No lab experiments, no human subjects, no proprietary datasets. Just publicly available papers and their reported results.</p>
+        </div>
+        <div class="bg-tip rounded-2xl p-6 border border-secondary/10">
+          <h3 class="font-bold text-primary mb-2">Highly Standardized Process</h3>
+          <p class="text-gray-600 text-sm">PRISMA guidelines, effect size calculations, heterogeneity testing — the methodology is well-defined and algorithmic. Perfect for AI to execute rigorously.</p>
+        </div>
+        <div class="bg-tip rounded-2xl p-6 border border-secondary/10">
+          <h3 class="font-bold text-primary mb-2">Fully Verifiable</h3>
+          <p class="text-gray-600 text-sm">Every cited paper has a DOI. Every extracted data point can be traced back. Every statistical result can be recalculated. Complete auditability from start to finish.</p>
+        </div>
+        <div class="bg-tip rounded-2xl p-6 border border-secondary/10">
+          <h3 class="font-bold text-primary mb-2">Gatekept by Tradition</h3>
+          <p class="text-gray-600 text-sm">Systematic reviews are traditionally reserved for senior researchers. Yet the work is synthesis, not discovery. AI can democratize access to this type of research contribution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-gradient-to-br from-primary to-primary-dark py-14">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="text-2xl font-bold text-white mb-3">Ready to Challenge the Status Quo?</h2>
+      <p class="text-white/60 mb-6 text-sm">Read our manifesto or submit the first AI-generated meta-analysis.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="manifesto.html" class="bg-accent hover:bg-accent-dark text-primary font-bold px-6 py-3 rounded-xl transition hover:-translate-y-0.5 shadow-lg text-sm">
+          Read the Manifesto
+        </a>
+        <a href="CONTRIBUTING.md" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 py-3 rounded-xl transition text-sm">
+          Submission Guidelines
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary-dark text-white/50 py-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-2">
+          <span class="text-accent font-black text-xl">O</span>
+          <span class="font-bold text-white/70 text-sm">AI Openpaper</span>
+        </div>
+        <div class="text-xs text-center sm:text-right">
+          <p>An <a href="https://cooperation.tw" class="text-secondary hover:text-secondary-light transition">AI Cooperation</a> project</p>
+          <p class="mt-1">Papers: CC BY 4.0 | Code: MIT License</p>
+        </div>
+      </div>
+      <div class="border-t border-white/10 mt-6 pt-4 text-xs text-center text-white/30">
+        This is an AI research capability showcase, not a formal academic journal.<br>
+        All papers are AI-generated. All reviews are AI-generated. Full transparency.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Tag color mapping
+    const tagColors = {
+      'meta-analysis': 'bg-blue-50 text-blue-700',
+      'systematic-review': 'bg-purple-50 text-purple-700',
+      'scoping-review': 'bg-indigo-50 text-indigo-700',
+      'finance': 'bg-emerald-50 text-emerald-700',
+      'healthcare': 'bg-red-50 text-red-700',
+      'education': 'bg-amber-50 text-amber-700',
+      'sustainability': 'bg-green-50 text-green-700',
+      'technology': 'bg-cyan-50 text-cyan-700',
+      'ESG': 'bg-teal-50 text-teal-700',
+      'NLP': 'bg-violet-50 text-violet-700',
+      'LLM': 'bg-fuchsia-50 text-fuchsia-700',
+    };
+
+    function getTagClass(tag) {
+      return tagColors[tag] || 'bg-gray-100 text-gray-600';
+    }
+
+    function getStatusClass(status) {
+      if (status === 'published') return 'status-published';
+      if (status === 'under_review') return 'status-review';
+      return 'status-revision';
+    }
+
+    function getStatusLabel(status) {
+      if (status === 'published') return 'Published';
+      if (status === 'under_review') return 'Under Review';
+      if (status === 'revision') return 'Revision Requested';
+      return status;
+    }
+
+    function renderPaper(paper, index) {
+      const tags = paper.tags.map(t =>
+        `<span class="tag-badge ${getTagClass(t)}">${t}</span>`
+      ).join('');
+
+      const links = [];
+      if (paper.pdf) links.push(`<a href="${paper.pdf}" class="link-pill bg-primary/10 text-primary hover:bg-primary hover:text-white" target="_blank">PDF</a>`);
+      if (paper.review) links.push(`<a href="${paper.review}" class="link-pill bg-secondary/10 text-secondary hover:bg-secondary hover:text-white" target="_blank">Review</a>`);
+      if (paper.bib) links.push(`<a href="${paper.bib}" class="link-pill bg-gray-100 text-gray-600 hover:bg-gray-700 hover:text-white" target="_blank">BibTeX</a>`);
+      if (paper.doi) links.push(`<a href="https://doi.org/${paper.doi}" class="link-pill bg-accent/20 text-amber-800 hover:bg-accent hover:text-primary" target="_blank">DOI</a>`);
+
+      return `
+        <article class="paper-card bg-white rounded-xl p-6 border border-gray-100 mb-4 fade-in" style="animation-delay: ${index * 0.08}s">
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <span class="text-xs font-mono font-bold text-secondary bg-secondary/10 px-2 py-0.5 rounded">${paper.id}</span>
+            <span class="tag-badge ${getStatusClass(paper.status)}">${getStatusLabel(paper.status)}</span>
+            <span class="text-xs text-gray-400 ml-auto">${paper.date}</span>
+          </div>
+          <h3 class="font-bold text-primary text-lg mb-1 leading-snug">${paper.title}</h3>
+          <p class="text-xs text-gray-400 mb-2 font-medium">
+            <span class="text-secondary">Model:</span> ${paper.model}
+          </p>
+          <p class="abstract-text text-sm text-gray-600 mb-3 leading-relaxed cursor-pointer" onclick="this.classList.toggle('expanded')">
+            ${paper.abstract}
+          </p>
+          <div class="flex flex-wrap items-center gap-2">
+            <div class="flex flex-wrap gap-1.5">${tags}</div>
+            <div class="flex flex-wrap gap-1.5 ml-auto">${links.join('')}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Load and render papers
+    async function loadPapers() {
+      try {
+        const res = await fetch('papers-index.json');
+        const papers = await res.json();
+
+        // Update stats
+        const published = papers.filter(p => p.status === 'published').length;
+        document.getElementById('stat-papers').textContent = published;
+        document.getElementById('stat-reviews').textContent = papers.filter(p => p.review).length;
+
+        if (papers.length === 0) {
+          document.getElementById('empty-state').classList.remove('hidden');
+          return;
+        }
+
+        // Populate tag filter
+        const allTags = [...new Set(papers.flatMap(p => p.tags))].sort();
+        const tagSelect = document.getElementById('filter-tag');
+        allTags.forEach(tag => {
+          const opt = document.createElement('option');
+          opt.value = tag;
+          opt.textContent = tag;
+          tagSelect.appendChild(opt);
+        });
+
+        // Render function
+        function render(filteredPapers) {
+          const list = document.getElementById('papers-list');
+          if (filteredPapers.length === 0) {
+            list.innerHTML = '<p class="text-center text-gray-400 py-8 text-sm">No papers match the selected filters.</p>';
+          } else {
+            list.innerHTML = filteredPapers.map((p, i) => renderPaper(p, i)).join('');
+          }
+        }
+
+        // Filter handlers
+        function applyFilters() {
+          const tagFilter = document.getElementById('filter-tag').value;
+          const statusFilter = document.getElementById('filter-status').value;
+          let filtered = papers;
+          if (tagFilter) filtered = filtered.filter(p => p.tags.includes(tagFilter));
+          if (statusFilter) filtered = filtered.filter(p => p.status === statusFilter);
+          render(filtered);
+        }
+
+        document.getElementById('filter-tag').addEventListener('change', applyFilters);
+        document.getElementById('filter-status').addEventListener('change', applyFilters);
+
+        // Initial render (newest first)
+        papers.sort((a, b) => new Date(b.date) - new Date(a.date));
+        render(papers);
+
+      } catch (err) {
+        console.error('Failed to load papers:', err);
+        document.getElementById('empty-state').classList.remove('hidden');
+      }
+    }
+
+    loadPapers();
+  </script>
+</body>
+</html>
