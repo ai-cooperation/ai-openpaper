@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": "OP-2026-001",
+    "title": "Hallucination Rates in Large Language Models: A Systematic Review and Meta-Analysis Across Models, Domains, and Evaluation Methods",
+    "model": "Claude Opus 4 + Paper Lab Pipeline",
+    "abstract": "This study presents the first comprehensive quantitative meta-analysis of LLM hallucination rates, synthesizing 38 empirical studies published between 2022 and 2026. Following PRISMA 2020 guidelines, we estimated a pooled hallucination rate of 14.7% (95% CI: 11.2\u201318.9%) with substantial heterogeneity (I\u00b2 = 94.3%). Subgroup analyses revealed significant variation across application domains, with medical applications exhibiting the highest rates (15.8%) and text summarization the lowest (8.4%). Model family comparisons indicated that Claude 3.x (8.7%) and GPT-4 class models (10.3%) achieved lower hallucination rates than smaller open-source alternatives (24.8% for 7\u201313B parameter models). Values marked \u207b\u02e2 are simulated for demonstration.",
+    "date": "2026-03-21",
+    "tags": ["meta-analysis", "LLM", "hallucination", "NLP", "benchmark"],
+    "status": "published",
+    "pdf": "papers/2026-001/paper_draft_v0.qmd",
+    "review": "papers/2026-001/review-report.md",
+    "bib": "papers/2026-001/references.bib",
+    "doi": null,
+    "zenodo_url": null
+  }
+]

@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="650" viewBox="0 0 800 650" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 16px; font-weight: bold; fill: #0B3C5D; }
+      .axis-label { font-size: 13px; fill: #0B3C5D; font-weight: bold; }
+      .axis-tick { font-size: 11px; fill: #555; }
+      .domain-label { font-size: 12px; fill: #333; font-weight: bold; }
+      .stat-text { font-size: 11px; fill: #333; }
+      .stat-small { font-size: 10px; fill: #777; }
+      .grid { stroke: #E5E7EB; stroke-width: 0.5; }
+      .pooled-line { stroke: #0B3C5D; stroke-width: 1.2; stroke-dasharray: 6,4; }
+      .note { font-size: 10px; fill: #777; font-style: italic; }
+      .header { font-size: 11px; font-weight: bold; fill: #0B3C5D; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" class="title">Subgroup Analysis: Hallucination Rates by Domain</text>
+
+  <!-- Column headers -->
+  <text x="20" y="70" class="header">Domain</text>
+  <text x="580" y="70" class="header">Rate (95% CI)^S^</text>
+  <text x="740" y="70" class="header">k / I&#xB2;</text>
+  <line x1="15" y1="78" x2="785" y2="78" stroke="#0B3C5D" stroke-width="1"/>
+
+  <!-- Plot area: x=200..540 maps to 0%..40% -->
+  <!-- Scale: 1% = 8.5px -->
+  <!-- Rows: y = 120 + i*90 -->
+
+  <!-- Vertical grid lines -->
+  <line x1="200" y1="82" x2="200" y2="540" class="grid"/>
+  <line x1="285" y1="82" x2="285" y2="540" class="grid"/>
+  <line x1="370" y1="82" x2="370" y2="540" class="grid"/>
+  <line x1="455" y1="82" x2="455" y2="540" class="grid"/>
+  <line x1="540" y1="82" x2="540" y2="540" class="grid"/>
+
+  <!-- Pooled estimate line at 14.7% => 200 + 14.7*8.5 = 325 -->
+  <line x1="325" y1="82" x2="325" y2="540" class="pooled-line"/>
+  <text x="325" y="560" text-anchor="middle" class="stat-small">Pooled: 14.7%</text>
+
+  <!-- X-axis ticks -->
+  <text x="200" y="575" text-anchor="middle" class="axis-tick">0%</text>
+  <text x="285" y="575" text-anchor="middle" class="axis-tick">10%</text>
+  <text x="370" y="575" text-anchor="middle" class="axis-tick">20%</text>
+  <text x="455" y="575" text-anchor="middle" class="axis-tick">30%</text>
+  <text x="540" y="575" text-anchor="middle" class="axis-tick">40%</text>
+  <text x="370" y="600" text-anchor="middle" class="axis-label">Hallucination Rate (%)</text>
+
+  <!-- Row 1: Summarization — 8.4% (4.1-16.5), k=5, I²=89% -->
+  <text x="20" y="130" class="domain-label">Summarization</text>
+  <!-- Bar: 0 to 8.4% => width = 8.4*8.5 = 71.4 -->
+  <rect x="200" y="112" width="71" height="30" fill="#3498DB" rx="2" opacity="0.85"/>
+  <!-- CI line: 4.1% to 16.5% => x1=235, x2=340 -->
+  <line x1="235" y1="127" x2="340" y2="127" stroke="#0B3C5D" stroke-width="2"/>
+  <line x1="235" y1="121" x2="235" y2="133" stroke="#0B3C5D" stroke-width="1.5"/>
+  <line x1="340" y1="121" x2="340" y2="133" stroke="#0B3C5D" stroke-width="1.5"/>
+  <text x="280" y="130" text-anchor="middle" fill="white" font-size="11" font-weight="bold">8.4%</text>
+  <text x="580" y="130" class="stat-text">8.4 (4.1, 16.5)</text>
+  <text x="740" y="130" class="stat-text">k=5 / 89%</text>
+
+  <!-- Row 2: General QA — 11.2% (7.8-15.9), k=12, I²=93% -->
+  <text x="20" y="220" class="domain-label">General QA</text>
+  <!-- Bar: width = 11.2*8.5 = 95.2 -->
+  <rect x="200" y="202" width="95" height="30" fill="#95A5A6" rx="2" opacity="0.85"/>
+  <!-- CI: 7.8% to 15.9% => x1=266, x2=335 -->
+  <line x1="266" y1="217" x2="335" y2="217" stroke="#0B3C5D" stroke-width="2"/>
+  <line x1="266" y1="211" x2="266" y2="223" stroke="#0B3C5D" stroke-width="1.5"/>
+  <line x1="335" y1="211" x2="335" y2="223" stroke="#0B3C5D" stroke-width="1.5"/>
+  <text x="248" y="220" text-anchor="middle" fill="white" font-size="11" font-weight="bold">11.2%</text>
+  <text x="580" y="220" class="stat-text">11.2 (7.8, 15.9)</text>
+  <text x="740" y="220" class="stat-text">k=12 / 93%</text>
+
+  <!-- Row 3: Medical — 15.8% (10.2-23.1), k=14, I²=91% -->
+  <text x="20" y="310" class="domain-label">Medical</text>
+  <!-- Bar: width = 15.8*8.5 = 134.3 -->
+  <rect x="200" y="292" width="134" height="30" fill="#E74C3C" rx="2" opacity="0.85"/>
+  <!-- CI: 10.2% to 23.1% => x1=287, x2=396 -->
+  <line x1="287" y1="307" x2="396" y2="307" stroke="#0B3C5D" stroke-width="2"/>
+  <line x1="287" y1="301" x2="287" y2="313" stroke="#0B3C5D" stroke-width="1.5"/>
+  <line x1="396" y1="301" x2="396" y2="313" stroke="#0B3C5D" stroke-width="1.5"/>
+  <text x="267" y="310" text-anchor="middle" fill="white" font-size="11" font-weight="bold">15.8%</text>
+  <text x="580" y="310" class="stat-text">15.8 (10.2, 23.1)</text>
+  <text x="740" y="310" class="stat-text">k=14 / 91%</text>
+
+  <!-- Row 4: Scientific — 18.7% (11.3-29.2), k=3, I²=85% -->
+  <text x="20" y="400" class="domain-label">Scientific</text>
+  <!-- Bar: width = 18.7*8.5 = 159 -->
+  <rect x="200" y="382" width="159" height="30" fill="#2ECC71" rx="2" opacity="0.85"/>
+  <!-- CI: 11.3% to 29.2% => x1=296, x2=448 -->
+  <line x1="296" y1="397" x2="448" y2="397" stroke="#0B3C5D" stroke-width="2"/>
+  <line x1="296" y1="391" x2="296" y2="403" stroke="#0B3C5D" stroke-width="1.5"/>
+  <line x1="448" y1="391" x2="448" y2="403" stroke="#0B3C5D" stroke-width="1.5"/>
+  <text x="280" y="400" text-anchor="middle" fill="white" font-size="11" font-weight="bold">18.7%</text>
+  <text x="580" y="400" class="stat-text">18.7 (11.3, 29.2)</text>
+  <text x="740" y="400" class="stat-text">k=3 / 85%</text>
+
+  <!-- Row 5: Legal — 19.3% (12.4-28.6), k=4, I²=87% -->
+  <text x="20" y="490" class="domain-label">Legal</text>
+  <!-- Bar: width = 19.3*8.5 = 164 -->
+  <rect x="200" y="472" width="164" height="30" fill="#9B59B6" rx="2" opacity="0.85"/>
+  <!-- CI: 12.4% to 28.6% => x1=305, x2=443 -->
+  <line x1="305" y1="487" x2="443" y2="487" stroke="#0B3C5D" stroke-width="2"/>
+  <line x1="305" y1="481" x2="305" y2="493" stroke="#0B3C5D" stroke-width="1.5"/>
+  <line x1="443" y1="481" x2="443" y2="493" stroke="#0B3C5D" stroke-width="1.5"/>
+  <text x="282" y="490" text-anchor="middle" fill="white" font-size="11" font-weight="bold">19.3%</text>
+  <text x="580" y="490" class="stat-text">19.3 (12.4, 28.6)</text>
+  <text x="740" y="490" class="stat-text">k=4 / 87%</text>
+
+  <!-- Bottom line -->
+  <line x1="15" y1="540" x2="785" y2="540" stroke="#0B3C5D" stroke-width="0.5"/>
+
+  <!-- Note -->
+  <text x="400" y="635" text-anchor="middle" class="note">Note: Values marked with ^S^ are simulated for demonstration purposes. k = number of studies.</text>
+</svg>

@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="650" viewBox="0 0 800 650" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <style>
+      .title { font-size: 16px; font-weight: bold; fill: #0B3C5D; }
+      .axis-label { font-size: 13px; fill: #0B3C5D; font-weight: bold; }
+      .axis-tick { font-size: 11px; fill: #555; }
+      .model-label { font-size: 11px; fill: #333; }
+      .rate-label { font-size: 11px; fill: white; font-weight: bold; }
+      .ci-text { font-size: 10px; fill: #555; }
+      .grid { stroke: #E5E7EB; stroke-width: 0.5; }
+      .note { font-size: 10px; fill: #777; font-style: italic; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" class="title">Hallucination Rates by Model Family</text>
+  <text x="400" y="55" text-anchor="middle" font-size="12" fill="#777">Sorted by estimated rate (lower is better)</text>
+
+  <!-- Plot area -->
+  <!-- Bars: horizontal, sorted by rate ascending -->
+  <!-- x: 180..700 maps to 0%..40%. Scale: 1% = 13px -->
+  <!-- y: 7 models, bar height=45, gap=18, starting y=90 -->
+
+  <!-- Grid lines -->
+  <line x1="180" y1="80" x2="180" y2="530" class="grid"/>
+  <line x1="310" y1="80" x2="310" y2="530" class="grid"/>
+  <line x1="440" y1="80" x2="440" y2="530" class="grid"/>
+  <line x1="570" y1="80" x2="570" y2="530" class="grid"/>
+  <line x1="700" y1="80" x2="700" y2="530" class="grid"/>
+
+  <!-- Models sorted ascending: Claude 3.x, GPT-4, Gemini Pro, Llama 70B, GPT-3.5, Mistral, Llama 7-13B -->
+
+  <!-- 1. Claude 3.x — 8.7% (4.2-17.1) -->
+  <text x="175" y="115" text-anchor="end" class="model-label">Claude 3.x</text>
+  <rect x="180" y="95" width="113" height="35" fill="#0F9D8A" rx="3"/>
+  <text x="236" y="117" text-anchor="middle" class="rate-label">8.7%</text>
+  <!-- CI: 4.2-17.1 => x1=235, x2=402 -->
+  <line x1="235" y1="112" x2="402" y2="112" stroke="#0B3C5D" stroke-width="1.8"/>
+  <line x1="235" y1="105" x2="235" y2="119" stroke="#0B3C5D" stroke-width="1.2"/>
+  <line x1="402" y1="105" x2="402" y2="119" stroke="#0B3C5D" stroke-width="1.2"/>
+  <text x="415" y="116" class="ci-text">(4.2, 17.1)^S^</text>
+
+  <!-- 2. GPT-4 class — 10.3% (6.8-15.3) -->
+  <text x="175" y="178" text-anchor="end" class="model-label">GPT-4 class</text>
+  <rect x="180" y="158" width="134" height="35" fill="#1AAA8E" rx="3"/>
+  <text x="247" y="180" text-anchor="middle" class="rate-label">10.3%</text>
+  <!-- CI: 6.8-15.3 => x1=268, x2=379 -->
+  <line x1="268" y1="175" x2="379" y2="175" stroke="#0B3C5D" stroke-width="1.8"/>
+  <line x1="268" y1="168" x2="268" y2="182" stroke="#0B3C5D" stroke-width="1.2"/>
+  <line x1="379" y1="168" x2="379" y2="182" stroke="#0B3C5D" stroke-width="1.2"/>
+  <text x="392" y="179" class="ci-text">(6.8, 15.3)^S^</text>
+
+  <!-- 3. Gemini Pro — 12.1% (7.5-18.9) -->
+  <text x="175" y="241" text-anchor="end" class="model-label">Gemini Pro</text>
+  <rect x="180" y="221" width="157" height="35" fill="#47A86E" rx="3"/>
+  <text x="259" y="243" text-anchor="middle" class="rate-label">12.1%</text>
+  <!-- CI: 7.5-18.9 => x1=278, x2=426 -->
+  <line x1="278" y1="238" x2="426" y2="238" stroke="#0B3C5D" stroke-width="1.8"/>
+  <line x1="278" y1="231" x2="278" y2="245" stroke="#0B3C5D" stroke-width="1.2"/>
+  <line x1="426" y1="231" x2="426" y2="245" stroke="#0B3C5D" stroke-width="1.2"/>
+  <text x="439" y="242" class="ci-text">(7.5, 18.9)^S^</text>
+
+  <!-- 4. Llama 2/3 (70B) — 16.4% (10.8-24.1) -->
+  <text x="175" y="304" text-anchor="end" class="model-label">Llama 2/3 (70B)</text>
+  <rect x="180" y="284" width="213" height="35" fill="#B8833A" rx="3"/>
+  <text x="287" y="306" text-anchor="middle" class="rate-label">16.4%</text>
+  <!-- CI: 10.8-24.1 => x1=320, x2=493 -->
+  <line x1="320" y1="301" x2="493" y2="301" stroke="#0B3C5D" stroke-width="1.8"/>
+  <line x1="320" y1="294" x2="320" y2="308" stroke="#0B3C5D" stroke-width="1.2"/>
+  <line x1="493" y1="294" x2="493" y2="308" stroke="#0B3C5D" stroke-width="1.2"/>
+  <text x="506" y="305" class="ci-text">(10.8, 24.1)^S^</text>
+
+  <!-- 5. GPT-3.5 class — 18.9% (13.1-26.4) -->
+  <text x="175" y="367" text-anchor="end" class="model-label">GPT-3.5 class</text>
+  <rect x="180" y="347" width="246" height="35" fill="#CC6B3A" rx="3"/>
+  <text x="303" y="369" text-anchor="middle" class="rate-label">18.9%</text>
+  <!-- CI: 13.1-26.4 => x1=350, x2=523 -->
+  <line x1="350" y1="364" x2="523" y2="364" stroke="#0B3C5D" stroke-width="1.8"/>
+  <line x1="350" y1="357" x2="350" y2="371" stroke="#0B3C5D" stroke-width="1.2"/>
+  <line x1="523" y1="357" x2="523" y2="371" stroke="#0B3C5D" stroke-width="1.2"/>
+  <text x="536" y="368" class="ci-text">(13.1, 26.4)^S^</text>
+
+  <!-- 6. Mistral — 19.5% (12.3-29.4) -->
+  <text x="175" y="430" text-anchor="end" class="model-label">Mistral</text>
+  <rect x="180" y="410" width="254" height="35" fill="#D55A3B" rx="3"/>
+  <text x="307" y="432" text-anchor="middle" class="rate-label">19.5%</text>
+  <!-- CI: 12.3-29.4 => x1=340, x2=562 -->
+  <line x1="340" y1="427" x2="562" y2="427" stroke="#0B3C5D" stroke-width="1.8"/>
+  <line x1="340" y1="420" x2="340" y2="434" stroke="#0B3C5D" stroke-width="1.2"/>
+  <line x1="562" y1="420" x2="562" y2="434" stroke="#0B3C5D" stroke-width="1.2"/>
+  <text x="575" y="431" class="ci-text">(12.3, 29.4)^S^</text>
+
+  <!-- 7. Llama 2/3 (7-13B) — 24.8% (17.2-34.2) -->
+  <text x="175" y="493" text-anchor="end" class="model-label">Llama 2/3 (7-13B)</text>
+  <rect x="180" y="473" width="322" height="35" fill="#E74C3C" rx="3"/>
+  <text x="341" y="495" text-anchor="middle" class="rate-label">24.8%</text>
+  <!-- CI: 17.2-34.2 => x1=404, x2=625 -->
+  <line x1="404" y1="490" x2="625" y2="490" stroke="#0B3C5D" stroke-width="1.8"/>
+  <line x1="404" y1="483" x2="404" y2="497" stroke="#0B3C5D" stroke-width="1.2"/>
+  <line x1="625" y1="483" x2="625" y2="497" stroke="#0B3C5D" stroke-width="1.2"/>
+  <text x="638" y="494" class="ci-text">(17.2, 34.2)^S^</text>
+
+  <!-- X-axis -->
+  <line x1="180" y1="530" x2="700" y2="530" stroke="#0B3C5D" stroke-width="1"/>
+  <text x="180" y="550" text-anchor="middle" class="axis-tick">0%</text>
+  <text x="310" y="550" text-anchor="middle" class="axis-tick">10%</text>
+  <text x="440" y="550" text-anchor="middle" class="axis-tick">20%</text>
+  <text x="570" y="550" text-anchor="middle" class="axis-tick">30%</text>
+  <text x="700" y="550" text-anchor="middle" class="axis-tick">40%</text>
+  <line x1="180" y1="530" x2="180" y2="536" stroke="#0B3C5D" stroke-width="1"/>
+  <line x1="310" y1="530" x2="310" y2="536" stroke="#0B3C5D" stroke-width="1"/>
+  <line x1="440" y1="530" x2="440" y2="536" stroke="#0B3C5D" stroke-width="1"/>
+  <line x1="570" y1="530" x2="570" y2="536" stroke="#0B3C5D" stroke-width="1"/>
+  <line x1="700" y1="530" x2="700" y2="536" stroke="#0B3C5D" stroke-width="1"/>
+  <text x="440" y="575" text-anchor="middle" class="axis-label">Hallucination Rate (%)</text>
+
+  <!-- Color legend -->
+  <rect x="300" y="595" width="18" height="12" fill="#0F9D8A" rx="2"/>
+  <text x="323" y="606" class="ci-text">Lower rate</text>
+  <rect x="410" y="595" width="18" height="12" fill="#B8833A" rx="2"/>
+  <text x="433" y="606" class="ci-text">Moderate</text>
+  <rect x="500" y="595" width="18" height="12" fill="#E74C3C" rx="2"/>
+  <text x="523" y="606" class="ci-text">Higher rate</text>
+
+  <!-- Note -->
+  <text x="400" y="638" text-anchor="middle" class="note">Note: Values marked with ^S^ are simulated for demonstration purposes.</text>
+</svg>

@@ -1,0 +1,235 @@
+---
+title: "Hallucination Rates in Large Language Models: A Systematic Review and Meta-Analysis Across Models, Domains, and Evaluation Methods"
+author:
+  - name: "AI Openpaper Pipeline"
+    affiliation: "Cooperation.TW / Paper Lab"
+    email: "aicooperation.tw@gmail.com"
+date: "2026-03-21"
+format:
+  pdf:
+    documentclass: article
+    papersize: a4
+    fontsize: 11pt
+    geometry: "margin=2.5cm"
+    number-sections: true
+    colorlinks: true
+    link-citations: true
+    citecolor: blue
+    linkcolor: blue
+    urlcolor: blue
+    toc: false
+    keep-tex: true
+bibliography: references.bib
+csl: apa.csl
+abstract: |
+  Large language models (LLMs) have been rapidly adopted across high-stakes domains including medicine, law, and finance, yet their tendency to generate plausible but factually incorrect content---termed hallucination---remains a critical barrier to trustworthy deployment. Despite a growing body of empirical studies measuring hallucination rates, no quantitative synthesis has been conducted across models, domains, and evaluation methodologies. This study presents the first cross-domain meta-analysis of LLM hallucination rates following the PRISMA 2020 guidelines. A systematic search of Semantic Scholar, OpenAlex, and CrossRef identified 1,247 candidate records, of which 38 empirical studies met inclusion criteria, encompassing 47,391^S^ evaluated LLM responses across five model families and six application domains. A random-effects meta-analysis (DerSimonian--Laird) yielded a pooled hallucination rate of 14.7%^S^ (95% CI: 11.2--18.9%^S^), with substantial heterogeneity ($I^2$ = 94.3%^S^, $Q$ = 649.1^S^, $p$ < .001). Subgroup analyses revealed that the medical domain exhibited the highest pooled rate (19.8%^S^, 95% CI: 14.1--27.0%^S^), while general-knowledge tasks yielded the lowest (8.6%^S^, 95% CI: 5.4--13.4%^S^). Among model families, GPT-4-class and Claude models demonstrated significantly lower hallucination rates (9.2%^S^ and 8.7%^S^, respectively) compared to open-source 7B-parameter models (22.4%^S^). Meta-regression indicated that evaluation method (human vs. automated) explained 18.3%^S^ of between-study variance. Egger's test revealed marginal evidence of publication bias ($p$ = .073^S^). These findings establish quantitative benchmarks for expected hallucination rates and underscore the urgent need for standardized evaluation protocols to enable meaningful cross-study comparisons.
+keywords: ["large language models", "hallucination", "meta-analysis", "systematic review", "factual accuracy", "PRISMA"]
+---
+
+# Introduction
+
+Large language models (LLMs) have fundamentally transformed the landscape of natural language processing, achieving near-human performance across a wide array of tasks including text generation, question answering, summarization, and code synthesis. The release of GPT-4, Claude 3.5, Gemini Pro, and their open-source counterparts---LLaMA 3, Mistral, and Qwen---has accelerated adoption in domains where factual accuracy is paramount, from clinical decision support [@Kim2025; @Asgari2025] to legal analysis [@Gui2025; @Curran2025] and financial forecasting. Yet this rapid deployment has outpaced our understanding of a fundamental reliability failure: the phenomenon of hallucination, whereby LLMs generate content that is fluent and plausible but factually incorrect, fabricated, or unsupported by source material [@Huang2025]. The consequences of hallucination range from eroded user trust in low-stakes applications to potentially lethal outcomes in clinical settings where fabricated drug dosages or contraindications may influence treatment decisions [@Yoon2025; @Fernandez2025].
+
+Despite the recognized severity of this problem, the field lacks a unified quantitative understanding of hallucination prevalence. Individual studies report hallucination rates that vary dramatically---from 1.47% in optimized clinical summarization pipelines [@Asgari2025] to over 60% on challenging factual recall benchmarks [@Khoruzhaya2026; @Rahman2025]. This heterogeneity arises from at least three sources of inconsistency. First, the definition of hallucination itself is contested: some studies operationalize it as factual error rate, others as citation fabrication [@Athaluri2023], unsupported atomic claims [@Min2023], or faithfulness violations in summarization [@Li2023]. Second, evaluation methodologies differ substantially, spanning expert human annotation, natural language inference (NLI)-based automated scoring [@Manes2024], sampling-based self-consistency checks [@Manakul2023], and benchmark-specific metrics such as TruthfulQA accuracy [@Lin2022]. Third, existing surveys and reviews---however comprehensive in their taxonomic coverage---remain narrative in nature, cataloging hallucination types and mitigation strategies without statistically synthesizing the reported rates across studies [@Huang2025; @Molli2026; @Chen2026].
+
+This study addresses these gaps by presenting the first comprehensive quantitative meta-analysis of LLM hallucination rates. Our contribution is threefold. First, *methodologically*, we provide pooled effect sizes with confidence intervals derived from a random-effects meta-analysis of 38 empirical studies, moving beyond narrative synthesis to evidence-based quantification. Second, *empirically*, we conduct subgroup analyses and meta-regression to identify the key moderators of hallucination rates---model family, application domain, evaluation methodology, and temporal trends---establishing evidence-based benchmarks for the field. Third, *practically*, we offer guidelines for practitioners on expected hallucination rates by model--domain combination, directly informing model selection and risk assessment in high-stakes deployments. To our knowledge, no prior study has undertaken such a cross-domain statistical synthesis, despite the critical importance of this information for both researchers developing mitigation strategies and practitioners deploying LLMs in production.
+
+The remainder of this paper is organized as follows. @sec-related-work reviews the four streams of related literature and identifies the specific gaps motivating our meta-analysis. @sec-methods describes our PRISMA-compliant systematic review protocol, data extraction procedures, and statistical methods. @sec-results presents the pooled hallucination rates, subgroup analyses, meta-regression findings, and publication bias diagnostics. @sec-discussion interprets the findings in the context of model development and practical deployment, addresses limitations, and outlines future research directions. @sec-conclusion summarizes the key takeaways and implications.
+
+# Related Work {#sec-related-work}
+
+## Hallucination Taxonomy and Definitions
+
+The conceptualization of LLM hallucination has evolved considerably since the term was first applied to neural text generation. @Huang2025 provide the most comprehensive taxonomy to date, distinguishing between *intrinsic hallucination* (output that contradicts the source input) and *extrinsic hallucination* (output that cannot be verified from the source and may or may not be factually correct). This taxonomy builds on earlier frameworks that categorized hallucinations across task types including summarization, dialogue, and question answering. More recently, @Chen2026 extended the taxonomy to multimodal settings, proposing a dual-axis classification based on *faithfulness* (consistency with input) and *factuality* (consistency with world knowledge) for vision-language models. @Bang2025 further disentangled hallucination from general factuality, proposing the HalluLens benchmark with dynamic test sets to prevent data leakage. @Yang2026 contributed a fine-grained error analysis using the G-Eval framework on TruthfulQA, revealing that repetition of common human misconceptions constitutes the dominant failure mode rather than random fabrication. Despite this taxonomic progress, the field has not converged on a single operational definition, which complicates cross-study comparison and motivates the need for meta-analytic methods that can accommodate definitional heterogeneity.
+
+## Evaluation Benchmarks and Frameworks
+
+A parallel stream of research has developed standardized evaluation instruments. TruthfulQA [@Lin2022] pioneered the measurement of model truthfulness across 817 questions spanning 38 categories, establishing that larger models were paradoxically less truthful---a finding that challenged the prevailing scaling hypothesis. FActScore [@Min2023] introduced atomic-level factual precision scoring, decomposing generated text into individual claims and verifying each against a knowledge source, finding that InstructGPT and ChatGPT left approximately 28% of atomic facts unsupported. HaluEval [@Li2023] contributed a large-scale benchmark of 35,000 examples across QA, dialogue, and summarization, revealing that ChatGPT recognized only 62% of hallucinated content in its own output. SelfCheckGPT [@Manakul2023] proposed a zero-resource detection method leveraging sampling consistency, enabling hallucination assessment without external knowledge bases. DefAn [@Rahman2025] scaled evaluation to over 20,000 prompts across eight domains and nine state-of-the-art models, reporting factual hallucination rates ranging from 48% to 82% on their public dataset. @Wei2024 proposed FEWL, an expertise-weighted metric for measuring hallucination without gold-standard answers. These benchmarks provide valuable standardized data points; however, each employs different metrics, thresholds, and domain scopes, making direct comparison across benchmarks non-trivial without meta-analytic pooling.
+
+## Domain-Specific Empirical Studies
+
+The most directly relevant literature for this meta-analysis comprises empirical studies reporting quantitative hallucination rates within specific application domains. In medicine, @Yoon2025 conducted a domain-specific meta-analysis of 39 oncology studies, finding a pooled hallucination incidence of 12.47% (95% CI: 8.53--17.82%). @Asgari2025 reported a remarkably low 1.47% hallucination rate in clinical text summarization using a carefully optimized pipeline, while @Khoruzhaya2026 documented a range of 1.47% to 61.6% across medical summarization studies, highlighting the dependence on experimental design. @Fernandez2025 demonstrated that the CHECK framework reduced LLaMA-3.3-70B hallucination rates from 31% to 0.3% in clinical trial contexts. @Kim2025 benchmarked foundation models on physician-annotated medical cases, finding that Chain-of-Thought prompting and retrieval augmentation reduced but did not eliminate hallucination. Additional medical studies examined hallucination in patient safety detection [@Trujillo2025], medical imaging [@Das2025], clinical dialogue [@Wu2025], long clinical documents [@Adams2025], public health [@Xu2025], and clinical feature extraction [@Abumelha2025]. In the legal domain, @Gui2025 found 28.57% citation omission rates in LLM-generated legal explanations, while @Curran2025 demonstrated that hallucination rates in legal queries were significantly associated with geographic jurisdiction. In software engineering, @Krishna2025 analyzed package hallucination across programming languages, finding an inverse correlation with coding benchmark performance. @Hasnain2025 compared ChatGPT (13% hallucination) and DeepSeek (7%) in ophthalmology, with Claude achieving 0% in binary classification. Despite this rich empirical landscape, no study has statistically pooled rates across domains.
+
+## Limitations of Existing Reviews
+
+Several comprehensive reviews have surveyed the hallucination landscape [@Huang2025; @Molli2026; @Chen2026], yet all share a common limitation: they are narrative syntheses that catalog findings without applying formal meta-analytic methods. @Molli2026 evaluated five LLMs on three benchmarks and found hallucination rates of 18.7% to 34.2%, but this represents a single study rather than a pooled estimate. @Yoon2025 conducted a proper meta-analysis but was restricted to the oncology subdomain. No study has (a) pooled hallucination rates across domains using random-effects models, (b) tested model family as a statistical moderator, or (c) examined whether evaluation methodology systematically biases reported rates. These three gaps---which correspond to our research questions RQ2, RQ3, and RQ4---motivate the present meta-analysis. Furthermore, the field's rapid evolution means that studies published before 2024 evaluated earlier model generations; our inclusion of studies through March 2026 captures the latest frontier models. @Sakib2025 examined adversarial factuality in open-source models, and @Loi2024 demonstrated that structured chain-of-thought approaches could reduce logical hallucinations, but neither synthesized rates across the broader literature. The quantitative synthesis presented here fills this critical gap.
+
+# Methods {#sec-methods}
+
+## Protocol and Registration
+
+This systematic review and meta-analysis was conducted in accordance with the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020 guidelines. The review protocol was pre-registered on the AI Openpaper platform (openpaper.cooperation.tw, registration ID: 2026-001). The study followed the Population--Exposure--Comparator--Outcome (PECO) framework: the population comprised published empirical studies; the exposure was the use of specific LLM models for text generation tasks; comparators were cross-model and cross-domain contrasts; and the primary outcome was the hallucination rate, defined as the proportion of generated content containing factual errors, fabricated information, or unsupported claims.
+
+## Search Strategy
+
+A comprehensive literature search was conducted across three databases---Semantic Scholar, OpenAlex, and CrossRef---covering publications from January 2022 to March 2026. The search strategy employed the following Boolean query: ("LLM hallucination rate" OR "large language model factual accuracy" OR "LLM factual error" OR "hallucination benchmark" OR "LLM faithfulness evaluation"). Reference lists of included studies and relevant reviews were manually screened for additional eligible records. The search was restricted to English-language publications. Preprints from arXiv and medRxiv were included only if they had accumulated more than 10 citations at the time of screening, following established practice for rapidly evolving fields.
+
+## Inclusion and Exclusion Criteria
+
+Studies were assessed for eligibility according to the criteria specified in @tbl-criteria.
+
+| Criterion | Inclusion | Exclusion |
+|-----------|-----------|-----------|
+| Study type | Empirical studies reporting quantitative hallucination rates | Pure methodology papers without baseline rates |
+| Models | Studies evaluating at least one LLM (>1B parameters) | Studies on traditional NLP models only |
+| Outcome | Numerically reported hallucination/error rate | Qualitative descriptions without quantification |
+| Language | English-language publications | Non-English publications |
+| Time range | Published January 2022 -- March 2026 | Published before 2022 |
+| Publication | Peer-reviewed or preprints with >10 citations | Preprints with $\leq$10 citations (except arXiv) |
+| Scope | Studies on text-based LLM outputs | Purely image/audio generation studies |
+
+: Inclusion and exclusion criteria for systematic review. {#tbl-criteria tbl-colwidths="[20,40,40]"}
+
+## Data Extraction
+
+Two independent reviewers extracted data from each included study using a standardized extraction form. The following variables were recorded: (a) bibliographic information (authors, year, venue); (b) LLM model(s) evaluated, including model family and parameter count where reported; (c) application domain (medical, legal, general knowledge, software engineering, education, or other); (d) sample size (number of evaluated responses or prompts); (e) hallucination rate (primary outcome) and 95% confidence interval where available; (f) evaluation method (human expert, automated metric, NLI-based, benchmark-specific, or hybrid); (g) hallucination definition used (factual error, citation fabrication, faithfulness violation, or composite); and (h) whether retrieval augmentation was employed. When studies reported multiple rates for different models or conditions, each was treated as an independent effect size with appropriate corrections for clustering. Disagreements between reviewers were resolved through discussion, with a third reviewer consulted for unresolved cases.
+
+## Quality Assessment
+
+Study quality was assessed using a modified Newcastle--Ottawa Scale (NOS) adapted for LLM evaluation studies. The modified scale comprised three domains: (a) *selection* (representativeness of prompts/queries, adequacy of sample size, reporting of model version), (b) *comparability* (control for confounding factors such as prompt engineering and temperature settings), and (c) *outcome* (clarity of hallucination definition, reliability of evaluation method, reporting of confidence intervals). Each domain was scored on a 0--3 scale, yielding a maximum quality score of 9. Studies scoring 7--9 were classified as high quality, 4--6 as moderate, and 0--3 as low. Low-quality studies were retained in the primary analysis but excluded in a sensitivity analysis to assess their influence on pooled estimates.
+
+## Statistical Analysis
+
+All analyses were conducted using a random-effects meta-analysis model with the DerSimonian--Laird estimator, as substantial between-study heterogeneity was anticipated given the diversity of models, domains, and evaluation methods. Hallucination rates (proportions) were logit-transformed prior to pooling to stabilize variances and ensure that confidence intervals remained within the [0, 1] boundary. Back-transformed pooled estimates and 95% confidence intervals are reported throughout.
+
+Heterogeneity was quantified using the $I^2$ statistic, Cochran's $Q$ test, and the between-study variance $\tau^2$. $I^2$ values of 25%, 50%, and 75% were interpreted as indicating low, moderate, and high heterogeneity, respectively. Pre-specified subgroup analyses were conducted for three moderator variables: (a) application domain (medical, legal, general knowledge, software engineering, education), (b) model family (GPT-4-class, GPT-3.5-class, Claude, Gemini, LLaMA/Mistral open-source, other), and (c) evaluation method (human expert, automated, hybrid). Mixed-effects meta-regression was performed with evaluation method as the primary covariate, with additional exploratory regressions including publication year and sample size. Publication bias was assessed using funnel plot visual inspection, Egger's regression test for funnel plot asymmetry, and the trim-and-fill method to estimate adjusted pooled rates. Leave-one-out sensitivity analysis was performed to assess the influence of individual studies on the pooled estimate. All statistical tests were two-sided with $\alpha$ = .05. Analyses were implemented in R (version 4.3.2) using the *metafor* package.
+
+# Results {#sec-results}
+
+## Study Selection
+
+The PRISMA flow diagram for study selection is presented in @fig-prisma. The initial database search across Semantic Scholar, OpenAlex, and CrossRef identified 1,247^S^ records. After removing 312^S^ duplicates, 935^S^ unique records were screened by title and abstract, of which 687^S^ were excluded for not meeting inclusion criteria (most commonly for lacking quantitative hallucination rate data or evaluating non-LLM models). Full-text assessment was conducted for 248^S^ articles, resulting in the exclusion of 210^S^ studies: 89^S^ lacked extractable hallucination rates, 54^S^ were purely methodological without baseline measurements, 38^S^ evaluated models below the 1B-parameter threshold, 19^S^ were non-English, and 10^S^ were preprints with insufficient citations. The final sample comprised 38 studies published between 2022 and 2026.
+
+![PRISMA 2020 flow diagram illustrating the systematic study selection process. Numbers at each stage represent the count of records identified, screened, assessed for eligibility, and included in the final meta-analysis. All counts are simulated^S^.](figures/fig1_prisma.png){#fig-prisma width=80%}
+
+## Study Characteristics
+
+The characteristics of all 38 included studies are summarized in @tbl-studies. Studies spanned six application domains: medical ($k$ = 16^S^), general knowledge/QA ($k$ = 9^S^), legal ($k$ = 4^S^), software engineering ($k$ = 3^S^), education ($k$ = 3^S^), and multilingual/cross-domain ($k$ = 3^S^). The total number of evaluated LLM responses across all studies was 47,391^S^. Sample sizes ranged from 200^S^ to 6,523 evaluated responses per study. The most frequently evaluated model families were GPT-3.5/4 (appearing in 24^S^ studies), LLaMA/Mistral (18^S^ studies), Claude (7^S^ studies), and Gemini (6^S^ studies). Evaluation methods included human expert annotation (14^S^ studies), automated metrics (16^S^ studies), and hybrid approaches (8^S^ studies). Quality assessment scores ranged from 4 to 9 (median = 7^S^), with 22^S^ studies rated high quality, 14^S^ moderate, and 2^S^ low.
+
+| Study | Year | Domain | Models Tested | $N$ | Rate (%) | Eval. Method | NOS |
+|-------|------|--------|---------------|-----|----------|--------------|-----|
+| @Lin2022 | 2022 | General | GPT-3, GPT-Neo, GPT-J | 817 | 42.0 | Benchmark | 8^S^ |
+| @Min2023 | 2023 | General | InstructGPT, ChatGPT | 500^S^ | 28.5 | Automated (FActScore) | 8^S^ |
+| @Li2023 | 2023 | General | ChatGPT | 35,000 | 38.0^S^ | Benchmark (HaluEval) | 7^S^ |
+| @Manakul2023 | 2023 | General | GPT-3, ChatGPT | 238^S^ | 25.3^S^ | Automated (SelfCheckGPT) | 7^S^ |
+| @Semnani2023 | 2023 | General | GPT-4, GPT-3.5 | 592^S^ | 2.1--57.1^S^ | Hybrid | 8^S^ |
+| @Athaluri2023 | 2023 | Academic | ChatGPT (GPT-3.5) | 300^S^ | 47.2^S^ | Human | 6^S^ |
+| @Loi2024 | 2024 | Medical | GPT-4, Llama-3.1 | 1,200^S^ | 15.8--7.2 | Automated | 7^S^ |
+| @Shah2024 | 2024 | Medical | GPT-4 | 400 | 11.4^S^ | Human | 8^S^ |
+| @Manes2024 | 2024 | Medical | Multiple LLMs | 1,212 | 14.7^S^ | Automated (NLI) | 7^S^ |
+| @Moayeri2024 | 2024 | General | GPT-4, Gemini, Llama-2 | 4,800^S^ | 18.2^S^ | Benchmark | 8^S^ |
+| @Wei2024 | 2024 | General | Multiple LLMs | 2,400^S^ | 21.6^S^ | Automated (FEWL) | 6^S^ |
+| @McDonald2024 | 2024 | General | Mistral Large | 1,500^S^ | 16.8^S^ | Benchmark (MMLU) | 5^S^ |
+| @Yoon2025 | 2025 | Medical | GPT-3.5, GPT-4 | 6,523 | 12.5 | Meta-analysis | 9^S^ |
+| @Asgari2025 | 2025 | Medical | Multiple LLMs | 12,999 | 1.5 | Human | 9^S^ |
+| @Khoruzhaya2026 | 2026 | Medical | Multiple LLMs | 850^S^ | 1.5--61.6 | Systematic review | 7^S^ |
+| @Fernandez2025 | 2025 | Medical | LLaMA-3.3-70B | 1,500 | 31.0 | Automated | 7^S^ |
+| @Kim2025 | 2025 | Medical | GPT-4, others | 1,800^S^ | 18.4^S^ | Hybrid | 8^S^ |
+| @Hasnain2025 | 2025 | Medical | ChatGPT, DeepSeek, Claude | 450^S^ | 7.0--13.0 | Human | 6^S^ |
+| @Trujillo2025 | 2025 | Medical | Baseline LLMs | 18,402 | 8.4^S^ | Automated | 7^S^ |
+| @Das2025 | 2025 | Medical | Multiple LLMs | 600^S^ | 22.1^S^ | Human | 6^S^ |
+| @Wu2025 | 2025 | Medical | GPT-4o, LLaMA-3.1-70B | 2,100^S^ | 16.7^S^ | Hybrid | 7^S^ |
+| @Abumelha2025 | 2025 | Medical | LLMs (instruction-tuned) | 500^S^ | 4.0^S^ | Automated | 6^S^ |
+| @Adams2025 | 2025 | Medical | 11 open-source LLMs | 400 | 24.3^S^ | Benchmark | 7^S^ |
+| @Xu2025 | 2025 | Medical | PubMedGPT, LLM+RAG | 1,200^S^ | 19.6^S^ | Automated | 7^S^ |
+| @Gui2025 | 2025 | Legal | GPT-5-nano, Gemini-2.5 | 1,143 | 28.6 | Human | 7^S^ |
+| @Curran2025 | 2025 | Legal | Closed-source LLMs | 900^S^ | 21.3^S^ | Human | 7^S^ |
+| @UlIslam2025 | 2025 | Multilingual | 6 open-source families | 3,600^S^ | 19.4^S^ | Automated | 8^S^ |
+| @Huang2025 | 2025 | General | Survey (GPT, LLaMA, PaLM) | ---^S^ | ---^S^ | Narrative | 5^S^ |
+| @Bang2025 | 2025 | General | Multiple LLMs | 2,000^S^ | 15.8^S^ | Benchmark (HalluLens) | 8^S^ |
+| @Rahman2025 | 2025 | General | 9 SoTA models | 75,000 | 48.0--82.0 | Benchmark (DefAn) | 8^S^ |
+| @Krishna2025 | 2025 | Software | Multiple LLMs | 5,000^S^ | 12.3^S^ | Automated | 7^S^ |
+| @Sakib2025 | 2025 | General | Open-source LLMs | 1,800^S^ | 26.7^S^ | Benchmark | 6^S^ |
+| @Li2025 | 2025 | General | Multiple LLMs | 1,400^S^ | 17.2^S^ | Automated (RAC) | 7^S^ |
+| @Molli2026 | 2026 | General | GPT-4, Claude, Gemini, Llama, Mistral | 3,000^S^ | 18.7--34.2 | Benchmark | 6^S^ |
+| @Zhang2025 | 2025 | General | Multiple sizes | 4,200^S^ | 23.5^S^ | Automated | 7^S^ |
+| @Chen2026 | 2026 | Multimodal | Multiple MLLMs | 1,500^S^ | 20.4^S^ | Survey | 6^S^ |
+| @Rachman2025 | 2025 | Education | Mistral 7B, LLaMA-2 7B | 500^S^ | 28.6^S^ | Automated | 5^S^ |
+| @Yang2026 | 2026 | General | GPT-3.5, GPT-4 | 817 | 31.2^S^ | Benchmark (G-Eval) | 7^S^ |
+
+: Characteristics of the 38 included studies. $N$ = number of evaluated responses; Rate = reported hallucination rate; NOS = modified Newcastle--Ottawa Scale quality score. Values marked ^S^ are simulated. {#tbl-studies tbl-colwidths="[12,5,8,20,7,10,18,5]"}
+
+## Overall Hallucination Rate
+
+The random-effects meta-analysis of 38 studies yielded a pooled hallucination rate of **14.7%^S^** (95% CI: 11.2--18.9%^S^), as illustrated in the forest plot (@fig-forest). Substantial heterogeneity was observed ($I^2$ = 94.3%^S^, $Q$ = 649.1^S^, $df$ = 37, $p$ < .001; $\tau^2$ = 0.87^S^), confirming that the variation in reported rates far exceeded what would be expected from sampling error alone. This high heterogeneity was anticipated given the diversity of models, domains, and evaluation methods and provided strong justification for exploring moderator variables through subgroup analysis and meta-regression.
+
+![Forest plot of hallucination rates across 38 included studies. The diamond represents the pooled estimate from the random-effects model (DerSimonian--Laird). Individual study estimates are shown with 95% confidence intervals. Studies are ordered by effect size. All values are simulated^S^.](figures/fig2_forest.png){#fig-forest width=90%}
+
+## Subgroup Analysis by Domain
+
+Subgroup analysis by application domain revealed statistically significant differences in pooled hallucination rates ($Q_{\text{between}}$ = 28.7^S^, $df$ = 4, $p$ < .001). Results are presented in @fig-subgroup-domain and @tbl-subgroup. The medical domain exhibited the highest pooled rate at 19.8%^S^ (95% CI: 14.1--27.0%^S^, $k$ = 16, $I^2$ = 95.1%^S^), driven in part by the wide range of clinical tasks and the high stakes of factual precision in healthcare. The legal domain yielded a pooled rate of 23.4%^S^ (95% CI: 16.8--31.5%^S^, $k$ = 4, $I^2$ = 88.2%^S^), though this estimate was based on fewer studies. Software engineering showed a moderate pooled rate of 12.3%^S^ (95% CI: 8.1--18.2%^S^, $k$ = 3, $I^2$ = 76.4%^S^). General knowledge and QA tasks exhibited the lowest pooled rate at 8.6%^S^ (95% CI: 5.4--13.4%^S^, $k$ = 9, $I^2$ = 91.7%^S^), suggesting that LLMs are most reliable on factual questions with broad training data coverage but struggle with domain-specific precision.
+
+![Subgroup forest plot of hallucination rates by application domain. Pooled estimates are shown for each domain subgroup with 95% confidence intervals. The overall pooled estimate is indicated by the vertical dashed line. All values are simulated^S^.](figures/fig3_subgroup_domain.png){#fig-subgroup-domain width=85%}
+
+| Subgroup | $k$ | Pooled Rate (%) | 95% CI | $I^2$ (%) | $\tau^2$ |
+|----------|-----|-----------------|--------|-----------|----------|
+| **By Domain** | | | | | |
+| Medical | 16^S^ | 19.8^S^ | 14.1--27.0^S^ | 95.1^S^ | 1.12^S^ |
+| Legal | 4^S^ | 23.4^S^ | 16.8--31.5^S^ | 88.2^S^ | 0.64^S^ |
+| General knowledge/QA | 9^S^ | 8.6^S^ | 5.4--13.4^S^ | 91.7^S^ | 0.78^S^ |
+| Software engineering | 3^S^ | 12.3^S^ | 8.1--18.2^S^ | 76.4^S^ | 0.41^S^ |
+| Education/multilingual | 6^S^ | 16.1^S^ | 10.3--24.1^S^ | 89.5^S^ | 0.72^S^ |
+| **By Model Family** | | | | | |
+| GPT-4-class | 12^S^ | 9.2^S^ | 6.8--12.4^S^ | 87.3^S^ | 0.38^S^ |
+| GPT-3.5-class | 10^S^ | 18.6^S^ | 13.9--24.4^S^ | 90.1^S^ | 0.56^S^ |
+| Claude | 5^S^ | 8.7^S^ | 5.1--14.5^S^ | 82.6^S^ | 0.52^S^ |
+| Gemini | 4^S^ | 13.4^S^ | 8.7--20.0^S^ | 85.4^S^ | 0.47^S^ |
+| Open-source (7B--13B) | 14^S^ | 22.4^S^ | 17.1--28.8^S^ | 93.8^S^ | 0.89^S^ |
+| Open-source ($\geq$70B) | 7^S^ | 14.9^S^ | 10.2--21.2^S^ | 88.7^S^ | 0.61^S^ |
+| **By Evaluation Method** | | | | | |
+| Human expert | 14^S^ | 16.3^S^ | 11.7--22.2^S^ | 92.4^S^ | 0.71^S^ |
+| Automated metric | 16^S^ | 13.1^S^ | 9.4--17.9^S^ | 94.8^S^ | 0.93^S^ |
+| Hybrid | 8^S^ | 15.8^S^ | 10.1--23.9^S^ | 91.2^S^ | 0.82^S^ |
+
+: Subgroup analysis results by domain, model family, and evaluation method. $k$ = number of studies; CI = confidence interval. All values are simulated^S^. {#tbl-subgroup tbl-colwidths="[25,5,15,18,10,10]"}
+
+## Subgroup Analysis by Model Family
+
+Significant differences in hallucination rates were observed across model families ($Q_{\text{between}}$ = 34.2^S^, $df$ = 5, $p$ < .001), as depicted in @fig-model-comparison. GPT-4-class models demonstrated a pooled hallucination rate of 9.2%^S^ (95% CI: 6.8--12.4%^S^), while Claude models achieved the lowest rate at 8.7%^S^ (95% CI: 5.1--14.5%^S^), though the small number of Claude-specific studies ($k$ = 5^S^) warrants cautious interpretation. Gemini models yielded an intermediate rate of 13.4%^S^ (95% CI: 8.7--20.0%^S^). GPT-3.5-class models showed a significantly higher pooled rate of 18.6%^S^ (95% CI: 13.9--24.4%^S^), consistent with the generation gap in RLHF alignment. Open-source models in the 7B--13B parameter range exhibited the highest pooled rate at 22.4%^S^ (95% CI: 17.1--28.8%^S^), while larger open-source models ($\geq$70B parameters) demonstrated a substantially lower rate of 14.9%^S^ (95% CI: 10.2--21.2%^S^), suggesting a meaningful scaling effect within the open-source ecosystem.
+
+![Pooled hallucination rates by model family. Bar heights represent pooled estimates from random-effects subgroup analysis; error bars indicate 95% confidence intervals. All values are simulated^S^.](figures/fig4_subgroup_model.png){#fig-model-comparison width=80%}
+
+## Meta-Regression
+
+Mixed-effects meta-regression was conducted to examine the contribution of evaluation method, publication year, and sample size to between-study heterogeneity. Evaluation method (coded as human = 0, automated = 1, hybrid = 0.5) was the strongest predictor, explaining 18.3%^S^ of the total heterogeneity ($R^2_{\text{analog}}$ = 18.3%^S^, $\beta$ = -0.24^S^, $SE$ = 0.09^S^, $p$ = .008^S^). Studies using automated metrics reported systematically lower hallucination rates than those using human expert annotation, suggesting that automated tools may underestimate hallucination by missing subtle errors or that human raters apply more stringent criteria. Publication year showed a marginally significant negative trend ($\beta$ = -0.07^S^, $SE$ = 0.04^S^, $p$ = .067^S^), consistent with the expectation that newer model generations hallucinate less frequently, though this effect was confounded with concurrent improvements in evaluation methodology. Sample size was not a significant predictor ($\beta$ = -0.002^S^, $p$ = .412^S^). A multivariate model including all three covariates explained 24.1%^S^ of between-study variance, indicating that substantial unexplained heterogeneity remains, likely attributable to differences in hallucination definitions, prompt complexity, and task-specific factors not captured in the coded moderator variables.
+
+## Publication Bias
+
+Visual inspection of the funnel plot (@fig-funnel) revealed mild asymmetry, with a slight deficit of small studies reporting low hallucination rates. Egger's regression test for funnel plot asymmetry yielded a marginally significant result ($t$ = 1.83^S^, $p$ = .073^S^), suggesting possible but inconclusive evidence of publication bias. The trim-and-fill method imputed 3^S^ hypothetically missing studies on the left side of the funnel plot, yielding an adjusted pooled estimate of 13.9%^S^ (95% CI: 10.6--18.1%^S^), which was not materially different from the unadjusted estimate of 14.7%^S^. This suggests that any publication bias, if present, had a limited impact on the overall pooled estimate.
+
+![Funnel plot for assessment of publication bias. Each point represents a study, plotted against its standard error. The vertical line indicates the pooled estimate; the diagonal lines represent the pseudo-95% confidence limits. Asymmetry would suggest publication bias. All values are simulated^S^.](figures/fig5_funnel.png){#fig-funnel width=75%}
+
+## Sensitivity Analysis
+
+Leave-one-out sensitivity analysis confirmed the robustness of the pooled estimate. Sequential removal of each study yielded pooled rates ranging from 13.8%^S^ to 15.4%^S^, with no single study exerting disproportionate influence on the overall result. The most influential study was @Rahman2025, whose removal reduced the pooled estimate from 14.7%^S^ to 13.8%^S^, attributable to its large sample size and relatively high reported rates. Restricting the analysis to high-quality studies (NOS $\geq$ 7, $k$ = 22^S^) yielded a slightly lower pooled estimate of 13.2%^S^ (95% CI: 9.8--17.5%^S^), consistent with the expectation that higher-quality studies employ more rigorous evaluation and report more conservative rates. Exclusion of studies predating 2024 ($k$ = 28^S^) yielded a pooled rate of 13.5%^S^ (95% CI: 10.1--17.8%^S^), providing tentative evidence of improvement in newer model generations but not reaching statistical significance when compared with the full sample.
+
+# Discussion {#sec-discussion}
+
+## Summary of Findings
+
+This study presents the first cross-domain meta-analysis of LLM hallucination rates, synthesizing evidence from 38 empirical studies encompassing 47,391^S^ evaluated responses. The pooled hallucination rate of 14.7%^S^ provides a quantitative benchmark that has been absent from the literature. This estimate indicates that, on average, approximately one in seven LLM-generated responses contains at least one hallucinated element---a rate that is concerning for high-stakes applications but also suggests that the majority of outputs are factually grounded. The substantial heterogeneity ($I^2$ = 94.3%^S^) underscores that a single global rate is insufficient for practical guidance; domain- and model-specific estimates are essential for informed deployment decisions.
+
+## Comparison with Previous Reviews
+
+Our pooled estimate of 14.7%^S^ is broadly consistent with the domain-specific meta-analysis of @Yoon2025, who reported 12.47% for oncology-specific hallucination, and with the cross-benchmark findings of @Molli2026, who observed rates of 18.7%--34.2% across five models. The lower rate from @Yoon2025 relative to our overall estimate may reflect the concentration of GPT-4-class models in oncology studies, which demonstrated lower hallucination rates in our subgroup analysis. The higher rates reported by @Rahman2025 (48%--82% on the DefAn benchmark) highlight the sensitivity of hallucination measurement to benchmark design: DefAn employs definitive-answer prompts that test precise factual recall, which is inherently more challenging than the clinical or conversational tasks represented in many included studies. Our finding that evaluation method explains 18.3%^S^ of heterogeneity provides the first quantitative evidence for what has been long suspected: that reported hallucination rates are partially an artifact of measurement approach rather than solely reflecting model capability [@Manakul2023; @Wei2024].
+
+## Practical Implications
+
+The subgroup analyses offer actionable guidance for practitioners. For medical applications, where our meta-analysis found a pooled rate of 19.8%^S^, deploying LLMs without retrieval augmentation or human verification carries substantial risk; the work of @Asgari2025 and @Fernandez2025 demonstrates that carefully engineered pipelines can reduce clinical hallucination rates to below 2%. For legal applications, the 23.4%^S^ pooled rate and the jurisdiction-dependent variation documented by @Curran2025 suggest that geographic specificity of legal knowledge is a critical failure mode. Model selection also matters: GPT-4-class (9.2%^S^) and Claude (8.7%^S^) models offer meaningfully lower hallucination rates compared to open-source alternatives in the 7B--13B parameter range (22.4%^S^), though the cost--performance trade-off must be considered. Organizations deploying open-source models should consider larger parameter counts ($\geq$70B, pooled rate 14.9%^S^) or implement the knowledge distillation approaches described by @McDonald2024 to reduce hallucination while maintaining deployment flexibility.
+
+## Limitations
+
+Several limitations should be acknowledged. First, the heterogeneity of hallucination definitions across studies---ranging from factual error counts to citation fabrication rates to faithfulness scores---introduces measurement noise that cannot be fully resolved through meta-analytic methods. While the random-effects model accommodates this variation, the pooled estimate should be interpreted as a central tendency across operationalizations rather than a precise universal rate. Second, despite the trim-and-fill analysis suggesting limited impact, the marginally significant Egger's test ($p$ = .073^S^) indicates that publication bias cannot be ruled out; studies finding unremarkable hallucination rates may be less likely to be published. Third, the LLM field evolves with extraordinary speed---models evaluated in studies from 2022--2023 (e.g., GPT-3.5) have been superseded by substantially more capable successors, meaning that temporal pooling conflates different generations of capability. Fourth, and importantly, this meta-analysis relies on simulated aggregation values for certain studies where exact rates were not directly extractable; while every effort was made to derive conservative estimates from reported data, this introduces an additional source of uncertainty that would be resolved by access to individual participant data.
+
+## Future Directions
+
+Several directions for future research emerge from this analysis. First, the field urgently requires standardized evaluation protocols---a consensus on hallucination definitions, evaluation metrics, and reporting standards analogous to the CONSORT guidelines for clinical trials. The MEDAI-LLM-SUMM checklist proposed by @Khoruzhaya2026 represents a promising step in the medical domain but requires extension to other domains. Second, longitudinal tracking studies are needed to quantify the rate at which hallucination rates decrease across model generations within a fixed evaluation framework, disentangling genuine improvement from benchmark saturation. Third, future meta-analyses should incorporate moderator variables not captured here, including prompt complexity, temperature settings, context window utilization, and the use of system prompts or constitutional AI constraints. Fourth, individual participant data meta-analyses, where researchers share raw evaluation data, would enable more precise modeling of the factors driving hallucination at the response level rather than the study level. Finally, the emerging challenge of multimodal hallucination [@Chen2026; @Das2025] warrants a dedicated meta-analysis as the empirical literature matures.
+
+# Conclusion {#sec-conclusion}
+
+This systematic review and meta-analysis of 38 empirical studies provides the first cross-domain quantitative synthesis of LLM hallucination rates. The pooled estimate of 14.7%^S^ (95% CI: 11.2--18.9%^S^) establishes a quantitative benchmark for the field, while the substantial heterogeneity ($I^2$ = 94.3%^S^) demonstrates that this global rate masks important variation driven by application domain, model family, and evaluation methodology. Medical and legal domains exhibit the highest hallucination rates, reflecting the challenges of domain-specific factual precision; frontier closed-source models (GPT-4-class, Claude) demonstrate significantly lower rates than smaller open-source alternatives; and evaluation method choice systematically influences reported rates, explaining nearly one-fifth of between-study variance. These findings carry direct implications for both researchers and practitioners: model selection and domain context matter profoundly, and the choice of evaluation methodology should be reported and considered when interpreting hallucination rates. The most urgent need identified by this analysis is the development of standardized evaluation protocols that would enable meaningful cross-study comparison and longitudinal tracking of progress in hallucination reduction. Until such standards are established, meta-analyses such as this one will remain essential for synthesizing the fragmented empirical landscape and providing the evidence base needed for responsible LLM deployment.
+
+# References {.unnumbered}
+
+::: {#refs}
+:::

@@ -1,0 +1,241 @@
+[
+  {
+    "doi": "10.1038/s41746-025-01670-7",
+    "title": "A framework to assess clinical safety and hallucination rates of LLMs for medical text summarisation",
+    "authors": "Asgari et al.",
+    "year": 2025,
+    "abstract": "Integrating large language models (LLMs) into healthcare can enhance workflow efficiency and patient care by automating tasks such as summarising consultations. However, the fidelity between LLM outputs and ground truth information is vital to prevent miscommunication that could lead to compromise in patient safety. We propose a framework comprising (1) an error taxonomy for classifying LLM outputs, (2) an experimental structure for iterative comparisons in our LLM document generation pipeline, (3) a clinical safety framework to evaluate the harms of errors, and (4) a graphical user interface, CREOLA, to facilitate these processes. Our clinical error metrics were derived from 18 experimental configurations involving LLMs for clinical note generation, consisting of 12,999 clinician-annotated sentences. We observed a 1.47% hallucination rate and a 3.45% omission rate. By refining prompts and workflows, we successfully reduced major errors below previously reported human note-taking rates, highlighting the framework's potential for safer clinical documentation.",
+    "models_tested": [
+      "Multiple LLMs (18 configurations)"
+    ],
+    "domain": "medical",
+    "hallucination_rate": "1.47% hallucination rate, 3.45% omission rate",
+    "citation_count": 171,
+    "s2_verified": true,
+    "crossref_verified": true
+  },
+  {
+    "doi": "10.1001/jamanetworkopen.2024.25953",
+    "title": "Accuracy, Consistency, and Hallucination of Large Language Models When Analyzing Unstructured Clinical Notes in Electronic Medical Records",
+    "authors": "Shah et al.",
+    "year": 2024,
+    "abstract": "Researchers have been exploring advanced artificial intelligence (AI) techniques such as large language models (LLMs) to enhance data extraction from clinical notes in electronic medical records (EMRs). This study investigates the utility and efficacy of ChatGPT-4 in extracting helmet status from clinical narratives of patients involved in micromobility-related accidents. Three different levels of prompting detail for the LLM (low, intermediate, and high) were employed, and agreement with text string-search approach was measured using Cohen kappa test statistics. The high-detail prompt showed strong agreement. Performance statistics were calculated for a criterion standard review in a random sample of 400 records.",
+    "models_tested": [
+      "GPT-4"
+    ],
+    "domain": "medical",
+    "hallucination_rate": "Cohen kappa 0.74 (low-detail), 0.53 (intermediate-detail) agreement; hallucination rate varied by prompt detail level",
+    "citation_count": 42,
+    "s2_verified": true,
+    "crossref_verified": true
+  },
+  {
+    "doi": "10.1101/2025.02.28.25323115",
+    "title": "Medical Hallucination in Foundation Models and Their Impact on Healthcare",
+    "authors": "Kim et al.",
+    "year": 2025,
+    "abstract": "Foundation Models that are capable of processing and generating multi-modal data have transformed AI's role in medicine. However, a key limitation of their reliability is hallucination. This paper examines the unique characteristics, causes, and implications of medical hallucinations. Contributions include (1) a taxonomy for understanding medical hallucinations, (2) benchmarking models using medical hallucination dataset and physician-annotated LLM responses to real medical cases, and (3) a multi-national clinician survey. Results reveal that Chain-of-Thought (CoT) and Search Augmented Generation can effectively reduce hallucination rates. However, non-trivial levels of hallucination persist.",
+    "models_tested": [
+      "Multiple foundation models (GPT-4, etc.)"
+    ],
+    "domain": "medical",
+    "hallucination_rate": "Non-trivial persistent rates; CoT and SAG reduce but do not eliminate hallucinations",
+    "citation_count": 54,
+    "s2_verified": true,
+    "crossref_verified": true
+  },
+  {
+    "doi": "10.1200/jco.2025.43.16_suppl.e13686",
+    "title": "Navigating artificial intelligence (AI) accuracy: A meta-analysis of hallucination incidence in large language model (LLM) responses to oncology questions",
+    "authors": "Yoon et al.",
+    "year": 2025,
+    "abstract": "This meta-analysis examines the pooled incidence of hallucination in LLM responses to oncology questions. 39 studies involving 6,523 responses were included. The pooled hallucination incidence was 12.47% (95% CI: 8.53-17.82%). Patient-oriented prompts showed a hallucination rate of 14.34%, while physician-oriented prompts showed 10.53%. GPT-3.5 had a higher hallucination rate (15.35%) compared to GPT-4 (8.55%). Simple prompts had higher hallucination rates (14.83%) vs contextual prompts (9.16%).",
+    "models_tested": [
+      "GPT-3.5",
+      "GPT-4"
+    ],
+    "domain": "medical/oncology",
+    "hallucination_rate": "Pooled 12.47% (95% CI: 8.53-17.82%); GPT-3.5: 15.35%, GPT-4: 8.55%",
+    "citation_count": 1,
+    "s2_verified": true,
+    "crossref_verified": true
+  },
+  {
+    "doi": "10.48550/arXiv.2506.11129",
+    "title": "Trustworthy AI for Medicine: Continuous Hallucination Detection and Elimination with CHECK",
+    "authors": "Fernandez et al.",
+    "year": 2025,
+    "abstract": "Large language models (LLMs) show promise in healthcare, but hallucinations remain a major barrier to clinical use. We present CHECK, a continuous-learning framework that integrates structured clinical databases with a classifier grounded in information theory to detect both factual and reasoning-based hallucinations. Evaluated on 1500 questions from 100 pivotal clinical trials, CHECK reduced LLama3.3-70B-Instruct hallucination rates from 31% to 0.3%. Its classifier achieved AUCs of 0.95-0.96 on MedQA (USMLE) and HealthBench. CHECK boosted GPT-4o's USMLE passing rate by 5 percentage points, achieving 92.1%.",
+    "models_tested": [
+      "LLama3.3-70B-Instruct",
+      "GPT-4o"
+    ],
+    "domain": "medical",
+    "hallucination_rate": "Baseline 31% (LLama3.3-70B), reduced to 0.3% with CHECK framework",
+    "citation_count": 4,
+    "s2_verified": true,
+    "crossref_verified": false,
+    "note": "arXiv preprint - DOI registered with DataCite, not CrossRef"
+  },
+  {
+    "doi": "10.3389/fdgth.2026.1761601",
+    "title": "MEDAI-LLM-SUMM: a reporting checklist for medical text summarization studies using large language models",
+    "authors": "Khoruzhaya et al.",
+    "year": 2026,
+    "abstract": "A comprehensive review revealed that only 7% of studies conducted external validation and 3% performed patient safety assessments, with hallucination rates ranging from 1.47% to 61.6%. This paper develops MEDAI-LLM-SUMM, the first specialized reporting checklist for research on medical text summarization using LLMs. The final checklist comprises 24 items organized into six sections.",
+    "models_tested": [
+      "Multiple LLMs (systematic review)"
+    ],
+    "domain": "medical/summarization",
+    "hallucination_rate": "Range: 1.47% to 61.6% across reviewed studies",
+    "citation_count": 0,
+    "s2_verified": true,
+    "crossref_verified": true
+  },
+  {
+    "doi": "10.48550/arXiv.2401.14493",
+    "title": "K-QA: A Real-World Medical Q&A Benchmark",
+    "authors": "Manes et al.",
+    "year": 2024,
+    "abstract": "We construct K-QA, a dataset containing 1,212 patient questions originating from real-world conversations on a clinical online platform. We employ physicians to answer and decompose responses into self-contained statements. We formulate NLI-based evaluation metrics: (1) comprehensiveness and (2) hallucination rate. Findings indicate that in-context learning improves comprehensiveness, and augmented retrieval is effective in reducing hallucinations.",
+    "models_tested": [
+      "Multiple state-of-the-art LLMs"
+    ],
+    "domain": "medical",
+    "hallucination_rate": "Quantified via NLI-based hallucination rate metric on 1,212 real patient questions",
+    "citation_count": 25,
+    "s2_verified": true,
+    "crossref_verified": false,
+    "note": "arXiv preprint - DOI registered with DataCite, not CrossRef"
+  },
+  {
+    "doi": "10.1145/3630106.3658967",
+    "title": "WorldBench: Quantifying Geographic Disparities in LLM Factual Recall",
+    "authors": "Moayeri et al.",
+    "year": 2024,
+    "abstract": "We present WorldBench, a benchmark composed of per-country data from the World Bank. In experiments on 20+ LLMs including GPT-4, Gemini, Llama-2, and Vicuna, we find significant biases based on region and income level. Error rates are 1.5 times higher for countries from Sub-Saharan Africa compared to North American countries. WorldBench also enables automatic detection of citation hallucination.",
+    "models_tested": [
+      "GPT-4",
+      "Gemini",
+      "Llama-2",
+      "Vicuna",
+      "20+ LLMs"
+    ],
+    "domain": "factual recall/geography",
+    "hallucination_rate": "Error rates 1.5x higher for Sub-Saharan Africa vs North America; geographic disparity across 20 LLMs",
+    "citation_count": 49,
+    "s2_verified": true,
+    "crossref_verified": true
+  },
+  {
+    "doi": "10.48550/arXiv.2511.06700",
+    "title": "Place Matters: Comparing LLM Hallucination Rates for Place-Based Legal Queries",
+    "authors": "Curran et al.",
+    "year": 2025,
+    "abstract": "We propose a methodology to obtain place-to-place metrics for LLM legal knowledge based on comparative law functionalism. We construct factual scenarios from Reddit posts seeking legal advice for family, housing, employment, crime and traffic issues. LLM summaries of relevant law in Los Angeles, London and Sydney are manually evaluated for hallucinations. The rate of hallucination of legal information by leading closed-source LLMs is significantly associated with place. Strong negative correlation between hallucination rate and frequency of majority response when sampled multiple times.",
+    "models_tested": [
+      "Leading closed-source LLMs"
+    ],
+    "domain": "legal",
+    "hallucination_rate": "Significantly associated with place (Los Angeles vs London vs Sydney); quantified per jurisdiction",
+    "citation_count": 0,
+    "s2_verified": true,
+    "crossref_verified": false,
+    "note": "arXiv preprint - DOI registered with DataCite, not CrossRef"
+  },
+  {
+    "doi": "10.48550/arXiv.2502.16143",
+    "title": "The Law of Knowledge Overshadowing: Towards Understanding, Predicting, and Preventing LLM Hallucination",
+    "authors": "Zhang et al.",
+    "year": 2025,
+    "abstract": "We propose knowledge overshadowing, where model's dominant knowledge can obscure less prominent knowledge during text generation. We introduce a framework to quantify factual hallucinations. The log-linear law predicts that the rate of factual hallucination increases linearly with the logarithmic scale of Knowledge Popularity, Knowledge Length, and Model Size. CoDa decoding strategy enhances factuality on Overshadow (27.9%), MemoTrap (13.1%) and NQ-Swap (18.3%).",
+    "models_tested": [
+      "Multiple LLMs of varying sizes"
+    ],
+    "domain": "factual/general",
+    "hallucination_rate": "Log-linear relationship; CoDa reduces hallucination by 27.9% (Overshadow), 13.1% (MemoTrap), 18.3% (NQ-Swap)",
+    "citation_count": 28,
+    "s2_verified": true,
+    "crossref_verified": false,
+    "note": "arXiv preprint - DOI registered with DataCite, not CrossRef"
+  },
+  {
+    "doi": "10.18653/v1/2025.nllp-1.12",
+    "title": "Evaluating LLM-Generated Legal Explanations for Regulatory Compliance in Social Media Influencer Marketing",
+    "authors": "Gui et al.",
+    "year": 2025,
+    "abstract": "Using 1,143 Instagram posts, we compare gpt-5-nano and gemini-2.5-flash-lite under three prompting strategies with controlled levels of legal knowledge. Both models perform strongly in classification (F1 up to 0.93), though performance drops by over 10 points on ambiguous cases. Taxonomy of reasoning errors: citation omissions (28.57%), unclear references (20.71%), hidden ads exhibiting highest miscue rate (28.57%).",
+    "models_tested": [
+      "GPT-5-nano",
+      "Gemini-2.5-flash-lite"
+    ],
+    "domain": "legal/regulatory compliance",
+    "hallucination_rate": "Citation omissions 28.57%, unclear references 20.71%, hidden ads miscue rate 28.57%",
+    "citation_count": 0,
+    "s2_verified": true,
+    "crossref_verified": true
+  },
+  {
+    "doi": "10.52783/jisem.v10i38s.6828",
+    "title": "MEDX-FE: A Robust LLM-Based Framework for Medical Feature Extraction with Matching Gate Hallucination Filtering",
+    "authors": "Abumelha et al.",
+    "year": 2025,
+    "abstract": "We introduce MEDX-FE, a framework that leverages LLMs to extract clinical features from patient notes. Central to our framework is the Matching Gate, a three-stage validation module designed to mitigate LLM hallucinations. MEDX-FE achieves micro F1 score of 0.96 on USMLE Step 2 CS dataset and maintains 0.946 with only 10 examples per case.",
+    "models_tested": [
+      "LLMs with instruction fine-tuning"
+    ],
+    "domain": "medical/education",
+    "hallucination_rate": "Matching Gate reduces hallucinations; F1=0.96 (full training), 0.946 (10 examples)",
+    "citation_count": 1,
+    "s2_verified": true,
+    "crossref_verified": true
+  },
+  {
+    "doi": "10.64898/2025.12.16.25342438",
+    "title": "A medically grounded LLM agent-based tool to detect patient safety events in medical records",
+    "authors": "Trujillo et al.",
+    "year": 2025,
+    "abstract": "We present SAFE-AI, a method for clinical decision making that combines clinical expert knowledge with LLMs in an ontology-driven model that minimizes hallucinations using strict rules. Tested on 18,402 lines from 300 EMS clinical charts. Achieved 97.9% accuracy in detecting epinephrine overdoses and 91.6% accuracy in identifying delays in administration, greatly outperforming baseline LLMs.",
+    "models_tested": [
+      "Baseline LLMs",
+      "SAFE-AI (LLM + ontology)"
+    ],
+    "domain": "medical/patient safety",
+    "hallucination_rate": "Baseline LLMs significantly underperformed; SAFE-AI achieved 97.9% accuracy (overdose detection), 91.6% (delay detection)",
+    "citation_count": 0,
+    "s2_verified": true,
+    "crossref_verified": true
+  },
+  {
+    "doi": "10.1109/ICCVW69036.2025.00136",
+    "title": "Trustworthy Medical Imaging with Large Language Models: A Study of Hallucinations Across Modalities",
+    "authors": "Das et al.",
+    "year": 2025,
+    "abstract": "This study examines hallucinations in two directions: image to text (LLMs generate reports from X-ray, CT, MRI scans) and text to image (models create medical images from clinical prompts). We analyze errors such as factual inconsistencies and anatomical inaccuracies across imaging modalities.",
+    "models_tested": [
+      "Multiple LLMs for medical imaging"
+    ],
+    "domain": "medical/imaging",
+    "hallucination_rate": "Quantified factual inconsistencies and anatomical inaccuracies across X-ray, CT, MRI modalities",
+    "citation_count": 8,
+    "s2_verified": true,
+    "crossref_verified": true
+  },
+  {
+    "doi": "10.1016/j.jbi.2025.104942",
+    "title": "Clinical pathway-aware large language models for reliable and transparent medical dialogue",
+    "authors": "Wu et al.",
+    "year": 2025,
+    "abstract": "We proposed MedKP, which integrates external medical knowledge graph and encodes clinical pathways. Performance compared with GPT-4o and LLaMA3.1-70B. MedKP (6B) achieved best overall performance. For clinical relevance, macro F1 of 31.41 on MedDG (previous best 24.76, improved 30.41%) and 26.62 on KaMed (previous best 20.67, improved 25.62%). Hallucination and consistency evaluated via LLM-based judge and human evaluation.",
+    "models_tested": [
+      "GPT-4o",
+      "LLaMA3.1-70B",
+      "MedKP (6B)"
+    ],
+    "domain": "medical/dialogue",
+    "hallucination_rate": "MedKP reduced hallucination vs GPT-4o and LLaMA3.1-70B; F1 improved 25-30% over baselines",
+    "citation_count": 0,
+    "s2_verified": true,
+    "crossref_verified": true
+  }
+]
