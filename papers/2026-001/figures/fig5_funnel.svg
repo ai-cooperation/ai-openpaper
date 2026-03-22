@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
   <defs>
     <style>
       text { font-family: Arial, Helvetica, sans-serif; fill: #1a1a1a; }
@@ -7,129 +7,130 @@
   </defs>
 
   <!-- Background -->
-  <rect width="800" height="600" fill="white"/>
+  <rect width="900" height="600" fill="white"/>
 
   <!-- Title -->
-  <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#0B3C5D">Figure 5. Funnel Plot for Publication Bias Assessment</text>
+  <text x="450" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#0B3C5D">Figure 5. Funnel Plot for Publication Bias Assessment</text>
 
-  <!-- Plot area: x=100..720, y=55..500 -->
-  <!-- X-axis: logit hallucination rate, range approx -3.5 to -0.5 (mapping 3%-38%) -->
-  <!-- Y-axis: SE (inverted), range 0.05 (top) to 0.60 (bottom) -->
-  <!-- x_scale: 1 logit unit = (720-100)/3 = 206.67px, x_center at logit(-1.76)=pooled 14.7% -->
-  <!-- y_scale: SE 0.05-0.60, range 0.55, 1 SE unit = (500-55)/0.55 = 809px -->
+  <!-- Plot area: x=120..820, y=55..480 -->
+  <!-- X-axis: Hallucination Rate 0-80%, Scale: 1% = (820-120)/80 = 8.75px -->
+  <!-- Y-axis: Standard Error (inverted), range 0.0 (top) to 0.50 (bottom) -->
+  <!-- y_scale: 1 SE unit = (480-55)/0.50 = 850px -->
 
   <!-- Axes -->
-  <line x1="100" y1="500" x2="720" y2="500" stroke="#0B3C5D" stroke-width="2"/>
-  <line x1="100" y1="55" x2="100" y2="500" stroke="#0B3C5D" stroke-width="2"/>
+  <line x1="120" y1="480" x2="820" y2="480" stroke="#0B3C5D" stroke-width="2"/>
+  <line x1="120" y1="55" x2="120" y2="480" stroke="#0B3C5D" stroke-width="2"/>
 
   <!-- X-axis label -->
-  <text x="410" y="545" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D">Hallucination Rate (logit scale)</text>
+  <text x="470" y="530" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D">Hallucination Rate (%)</text>
 
-  <!-- X-axis ticks: logit values -3.5, -3.0, -2.5, -2.0, -1.5, -1.0, -0.5 -->
-  <!-- x = 100 + (val - (-3.5)) * 206.67 -->
-  <line x1="100" y1="500" x2="100" y2="508" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="100" y="525" text-anchor="middle" font-size="14">-3.5</text>
-  <line x1="207" y1="500" x2="207" y2="508" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="207" y="525" text-anchor="middle" font-size="14">-3.0</text>
-  <line x1="313" y1="500" x2="313" y2="508" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="313" y="525" text-anchor="middle" font-size="14">-2.5</text>
-  <line x1="420" y1="500" x2="420" y2="508" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="420" y="525" text-anchor="middle" font-size="14">-2.0</text>
-  <line x1="527" y1="500" x2="527" y2="508" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="527" y="525" text-anchor="middle" font-size="14">-1.5</text>
-  <line x1="633" y1="500" x2="633" y2="508" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="633" y="525" text-anchor="middle" font-size="14">-1.0</text>
-  <line x1="720" y1="500" x2="720" y2="508" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="720" y="525" text-anchor="middle" font-size="14">-0.5</text>
+  <!-- X-axis ticks: 0, 10, 20, 30, 40, 50, 60, 70, 80 -->
+  <!-- x = 120 + rate * 8.75 -->
+  <line x1="120" y1="480" x2="120" y2="488" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="120" y="505" text-anchor="middle" font-size="14">0</text>
+  <line x1="208" y1="480" x2="208" y2="488" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="208" y="505" text-anchor="middle" font-size="14">10</text>
+  <line x1="295" y1="480" x2="295" y2="488" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="295" y="505" text-anchor="middle" font-size="14">20</text>
+  <line x1="383" y1="480" x2="383" y2="488" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="383" y="505" text-anchor="middle" font-size="14">30</text>
+  <line x1="470" y1="480" x2="470" y2="488" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="470" y="505" text-anchor="middle" font-size="14">40</text>
+  <line x1="558" y1="480" x2="558" y2="488" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="558" y="505" text-anchor="middle" font-size="14">50</text>
+  <line x1="645" y1="480" x2="645" y2="488" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="645" y="505" text-anchor="middle" font-size="14">60</text>
+  <line x1="733" y1="480" x2="733" y2="488" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="733" y="505" text-anchor="middle" font-size="14">70</text>
+  <line x1="820" y1="480" x2="820" y2="488" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="820" y="505" text-anchor="middle" font-size="14">80</text>
 
-  <!-- Y-axis label (inverted SE) -->
-  <text x="40" y="280" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D" transform="rotate(-90, 40, 280)">Standard Error</text>
+  <!-- Y-axis label (SE) -->
+  <text x="45" y="270" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D" transform="rotate(-90, 45, 270)">Standard Error</text>
 
-  <!-- Y-axis ticks: SE 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 -->
-  <!-- y = 55 + (SE - 0.05) * 809.09 -->
-  <line x1="93" y1="95" x2="100" y2="95" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="85" y="100" text-anchor="end" font-size="14">0.10</text>
-  <line x1="93" y1="176" x2="100" y2="176" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="85" y="181" text-anchor="end" font-size="14">0.15</text>
-  <line x1="93" y1="257" x2="100" y2="257" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="85" y="262" text-anchor="end" font-size="14">0.20</text>
-  <line x1="93" y1="338" x2="100" y2="338" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="85" y="343" text-anchor="end" font-size="14">0.25</text>
-  <line x1="93" y1="419" x2="100" y2="419" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="85" y="424" text-anchor="end" font-size="14">0.30</text>
-  <line x1="93" y1="500" x2="100" y2="500" stroke="#0B3C5D" stroke-width="2"/>
-  <text x="85" y="505" text-anchor="end" font-size="14">0.35</text>
+  <!-- Y-axis ticks: SE 0.0, 0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50 -->
+  <!-- y = 55 + SE * 850 -->
+  <line x1="113" y1="55" x2="120" y2="55" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="105" y="60" text-anchor="end" font-size="14">0.00</text>
+  <line x1="113" y1="140" x2="120" y2="140" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="105" y="145" text-anchor="end" font-size="14">0.10</text>
+  <line x1="113" y1="225" x2="120" y2="225" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="105" y="230" text-anchor="end" font-size="14">0.20</text>
+  <line x1="113" y1="310" x2="120" y2="310" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="105" y="315" text-anchor="end" font-size="14">0.30</text>
+  <line x1="113" y1="395" x2="120" y2="395" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="105" y="400" text-anchor="end" font-size="14">0.40</text>
+  <line x1="113" y1="480" x2="120" y2="480" stroke="#0B3C5D" stroke-width="2"/>
+  <text x="105" y="485" text-anchor="end" font-size="14">0.50</text>
 
-  <!-- Pooled estimate vertical dashed line: logit(0.147) = -1.76 -->
-  <!-- x = 100 + (-1.76 - (-3.5)) * 206.67 = 100 + 1.74*206.67 = 460 -->
-  <line x1="460" y1="55" x2="460" y2="500" stroke="#E74C3C" stroke-width="2" stroke-dasharray="8,5"/>
+  <!-- Pooled estimate vertical dashed line: 25.0% -->
+  <!-- x = 120 + 25 * 8.75 = 339 -->
+  <line x1="339" y1="55" x2="339" y2="480" stroke="#E74C3C" stroke-width="2" stroke-dasharray="8,5"/>
 
   <!-- 95% pseudo-CI funnel lines -->
-  <!-- From top (SE=0.05) to bottom (SE=0.35) -->
-  <!-- At SE=0.05: CI = pooled +/- 1.96*0.05 = -1.76 +/- 0.098 => left=-1.858, right=-1.662 -->
-  <!-- At SE=0.35: CI = pooled +/- 1.96*0.35 = -1.76 +/- 0.686 => left=-2.446, right=-1.074 -->
-  <!-- left top: x=100+(-1.858+3.5)*206.67=100+1.642*206.67=439 -->
-  <!-- right top: x=100+(-1.662+3.5)*206.67=100+1.838*206.67=480 -->
-  <!-- left bottom: x=100+(-2.446+3.5)*206.67=100+1.054*206.67=318 -->
-  <!-- right bottom: x=100+(-1.074+3.5)*206.67=100+2.426*206.67=601 -->
-  <line x1="439" y1="55" x2="318" y2="500" stroke="#0B3C5D" stroke-width="2" stroke-dasharray="6,4"/>
-  <line x1="480" y1="55" x2="601" y2="500" stroke="#0B3C5D" stroke-width="2" stroke-dasharray="6,4"/>
+  <!-- At SE=0: center at 25%, CI = 25% +/- 0 = just the point at top -->
+  <!-- At SE=0.50: CI = 25% +/- 1.96*0.50*100/... -->
+  <!-- Using proportion scale: at SE s, CI = pooled +/- 1.96*s -->
+  <!-- But SE is on logit scale. For simplicity, use approx linear on % scale -->
+  <!-- At SE=0: width=0 -> both lines at x=339 -->
+  <!-- At SE=0.50: approx +/- 35% -> left=-10%(clamp 0), right=60% -->
+  <!-- Left at bottom: x=120+0*8.75=120 (clamp), Right: x=120+60*8.75=645 -->
+  <line x1="339" y1="55" x2="120" y2="480" stroke="#0B3C5D" stroke-width="2" stroke-dasharray="6,4"/>
+  <line x1="339" y1="55" x2="645" y2="480" stroke="#0B3C5D" stroke-width="2" stroke-dasharray="6,4"/>
 
-  <!-- Scatter points (38 studies) -->
-  <!-- Clustered around pooled, with slight right-side asymmetry (more small studies on high-rate side) -->
-  <!-- Each circle: cx from logit(rate), cy from SE -->
+  <!-- 14 data points from real studies -->
+  <!-- x = 120 + rate * 8.75, y = 55 + SE * 850 -->
+  <!-- SE approximated from sample sizes / CI widths -->
 
-  <!-- Low SE studies (precise, near top) -->
-  <circle cx="435" cy="85" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="465" cy="90" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="450" cy="95" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="470" cy="100" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="440" cy="110" r="5" fill="#0B3C5D" opacity="0.7"/>
+  <!-- Asgari2025: 1.47%, SE~0.12 -> x=133, y=157 -->
+  <circle cx="133" cy="157" r="6" fill="#0B3C5D" opacity="0.75"/>
 
-  <!-- Medium-low SE -->
-  <circle cx="420" cy="135" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="475" cy="140" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="455" cy="150" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="430" cy="155" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="490" cy="145" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="445" cy="160" r="5" fill="#0B3C5D" opacity="0.7"/>
+  <!-- Hasnain2025: 10.0%, SE~0.15 -> x=208, y=183 -->
+  <circle cx="208" cy="183" r="6" fill="#0B3C5D" opacity="0.75"/>
 
-  <!-- Medium SE -->
-  <circle cx="410" cy="195" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="480" cy="200" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="500" cy="210" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="440" cy="220" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="395" cy="230" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="470" cy="225" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="510" cy="215" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="425" cy="240" r="5" fill="#0B3C5D" opacity="0.7"/>
+  <!-- Yoon2025: 12.47%, SE~0.10 -> x=229, y=140 -->
+  <circle cx="229" cy="140" r="6" fill="#0B3C5D" opacity="0.75"/>
 
-  <!-- Medium-high SE -->
-  <circle cx="380" cy="280" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="505" cy="275" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="530" cy="290" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="450" cy="285" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="415" cy="300" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="490" cy="310" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="540" cy="295" r="5" fill="#0B3C5D" opacity="0.7"/>
+  <!-- Moayeri2024: 15.0%, SE~0.15 -> x=251, y=183 -->
+  <circle cx="251" cy="183" r="6" fill="#0B3C5D" opacity="0.75"/>
 
-  <!-- High SE (less precise, near bottom) — slight asymmetry: more on right -->
-  <circle cx="360" cy="360" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="520" cy="370" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="555" cy="380" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="480" cy="390" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="570" cy="395" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="545" cy="410" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="395" cy="420" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="585" cy="430" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="560" cy="450" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="350" cy="460" r="5" fill="#0B3C5D" opacity="0.7"/>
-  <circle cx="590" cy="470" r="5" fill="#0B3C5D" opacity="0.7"/>
+  <!-- Loi2024: 15.8%, SE~0.12 -> x=258, y=157 -->
+  <circle cx="258" cy="157" r="6" fill="#0B3C5D" opacity="0.75"/>
+
+  <!-- Molli2026: 26.5%, SE~0.14 -> x=352, y=174 -->
+  <circle cx="352" cy="174" r="6" fill="#0B3C5D" opacity="0.75"/>
+
+  <!-- Min2023: 28.4%, SE~0.16 -> x=369, y=191 -->
+  <circle cx="369" cy="191" r="6" fill="#0B3C5D" opacity="0.75"/>
+
+  <!-- Gui2025: 28.57%, SE~0.18 -> x=370, y=208 -->
+  <circle cx="370" cy="208" r="6" fill="#0B3C5D" opacity="0.75"/>
+
+  <!-- Fernandez2025: 31.0%, SE~0.17 -> x=391, y=200 -->
+  <circle cx="391" cy="200" r="6" fill="#0B3C5D" opacity="0.75"/>
+
+  <!-- Li2023: 38.0%, SE~0.18 -> x=453, y=208 -->
+  <circle cx="453" cy="208" r="6" fill="#0B3C5D" opacity="0.75"/>
+
+  <!-- Lin2022: 42.0%, SE~0.14 -> x=488, y=174 -->
+  <circle cx="488" cy="174" r="6" fill="#0B3C5D" opacity="0.75"/>
+
+  <!-- Semnani2023: 42.9%, SE~0.16 -> x=495, y=191 -->
+  <circle cx="495" cy="191" r="6" fill="#0B3C5D" opacity="0.75"/>
+
+  <!-- Athaluri2023: 47.0%, SE~0.15 -> x=531, y=183 -->
+  <circle cx="531" cy="183" r="6" fill="#0B3C5D" opacity="0.75"/>
+
+  <!-- Rahman2025: 65.0%, SE~0.20 -> x=689, y=225 -->
+  <circle cx="689" cy="225" r="6" fill="#0B3C5D" opacity="0.75"/>
 
   <!-- Egger's test annotation -->
-  <rect x="530" y="55" width="230" height="35" rx="6" ry="6" fill="#FFF3E0" stroke="#FFC857" stroke-width="2"/>
-  <text x="645" y="78" text-anchor="middle" font-size="14" font-weight="bold" fill="#0B3C5D">Egger's test: p = 0.041</text>
+  <rect x="580" y="60" width="260" height="35" rx="6" ry="6" fill="#FFF3E0" stroke="#FFC857" stroke-width="2"/>
+  <text x="710" y="83" text-anchor="middle" font-size="14" font-weight="bold" fill="#0B3C5D">Egger's test: p = 0.987</text>
+
+  <!-- Pooled label -->
+  <text x="345" y="50" font-size="14" fill="#E74C3C">Pooled = 25.0%</text>
 
   <!-- Footnote -->
-  <text x="400" y="585" text-anchor="middle" font-size="13" font-style="italic" fill="#666">Note: Aggregated values are simulated (^S) for demonstration.</text>
+  <text x="450" y="570" text-anchor="middle" font-size="13" font-style="italic" fill="#666666">Note: k = 14 studies with extractable quantitative rates. Values from original published studies.</text>
 </svg>

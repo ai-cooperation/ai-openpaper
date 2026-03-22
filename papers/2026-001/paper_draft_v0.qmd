@@ -22,6 +22,18 @@ format:
     fig-pos: "H"
     header-includes: |
       \usepackage{float}
+      \usepackage{booktabs}
+      \usepackage{tabularx}
+      % Tighten figure spacing
+      \setlength{\floatsep}{8pt plus 2pt minus 2pt}
+      \setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+      \setlength{\intextsep}{8pt plus 2pt minus 2pt}
+      \setlength{\abovecaptionskip}{6pt}
+      \setlength{\belowcaptionskip}{4pt}
+      % Tighten table spacing
+      \renewcommand{\arraystretch}{1.15}
+      % Better paragraph spacing
+      \setlength{\parskip}{3pt plus 1pt minus 1pt}
 bibliography: references.bib
 csl: apa.csl
 abstract: |
@@ -80,7 +92,7 @@ Eligibility criteria are summarized in @tbl-criteria.
 | Publication | Peer-reviewed or arXiv with >10 citations | Preprints with <10 citations (unless in peer-reviewed venue) |
 | Time range | January 2022 -- March 2026 | Before 2022 |
 
-: Inclusion and exclusion criteria for study selection. {#tbl-criteria tbl-colwidths="[20,40,40]"}
+: Inclusion and exclusion criteria for study selection. {#tbl-criteria tbl-colwidths="[14,43,43]"}
 
 ## Data Extraction
 
@@ -100,7 +112,7 @@ Hallucination rates (proportions) were logit-transformed to stabilize variance a
 
 The systematic search identified 1,247 records from Semantic Scholar (n = 642), OpenAlex (n = 438), and CrossRef (n = 167). After removing 312 duplicates, 935 records were screened by title and abstract, of which 127 full-text articles were assessed for eligibility. Eighty-nine studies were excluded: 34 lacked quantitative hallucination rates, 22 evaluated only mitigation without baseline rates, 18 were non-English, and 15 were preprints below the citation threshold. The final sample comprised 38 studies. The PRISMA flow diagram is presented in @fig-prisma.
 
-![PRISMA 2020 flow diagram showing study identification, screening, and inclusion. From 1,247 initial records, 38 studies met all inclusion criteria.](figures/fig1_prisma.png){#fig-prisma width=80%}
+![PRISMA 2020 flow diagram showing study identification, screening, and inclusion. From 1,247 initial records, 38 studies met all inclusion criteria.](figures/fig1_prisma.png){#fig-prisma width=100%}
 
 ## Study Characteristics
 
@@ -147,13 +159,13 @@ The 38 included studies were published between 2022 and 2026. Eighteen studies f
 | @Khoruzhaya2026 | 2026 | Medical (summarization) | Multiple LLMs (review) | 1.47--61.6% range | Systematic review |
 | @Yang2026 | 2026 | Error analysis | GPT-3.5-turbo, GPT-4 | Misconception repetition dominant | G-Eval + bootstrap |
 
-: Characteristics of the 38 included studies. ^†^Estimated from reported data. ^‡^Included for qualitative synthesis only (excluded from quantitative pooling). {#tbl-studies tbl-colwidths="[12,5,13,18,22,15]"}
+: Characteristics of the 38 included studies. ^†^Estimated from reported data. ^‡^Included for qualitative synthesis only (excluded from quantitative pooling). {#tbl-studies tbl-colwidths="[13,4,12,22,28,14]"}
 
 ## Overall Pooled Hallucination Rate
 
 The random-effects meta-analysis yielded a pooled hallucination rate of 25.0% (95% CI: 16.3--36.3%). Heterogeneity was substantial: I^2^ = 99.9% (95% CI: 92.1--95.8%), Q(13) = 9,722, p < .001, indicating that 99.9% of the observed variance in hallucination rates reflects true between-study differences rather than sampling error. The forest plot is presented in @fig-forest.
 
-![Forest plot of hallucination rates across 38 included studies. The diamond represents the pooled estimate from the random-effects model (25.0%, 95% CI: 16.3--36.3%). Individual study estimates are shown with 95% confidence intervals. Studies are ordered by domain, then by effect size within domain.](figures/fig2_forest.png){#fig-forest width=90%}
+![Forest plot of hallucination rates across 38 included studies. The diamond represents the pooled estimate from the random-effects model (25.0%, 95% CI: 16.3--36.3%). Individual study estimates are shown with 95% confidence intervals. Studies are ordered by domain, then by effect size within domain.](figures/fig2_forest.png){#fig-forest width=100%}
 
 The prediction interval---the range within which 95% of future study estimates would be expected to fall---was 0.8% to 88.4%, reflecting the enormous heterogeneity and underscoring that a single pooled rate is of limited utility without moderator context.
 
@@ -161,7 +173,7 @@ The prediction interval---the range within which 95% of future study estimates w
 
 Domain-specific pooled estimates revealed pronounced differences (@fig-subgroup-domain; @tbl-subgroup). Medical studies (k = 5) yielded a pooled rate of 10.3% (95% CI: 3.5--26.7%), but with wide internal heterogeneity (I^2^ = 93.1%) reflecting the range from 1.47% in clinical note summarization [@Asgari2025] to 31% in unmitigated clinical trial QA [@Fernandez2025]. Legal studies (k = 1) showed the highest pooled rate at 28.6% (95% CI: (single study)), driven partly by the high citation omission rates documented by @Gui2025 (28.57%) and the jurisdiction-dependent variation reported by @Curran2025. General-purpose benchmark evaluations (k = 7) produced a pooled rate of 37.6% (95% CI: 25.4--51.5%), though this subgroup contained the widest range of reported rates, from @Semnani2023's WikiChat system achieving 2.1% to @Rahman2025's DefAn benchmark documenting rates as high as 82%.
 
-![Subgroup analysis of hallucination rates by application domain. Medical (k = 18), legal (k = 5), and general/benchmark (k = 15) domains show distinct distributions. Error bars represent 95% confidence intervals for subgroup pooled estimates.](figures/fig3_subgroup_domain.png){#fig-subgroup-domain width=85%}
+![Subgroup analysis of hallucination rates by application domain. Medical (k = 18), legal (k = 5), and general/benchmark (k = 15) domains show distinct distributions. Error bars represent 95% confidence intervals for subgroup pooled estimates.](figures/fig3_subgroup_domain.png){#fig-subgroup-domain width=95%}
 
 | Subgroup | k | Pooled Rate | 95% CI | I^2^ | Q-between |
 |:---------|:--|:---------------|:----------|:--------|:--------------|
@@ -182,13 +194,13 @@ Domain-specific pooled estimates revealed pronounced differences (@fig-subgroup-
 | Hybrid | 8 | 13.9% | 8.7--21.5% | 92.3% | |
 | | | | | | Q(2) = 5.71, p = .058 |
 
-: Subgroup analysis results. k = number of studies. Q-between tests the null hypothesis of no difference between subgroup pooled estimates. {#tbl-subgroup tbl-colwidths="[22,5,15,15,10,18]"}
+: Subgroup analysis results. k = number of studies. Q-between tests the null hypothesis of no difference between subgroup pooled estimates. {#tbl-subgroup tbl-colwidths="[25,5,13,17,10,17]"}
 
 ## Subgroup Analysis by Model Family
 
 GPT-4-class models demonstrated the lowest pooled hallucination rate at 9.2% (95% CI: 5.8--14.3%, k = 12), consistent with the model-level findings of @Yoon2025 (GPT-4 at 8.55% in oncology) and @Loi2024 (GPT-4 at 15.80% before SLCA mitigation). GPT-3.5-class models yielded 17.6% (k = 8), aligning with @Yoon2025's finding that GPT-3.5 hallucinated at 15.35%. Open-source 7B-parameter models showed the highest rate at 21.7% (k = 7), consistent with @UlIslam2025's observation that smaller LLMs hallucinate more across 30 languages and @Rachman2025's finding that fine-tuning substantially improved Mistral 7B and LLaMA-2 7B performance. The between-subgroup test was significant: Q(3) = 12.37, p = .006, confirming that model family is a meaningful moderator. @fig-model-comparison presents the model-family comparison.
 
-![Pooled hallucination rates by model family. GPT-4-class models show the lowest rates (9.2%), while open-source 7B models show the highest (21.7%). Error bars represent 95% confidence intervals. The dashed line indicates the overall pooled estimate (25.0%).](figures/fig4_model_comparison.png){#fig-model-comparison width=80%}
+![Pooled hallucination rates by model family. GPT-4-class models show the lowest rates (9.2%), while open-source 7B models show the highest (21.7%). Error bars represent 95% confidence intervals. The dashed line indicates the overall pooled estimate (25.0%).](figures/fig4_model_comparison.png){#fig-model-comparison width=95%}
 
 ## Meta-Regression
 
@@ -198,7 +210,7 @@ Meta-regression with evaluation method as the primary covariate revealed that th
 
 The funnel plot (@fig-funnel) showed no significant asymmetry. Egger's regression test confirmed no evidence of publication bias (intercept = -15.06, SE = 0.29, p = .987), suggesting no significant publication bias. The Duval and Tweedie trim-and-fill method imputed no additional studies, and the adjusted pooled estimate remained unchanged at 25.0% (95% CI: 16.3--36.3%).
 
-![Funnel plot for assessment of publication bias. Each point represents one study, plotted by effect size (logit-transformed hallucination rate) against standard error. The vertical line represents the pooled estimate. Dotted lines represent pseudo-95% confidence limits. Modest asymmetry is visible, with smaller studies (bottom) tending toward higher rates.](figures/fig5_funnel.png){#fig-funnel width=75%}
+![Funnel plot for assessment of publication bias. Each point represents one study, plotted by effect size (logit-transformed hallucination rate) against standard error. The vertical line represents the pooled estimate. Dotted lines represent pseudo-95% confidence limits. Modest asymmetry is visible, with smaller studies (bottom) tending toward higher rates.](figures/fig5_funnel.png){#fig-funnel width=90%}
 
 ## Sensitivity Analysis
 

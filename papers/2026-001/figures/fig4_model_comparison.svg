@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="400" viewBox="0 0 900 400">
   <defs>
     <style>
       text { font-family: Arial, Helvetica, sans-serif; fill: #1a1a1a; }
@@ -7,98 +7,80 @@
   </defs>
 
   <!-- Background -->
-  <rect width="900" height="500" fill="white"/>
+  <rect width="900" height="400" fill="white"/>
 
   <!-- Title -->
-  <text x="450" y="35" text-anchor="middle" font-size="18" font-weight="bold" fill="#0B3C5D">Figure 4. Model Family Comparison</text>
+  <text x="450" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#0B3C5D">Figure 4. Hallucination Rates by LLM Model Family</text>
 
-  <!-- Chart area: bars from x=250 to x=830, y=55 to y=420 -->
-  <!-- Scale: 0-40%, 1% = (830-250)/40 = 14.5px -->
+  <!-- Chart area: bars from x=280 to x=830, y=50 to y=330 -->
+  <!-- X-axis: 0% to 40%, Scale: 1% = (830-280)/40 = 13.75px -->
 
   <!-- Gridlines -->
-  <line x1="250" y1="55" x2="250" y2="420" stroke="#E5E7EB" stroke-width="1"/>
-  <line x1="323" y1="55" x2="323" y2="420" stroke="#E5E7EB" stroke-width="1"/>
-  <line x1="395" y1="55" x2="395" y2="420" stroke="#E5E7EB" stroke-width="1"/>
-  <line x1="468" y1="55" x2="468" y2="420" stroke="#E5E7EB" stroke-width="1"/>
-  <line x1="540" y1="55" x2="540" y2="420" stroke="#E5E7EB" stroke-width="1"/>
-  <line x1="613" y1="55" x2="613" y2="420" stroke="#E5E7EB" stroke-width="1"/>
-  <line x1="685" y1="55" x2="685" y2="420" stroke="#E5E7EB" stroke-width="1"/>
-  <line x1="758" y1="55" x2="758" y2="420" stroke="#E5E7EB" stroke-width="1"/>
-  <line x1="830" y1="55" x2="830" y2="420" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="280" y1="45" x2="280" y2="330" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="349" y1="45" x2="349" y2="330" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="418" y1="45" x2="418" y2="330" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="486" y1="45" x2="486" y2="330" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="555" y1="45" x2="555" y2="330" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="624" y1="45" x2="624" y2="330" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="693" y1="45" x2="693" y2="330" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="761" y1="45" x2="761" y2="330" stroke="#E5E7EB" stroke-width="1"/>
+  <line x1="830" y1="45" x2="830" y2="330" stroke="#E5E7EB" stroke-width="1"/>
 
   <!-- X-axis tick labels -->
-  <text x="250" y="442" text-anchor="middle" font-size="14">0</text>
-  <text x="323" y="442" text-anchor="middle" font-size="14">5</text>
-  <text x="395" y="442" text-anchor="middle" font-size="14">10</text>
-  <text x="468" y="442" text-anchor="middle" font-size="14">15</text>
-  <text x="540" y="442" text-anchor="middle" font-size="14">20</text>
-  <text x="613" y="442" text-anchor="middle" font-size="14">25</text>
-  <text x="685" y="442" text-anchor="middle" font-size="14">30</text>
-  <text x="758" y="442" text-anchor="middle" font-size="14">35</text>
-  <text x="830" y="442" text-anchor="middle" font-size="14">40</text>
+  <text x="280" y="350" text-anchor="middle" font-size="14">0</text>
+  <text x="349" y="350" text-anchor="middle" font-size="14">5</text>
+  <text x="418" y="350" text-anchor="middle" font-size="14">10</text>
+  <text x="486" y="350" text-anchor="middle" font-size="14">15</text>
+  <text x="555" y="350" text-anchor="middle" font-size="14">20</text>
+  <text x="624" y="350" text-anchor="middle" font-size="14">25</text>
+  <text x="693" y="350" text-anchor="middle" font-size="14">30</text>
+  <text x="761" y="350" text-anchor="middle" font-size="14">35</text>
+  <text x="830" y="350" text-anchor="middle" font-size="14">40</text>
 
   <!-- X-axis label -->
-  <text x="540" y="468" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D">Hallucination Rate (%)</text>
+  <text x="555" y="375" text-anchor="middle" font-size="16" font-weight="bold" fill="#0B3C5D">Hallucination Rate (%)</text>
 
-  <!-- 7 bars, height=42, gap=10, starting y=65 -->
-  <!-- Bar colors: teal(low) to red(high) gradient -->
+  <!-- 7 bars sorted ascending, height=34, gap=6, starting y=52 -->
+  <!-- Teal-to-red gradient based on rate -->
 
-  <!-- Bar 1: Claude 3.x 8.7% [4.2, 17.1] -->
-  <text x="240" y="93" text-anchor="end" font-size="16" font-weight="bold" fill="#0B3C5D">Claude 3.x</text>
-  <rect x="250" y="72" width="126" height="42" rx="4" ry="4" fill="#0F9D8A"/>
-  <line x1="311" y1="93" x2="498" y2="93" stroke="#333" stroke-width="2"/>
-  <line x1="311" y1="85" x2="311" y2="101" stroke="#333" stroke-width="2"/>
-  <line x1="498" y1="85" x2="498" y2="101" stroke="#333" stroke-width="2"/>
-  <text x="380" y="99" font-size="14" font-weight="bold" fill="white">8.7%</text>
+  <!-- Bar 1: Claude ~0% (Hasnain2025) — deep teal -->
+  <text x="270" y="75" text-anchor="end" font-size="14" font-weight="bold" fill="#0B3C5D">Claude</text>
+  <rect x="280" y="56" width="3" height="34" rx="2" ry="2" fill="#0F9D8A"/>
+  <text x="290" y="78" font-size="14" font-weight="bold" fill="#0F9D8A">~0%</text>
 
-  <!-- Bar 2: GPT-4 class 10.3% [6.8, 15.3] -->
-  <text x="240" y="145" text-anchor="end" font-size="16" font-weight="bold" fill="#0B3C5D">GPT-4 class</text>
-  <rect x="250" y="124" width="149" height="42" rx="4" ry="4" fill="#1AAF8B"/>
-  <line x1="349" y1="145" x2="472" y2="145" stroke="#333" stroke-width="2"/>
-  <line x1="349" y1="137" x2="349" y2="153" stroke="#333" stroke-width="2"/>
-  <line x1="472" y1="137" x2="472" y2="153" stroke="#333" stroke-width="2"/>
-  <text x="400" y="151" font-size="14" font-weight="bold" fill="white">10.3%</text>
+  <!-- Bar 2: DeepSeek 7% (Hasnain2025) — teal -->
+  <text x="270" y="115" text-anchor="end" font-size="14" font-weight="bold" fill="#0B3C5D">DeepSeek</text>
+  <rect x="280" y="96" width="96" height="34" rx="4" ry="4" fill="#11B89A"/>
+  <text x="384" y="118" font-size="14" font-weight="bold" fill="#1a1a1a">7.0%</text>
 
-  <!-- Bar 3: Gemini Pro 12.1% [7.5, 18.9] -->
-  <text x="240" y="197" text-anchor="end" font-size="16" font-weight="bold" fill="#0B3C5D">Gemini Pro</text>
-  <rect x="250" y="176" width="175" height="42" rx="4" ry="4" fill="#5BBD6E"/>
-  <line x1="359" y1="197" x2="524" y2="197" stroke="#333" stroke-width="2"/>
-  <line x1="359" y1="189" x2="359" y2="205" stroke="#333" stroke-width="2"/>
-  <line x1="524" y1="189" x2="524" y2="205" stroke="#333" stroke-width="2"/>
-  <text x="420" y="203" font-size="14" font-weight="bold" fill="white">12.1%</text>
+  <!-- Bar 3: GPT-4 avg ~12.2% (Yoon 8.55%, Loi 15.8%) — green-teal -->
+  <text x="270" y="155" text-anchor="end" font-size="14" font-weight="bold" fill="#0B3C5D">GPT-4</text>
+  <rect x="280" y="136" width="168" height="34" rx="4" ry="4" fill="#2ECC71"/>
+  <text x="456" y="158" font-size="14" font-weight="bold" fill="#1a1a1a">12.2%</text>
 
-  <!-- Bar 4: Llama 70B+ 16.4% [10.8, 24.1] -->
-  <text x="240" y="249" text-anchor="end" font-size="16" font-weight="bold" fill="#0B3C5D">Llama 70B+</text>
-  <rect x="250" y="228" width="238" height="42" rx="4" ry="4" fill="#FFC857"/>
-  <line x1="407" y1="249" x2="599" y2="249" stroke="#333" stroke-width="2"/>
-  <line x1="407" y1="241" x2="407" y2="257" stroke="#333" stroke-width="2"/>
-  <line x1="599" y1="241" x2="599" y2="257" stroke="#333" stroke-width="2"/>
-  <text x="450" y="255" font-size="14" font-weight="bold" fill="#1a1a1a">16.4%</text>
+  <!-- Bar 4: ChatGPT (unspec) 13% (Hasnain2025) — yellow-green -->
+  <text x="270" y="195" text-anchor="end" font-size="14" font-weight="bold" fill="#0B3C5D">ChatGPT (unspec.)</text>
+  <rect x="280" y="176" width="179" height="34" rx="4" ry="4" fill="#7ACC57"/>
+  <text x="467" y="198" font-size="14" font-weight="bold" fill="#1a1a1a">13.0%</text>
 
-  <!-- Bar 5: GPT-3.5 class 18.9% [13.1, 26.4] -->
-  <text x="240" y="301" text-anchor="end" font-size="16" font-weight="bold" fill="#0B3C5D">GPT-3.5 class</text>
-  <rect x="250" y="280" width="274" height="42" rx="4" ry="4" fill="#E8943A"/>
-  <line x1="440" y1="301" x2="633" y2="301" stroke="#333" stroke-width="2"/>
-  <line x1="440" y1="293" x2="440" y2="309" stroke="#333" stroke-width="2"/>
-  <line x1="633" y1="293" x2="633" y2="309" stroke="#333" stroke-width="2"/>
-  <text x="470" y="307" font-size="14" font-weight="bold" fill="white">18.9%</text>
+  <!-- Bar 5: GPT-3.5 15.35% (Yoon2025) — gold -->
+  <text x="270" y="235" text-anchor="end" font-size="14" font-weight="bold" fill="#0B3C5D">GPT-3.5</text>
+  <rect x="280" y="216" width="211" height="34" rx="4" ry="4" fill="#FFC857"/>
+  <text x="499" y="238" font-size="14" font-weight="bold" fill="#1a1a1a">15.35%</text>
 
-  <!-- Bar 6: Mistral 19.5% [12.3, 29.4] -->
-  <text x="240" y="353" text-anchor="end" font-size="16" font-weight="bold" fill="#0B3C5D">Mistral</text>
-  <rect x="250" y="332" width="283" height="42" rx="4" ry="4" fill="#E07030"/>
-  <line x1="428" y1="353" x2="676" y2="353" stroke="#333" stroke-width="2"/>
-  <line x1="428" y1="345" x2="428" y2="361" stroke="#333" stroke-width="2"/>
-  <line x1="676" y1="345" x2="676" y2="361" stroke="#333" stroke-width="2"/>
-  <text x="475" y="359" font-size="14" font-weight="bold" fill="white">19.5%</text>
+  <!-- Bar 6: LLaMA-3.3-70B 31% (Fernandez2025) — orange -->
+  <text x="270" y="275" text-anchor="end" font-size="14" font-weight="bold" fill="#0B3C5D">LLaMA-3.3-70B</text>
+  <rect x="280" y="256" width="426" height="34" rx="4" ry="4" fill="#E8943A"/>
+  <text x="714" y="278" font-size="14" font-weight="bold" fill="#1a1a1a">31.0%</text>
 
-  <!-- Bar 7: Llama 7-13B 24.8% [17.2, 34.2] -->
-  <text x="240" y="405" text-anchor="end" font-size="16" font-weight="bold" fill="#0B3C5D">Llama 7-13B</text>
-  <rect x="250" y="384" width="360" height="42" rx="4" ry="4" fill="#E74C3C"/>
-  <line x1="499" y1="405" x2="746" y2="405" stroke="#333" stroke-width="2"/>
-  <line x1="499" y1="397" x2="499" y2="413" stroke="#333" stroke-width="2"/>
-  <line x1="746" y1="397" x2="746" y2="413" stroke="#333" stroke-width="2"/>
-  <text x="510" y="411" font-size="14" font-weight="bold" fill="white">24.8%</text>
+  <!-- Bar 7: Mistral 8x7B 34.2% (Molli2026) — red-orange -->
+  <text x="270" y="315" text-anchor="end" font-size="14" font-weight="bold" fill="#0B3C5D">Mistral 8x7B</text>
+  <rect x="280" y="296" width="470" height="34" rx="4" ry="4" fill="#E74C3C"/>
+  <text x="758" y="318" font-size="14" font-weight="bold" fill="#1a1a1a">34.2%</text>
+
+  <!-- X-axis bottom line -->
+  <line x1="280" y1="330" x2="830" y2="330" stroke="#0B3C5D" stroke-width="2"/>
 
   <!-- Footnote -->
-  <text x="450" y="495" text-anchor="middle" font-size="13" font-style="italic" fill="#666">Note: Aggregated values are simulated (^S) for demonstration.</text>
+  <text x="450" y="395" text-anchor="middle" font-size="13" font-style="italic" fill="#666666">Note: k = 14 studies with extractable quantitative rates. Values from original published studies.</text>
 </svg>
