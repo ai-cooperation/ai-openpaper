@@ -1,0 +1,462 @@
+{
+  "meta_analysis": {
+    "method": "DerSimonian-Laird random-effects, logit-transformed proportions",
+    "k": 14,
+    "total_n": 82382,
+    "pooled_hallucination_rate": 0.2498,
+    "ci_95_lower": 0.1631,
+    "ci_95_upper": 0.3625,
+    "pooled_logit": -1.0998,
+    "se_logit": 0.2731,
+    "heterogeneity": {
+      "Q": 9722.27,
+      "df": 13,
+      "Q_pvalue": 0.0,
+      "tau2": 1.0343,
+      "I2": 99.9,
+      "H2": 747.87
+    },
+    "egger_test": {
+      "intercept": -15.0561,
+      "std_error": 0.2853,
+      "t_statistic": -52.7703,
+      "p_value": 0.9868,
+      "interpretation": "No significant asymmetry detected"
+    }
+  },
+  "subgroup_by_domain": {
+    "general/benchmark": {
+      "label": "general/benchmark",
+      "k": 7,
+      "pooled_rate": 0.3755,
+      "ci_lower": 0.254,
+      "ci_upper": 0.5149,
+      "I2": 99.9,
+      "Q": 4185.42,
+      "Q_pvalue": 0.0,
+      "tau2": 0.583
+    },
+    "legal": {
+      "label": "legal",
+      "k": 1,
+      "pooled_rate": 0.2857,
+      "ci_lower": null,
+      "ci_upper": null,
+      "I2": null,
+      "Q": null,
+      "Q_pvalue": null,
+      "tau2": null,
+      "note": "Single study, no pooling"
+    },
+    "medical": {
+      "label": "medical",
+      "k": 5,
+      "pooled_rate": 0.103,
+      "ci_lower": 0.035,
+      "ci_upper": 0.2665,
+      "I2": 99.7,
+      "Q": 1386.64,
+      "Q_pvalue": 0.0,
+      "tau2": 1.7117
+    },
+    "scientific_writing": {
+      "label": "scientific_writing",
+      "k": 1,
+      "pooled_rate": 0.47,
+      "ci_lower": null,
+      "ci_upper": null,
+      "I2": null,
+      "Q": null,
+      "Q_pvalue": null,
+      "tau2": null,
+      "note": "Single study, no pooling"
+    }
+  },
+  "subgroup_by_model_family": {
+    "GPT-3": {
+      "label": "GPT-3",
+      "k": 1,
+      "pooled_rate": 0.42,
+      "ci_lower": null,
+      "ci_upper": null,
+      "I2": null,
+      "Q": null,
+      "Q_pvalue": null,
+      "tau2": null,
+      "note": "Single study, no pooling"
+    },
+    "GPT-3.5": {
+      "label": "GPT-3.5",
+      "k": 3,
+      "pooled_rate": 0.372,
+      "ci_lower": 0.2968,
+      "ci_upper": 0.4538,
+      "I2": 92.3,
+      "Q": 25.97,
+      "Q_pvalue": 2e-06,
+      "tau2": 0.0802
+    },
+    "GPT-4": {
+      "label": "GPT-4",
+      "k": 2,
+      "pooled_rate": 0.3336,
+      "ci_lower": 0.0684,
+      "ci_upper": 0.7735,
+      "I2": 99.4,
+      "Q": 165.45,
+      "Q_pvalue": 0.0,
+      "tau2": 1.9075
+    },
+    "GPT-5": {
+      "label": "GPT-5",
+      "k": 1,
+      "pooled_rate": 0.2857,
+      "ci_lower": null,
+      "ci_upper": null,
+      "I2": null,
+      "Q": null,
+      "Q_pvalue": null,
+      "tau2": null,
+      "note": "Single study, no pooling"
+    },
+    "LLaMA": {
+      "label": "LLaMA",
+      "k": 1,
+      "pooled_rate": 0.31,
+      "ci_lower": null,
+      "ci_upper": null,
+      "I2": null,
+      "Q": null,
+      "Q_pvalue": null,
+      "tau2": null,
+      "note": "Single study, no pooling"
+    },
+    "mixed": {
+      "label": "mixed",
+      "k": 6,
+      "pooled_rate": 0.1485,
+      "ci_lower": 0.0362,
+      "ci_upper": 0.4472,
+      "I2": 99.9,
+      "Q": 8460.77,
+      "Q_pvalue": 0.0,
+      "tau2": 3.6656
+    }
+  },
+  "included_studies": [
+    {
+      "key": "Lin_2022",
+      "doi": "10.18653/v1/2022.acl-long.229",
+      "rate": 0.42,
+      "n": 817,
+      "domain": "general/benchmark",
+      "model_family": "GPT-3",
+      "logit_p": -0.3228,
+      "se": 0.0709,
+      "weight_re": 0.9622,
+      "note": "Best model 42% hallucination on 817 questions"
+    },
+    {
+      "key": "Min_2023",
+      "doi": "10.18653/v1/2023.emnlp-main.741",
+      "rate": 0.284,
+      "n": 500,
+      "domain": "general/benchmark",
+      "model_family": "GPT-3.5",
+      "logit_p": -0.9247,
+      "se": 0.0992,
+      "weight_re": 0.9578,
+      "note": "InstructGPT 28.4% unsupported atomic facts (biography generation)"
+    },
+    {
+      "key": "Li_2023",
+      "doi": "10.18653/v1/2023.emnlp-main.397",
+      "rate": 0.38,
+      "n": 35000,
+      "domain": "general/benchmark",
+      "model_family": "GPT-3.5",
+      "logit_p": -0.4895,
+      "se": 0.011,
+      "weight_re": 0.9668,
+      "note": "ChatGPT 38% undetected hallucinations across QA/dialogue/summarization"
+    },
+    {
+      "key": "Semnani_2023",
+      "doi": "10.18653/v1/2023.findings-emnlp.157",
+      "rate": 0.571,
+      "n": 500,
+      "domain": "general/conversational",
+      "model_family": "GPT-4",
+      "logit_p": 0.2859,
+      "se": 0.0904,
+      "weight_re": 0.9593,
+      "note": "GPT-4 baseline ~42.9% factual accuracy on recent topics (57.1% hallucination)"
+    },
+    {
+      "key": "Molli_2026",
+      "doi": "10.46647/ijetms.2026.v10i02.001",
+      "rate": 0.2645,
+      "n": 2000,
+      "domain": "general/benchmark",
+      "model_family": "mixed",
+      "logit_p": -1.0227,
+      "se": 0.0507,
+      "weight_re": 0.9645,
+      "note": "Midpoint of 18.7%-34.2% across 5 LLMs"
+    },
+    {
+      "key": "Loi_2024",
+      "doi": "10.1101/2024.07.11.24310210",
+      "rate": 0.158,
+      "n": 500,
+      "domain": "medical",
+      "model_family": "GPT-4",
+      "logit_p": -1.6732,
+      "se": 0.1226,
+      "weight_re": 0.953,
+      "note": "GPT-4 baseline 15.80% logical hallucination (patient feedback)"
+    },
+    {
+      "key": "Athaluri_2023",
+      "doi": "10.7759/cureus.37432",
+      "rate": 0.47,
+      "n": 200,
+      "domain": "scientific_writing",
+      "model_family": "GPT-3.5",
+      "logit_p": -0.1201,
+      "se": 0.1417,
+      "weight_re": 0.9485,
+      "note": "~47% fabricated scientific references"
+    },
+    {
+      "key": "Hasnain_2025",
+      "doi": "10.3389/frai.2025.1579375",
+      "rate": 0.1,
+      "n": 200,
+      "domain": "medical",
+      "model_family": "mixed",
+      "logit_p": -2.1972,
+      "se": 0.2357,
+      "weight_re": 0.9176,
+      "note": "Average of DeepSeek 7% and ChatGPT 13% (ophthalmology)"
+    },
+    {
+      "key": "Fernandez_2025",
+      "doi": "10.48550/arXiv.2506.11129",
+      "rate": 0.31,
+      "n": 1500,
+      "domain": "medical",
+      "model_family": "LLaMA",
+      "logit_p": -0.8001,
+      "se": 0.0558,
+      "weight_re": 0.964,
+      "note": "LLama3.3-70B baseline 31% on clinical trials"
+    },
+    {
+      "key": "Asgari_2025",
+      "doi": "10.1038/s41746-025-01670-7",
+      "rate": 0.0147,
+      "n": 12999,
+      "domain": "medical",
+      "model_family": "mixed",
+      "logit_p": -4.2051,
+      "se": 0.0729,
+      "weight_re": 0.9619,
+      "note": "1.47% hallucination rate (clinical note generation, 12999 sentences)"
+    },
+    {
+      "key": "Yoon_2025",
+      "doi": "10.1200/jco.2025.43.16_suppl.e13686",
+      "rate": 0.1247,
+      "n": 6523,
+      "domain": "medical",
+      "model_family": "mixed",
+      "logit_p": -1.9487,
+      "se": 0.0375,
+      "weight_re": 0.9656,
+      "note": "Pooled 12.47% from 39 oncology studies (meta-analysis)"
+    },
+    {
+      "key": "Moayeri_2024",
+      "doi": "10.1145/3630106.3658967",
+      "rate": 0.15,
+      "n": 500,
+      "domain": "general/benchmark",
+      "model_family": "mixed",
+      "logit_p": -1.7346,
+      "se": 0.1252,
+      "weight_re": 0.9524,
+      "note": "Estimated ~15% error rate (geographic factual recall, 20+ LLMs)"
+    },
+    {
+      "key": "Gui_2025",
+      "doi": "10.18653/v1/2025.nllp-1.12",
+      "rate": 0.2857,
+      "n": 1143,
+      "domain": "legal",
+      "model_family": "GPT-5",
+      "logit_p": -0.9164,
+      "se": 0.0655,
+      "weight_re": 0.9629,
+      "note": "28.57% citation omission (legal/regulatory, 1143 posts)"
+    },
+    {
+      "key": "Rahman_2025",
+      "doi": "10.3390/info16110937",
+      "rate": 0.65,
+      "n": 20000,
+      "domain": "general/benchmark",
+      "model_family": "mixed",
+      "logit_p": 0.619,
+      "se": 0.0148,
+      "weight_re": 0.9667,
+      "note": "Midpoint of 48%-82% factual hallucination (DefAn, 20000+ prompts)"
+    }
+  ],
+  "excluded_studies": [
+    {
+      "key": "Bang_2025",
+      "doi": "10.18653/v1/2025.acl-long.1176",
+      "title": "HalluLens: LLM Hallucination Benchmark",
+      "reason": "Benchmark paper without reportable rate"
+    },
+    {
+      "key": "Huang_2025",
+      "doi": "10.1145/3703155",
+      "title": "A Survey on Hallucination in Large Language Models: Principles, Taxonomy, Challe",
+      "reason": "Survey/review paper without single extractable rate"
+    },
+    {
+      "key": "Ul Islam_2025",
+      "doi": "10.18653/v1/2025.emnlp-main.1481",
+      "title": "How Much Do LLMs Hallucinate across Languages? On Realistic Multilingual Estimat",
+      "reason": "Rate varies by condition without single extractable value"
+    },
+    {
+      "key": "Krishna_2025",
+      "doi": "10.48550/arXiv.2501.19012",
+      "title": "Importing Phantoms: Measuring LLM Package Hallucination Vulnerabilities",
+      "reason": "Rate varies by condition without single extractable value"
+    },
+    {
+      "key": "Wei_2024",
+      "doi": "10.48550/arXiv.2402.10412",
+      "title": "Measuring and Reducing LLM Hallucination without Gold-Standard Answers via Exper",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Zhang_2025",
+      "doi": "10.48550/arXiv.2502.16143",
+      "title": "The Law of Knowledge Overshadowing: Towards Understanding, Predicting, and Preve",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Shah_2024",
+      "doi": "10.1001/jamanetworkopen.2024.25953",
+      "title": "Accuracy, Consistency, and Hallucination of Large Language Models When Analyzing",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Kim_2025",
+      "doi": "10.1101/2025.02.28.25323115",
+      "title": "Medical Hallucination in Foundation Models and Their Impact on Healthcare",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Khoruzhaya_2026",
+      "doi": "10.3389/fdgth.2026.1761601",
+      "title": "MEDAI-LLM-SUMM: a reporting checklist for medical text summarization studies usi",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Manes_2024",
+      "doi": "10.48550/arXiv.2401.14493",
+      "title": "K-QA: A Real-World Medical Q&A Benchmark",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Curran_2025",
+      "doi": "10.48550/arXiv.2511.06700",
+      "title": "Place Matters: Comparing LLM Hallucination Rates for Place-Based Legal Queries",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Abumelha_2025",
+      "doi": "10.52783/jisem.v10i38s.6828",
+      "title": "MEDX-FE: A Robust LLM-Based Framework for Medical Feature Extraction with Matchi",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Trujillo_2025",
+      "doi": "10.64898/2025.12.16.25342438",
+      "title": "A medically grounded LLM agent-based tool to detect patient safety events in med",
+      "reason": "Detection/framework paper without baseline rate"
+    },
+    {
+      "key": "Das_2025",
+      "doi": "10.1109/ICCVW69036.2025.00136",
+      "title": "Trustworthy Medical Imaging with Large Language Models: A Study of Hallucination",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Wu_2025",
+      "doi": "10.1016/j.jbi.2025.104942",
+      "title": "Clinical pathway-aware large language models for reliable and transparent medica",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Manakul_2023",
+      "doi": "10.18653/v1/2023.emnlp-main.557",
+      "title": "SelfCheckGPT: Zero-Resource Black-Box Hallucination Detection for Generative Lar",
+      "reason": "Detection/framework paper without baseline rate"
+    },
+    {
+      "key": "Chen_2026",
+      "doi": "10.1007/s11263-026-02756-9",
+      "title": "A Survey of Multimodal Hallucination Evaluation and Detection",
+      "reason": "Survey/review paper without single extractable rate"
+    },
+    {
+      "key": "Yang S._2026",
+      "doi": "10.54097/vtwqfr43",
+      "title": "Diagnosing Untruthfulness: A G-Eval and Bootstrap Analysis of LLM Failure Modes ",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Rachman_2025",
+      "doi": "10.20473/jisebi.11.3.383-392",
+      "title": "Academic Guidebook Chatbot: Performance Comparison of Fine-Tuned Mistral 7B and ",
+      "reason": "Mitigation paper reporting relative improvement only"
+    },
+    {
+      "key": "Adams_2025",
+      "doi": "10.1007/s41666-025-00204-w",
+      "title": "LongHealth: A Question Answering Benchmark with Long Clinical Documents",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Xu_2025",
+      "doi": "10.3389/fpubh.2025.1635381",
+      "title": "MEGA-RAG: A Retrieval-Augmented Generation Framework with Multi-Evidence Guided ",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Sakib_2025",
+      "doi": "10.18653/v1/2025.trustnlp-main.28",
+      "title": "Battling Misinformation: An Empirical Study on Adversarial Factuality in Open-So",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "Li_2025",
+      "doi": "10.18653/v1/2025.findings-emnlp.1370",
+      "title": "RAC: Efficient LLM Factuality Correction with Retrieval Augmentation",
+      "reason": "No extractable single quantitative hallucination rate"
+    },
+    {
+      "key": "McDonald_2024",
+      "doi": "10.36227/techrxiv.171665607.76504195/v1",
+      "title": "Reducing LLM Hallucination Using Knowledge Distillation: A Case Study with Mistr",
+      "reason": "Benchmark paper without reportable rate"
+    }
+  ]
+}

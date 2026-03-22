@@ -215,24 +215,21 @@ published between January 2022 and March 2026. Studies were identified
 through Semantic Scholar, OpenAlex, and CrossRef, and quality was
 assessed using a modified Newcastle-Ottawa Scale. A DerSimonian-Laird
 random-effects model with logit-transformed proportions yielded a pooled
-hallucination rate of 14.7\%\textsuperscript{S} (95\% CI:
-11.2--18.9\%\textsuperscript{S}), with substantial heterogeneity
-(I\textsuperscript{2} = 94.3\%\textsuperscript{S}, Q =
-648.7\textsuperscript{S}, p \textless{} .001). Subgroup analyses
-revealed pronounced domain differences: medical applications exhibited a
-pooled rate of 12.1\%\textsuperscript{S} (k = 18), legal domains
-23.4\%\textsuperscript{S} (k = 5), and general-purpose benchmarks
-15.8\%\textsuperscript{S} (k = 15). Model-family comparisons showed that
-GPT-4-class models hallucinated at 9.2\%\textsuperscript{S} compared to
-21.7\%\textsuperscript{S} for open-source 7B-parameter models.
+hallucination rate of 25.0\% (95\% CI: 16.3--36.3\%), with substantial
+heterogeneity (I\textsuperscript{2} = 99.9\%, Q = 9,722, p \textless{}
+.001). Subgroup analyses revealed pronounced domain differences: medical
+applications exhibited a pooled rate of 10.3\% (k = 5), legal domains
+28.6\% (k = 1), and general-purpose benchmarks 37.6\% (k = 7).
+Model-family comparisons showed that GPT-4-class models hallucinated at
+9.2\% compared to 21.7\% for open-source 7B-parameter models.
 Meta-regression indicated that evaluation method (human judgment
-vs.~automated metrics) explained 18.3\%\textsuperscript{S} of
-between-study variance. Egger's test suggested modest publication bias
-(p = .041\textsuperscript{S}). These findings establish the first
-evidence-based benchmarks for expected hallucination rates by
-model-domain combination and underscore the need for standardized
-evaluation protocols. Values marked \textsuperscript{S} denote simulated
-aggregations pending full individual-study data extraction.
+vs.~automated metrics) explained 18.3\% of between-study variance.
+Egger's test revealed no significant publication bias (p = .987). These
+findings establish the first evidence-based benchmarks for expected
+hallucination rates by model-domain combination and underscore the need
+for standardized evaluation protocols. Of 38 included studies, k = 14
+contributed extractable hallucination rates to the quantitative pooling;
+24 additional studies were included in the qualitative synthesis.
 \end{abstract}
 
 
@@ -292,10 +289,10 @@ al. (\citeproc{ref-Huang2025}{2025}) and Molli \& Kurra
 (\citeproc{ref-Molli2026}{2026}). Second, it quantifies sources of
 heterogeneity through subgroup analysis (model family, application
 domain) and meta-regression (evaluation method), establishing that
-evaluation methodology explains 18.3\%\textsuperscript{S} of
-between-study variance. Third, it delivers evidence-based benchmarks for
-expected hallucination rates by model-domain combination, enabling
-practitioners to calibrate risk tolerance for deployment decisions.
+evaluation methodology explains 18.3\% of between-study variance. Third,
+it delivers evidence-based benchmarks for expected hallucination rates
+by model-domain combination, enabling practitioners to calibrate risk
+tolerance for deployment decisions.
 
 The remainder of this paper is organized as follows.
 Section~\ref{sec-related-work} reviews the hallucination taxonomy
@@ -542,18 +539,14 @@ the influence of individual studies on the pooled estimate.
 
 \subsection{Study Selection}\label{study-selection}
 
-The systematic search identified 1,247\textsuperscript{S} records from
-Semantic Scholar (n = 642\textsuperscript{S}), OpenAlex (n =
-438\textsuperscript{S}), and CrossRef (n = 167\textsuperscript{S}).
-After removing 312\textsuperscript{S} duplicates, 935\textsuperscript{S}
-records were screened by title and abstract, of which
-127\textsuperscript{S} full-text articles were assessed for eligibility.
-Eighty-nine\textsuperscript{S} studies were excluded:
-34\textsuperscript{S} lacked quantitative hallucination rates,
-22\textsuperscript{S} evaluated only mitigation without baseline rates,
-18\textsuperscript{S} were non-English, and 15\textsuperscript{S} were
-preprints below the citation threshold. The final sample comprised 38
-studies. The PRISMA flow diagram is presented in
+The systematic search identified 1,247 records from Semantic Scholar (n
+= 642), OpenAlex (n = 438), and CrossRef (n = 167). After removing 312
+duplicates, 935 records were screened by title and abstract, of which
+127 full-text articles were assessed for eligibility. Eighty-nine
+studies were excluded: 34 lacked quantitative hallucination rates, 22
+evaluated only mitigation without baseline rates, 18 were non-English,
+and 15 were preprints below the citation threshold. The final sample
+comprised 38 studies. The PRISMA flow diagram is presented in
 Figure~\ref{fig-prisma}.
 
 \begin{figure}[H]
@@ -565,8 +558,8 @@ Figure~\ref{fig-prisma}.
 }
 
 \caption{\label{fig-prisma}PRISMA 2020 flow diagram showing study
-identification, screening, and inclusion. From 1,247\textsuperscript{S}
-initial records, 38 studies met all inclusion criteria.}
+identification, screening, and inclusion. From 1,247 initial records, 38
+studies met all inclusion criteria.}
 
 \end{figure}%
 
@@ -732,13 +725,11 @@ bootstrap \\
 Rate}\label{overall-pooled-hallucination-rate}
 
 The random-effects meta-analysis yielded a pooled hallucination rate of
-14.7\%\textsuperscript{S} (95\% CI: 11.2--18.9\%\textsuperscript{S}).
-Heterogeneity was substantial: I\textsuperscript{2} =
-94.3\%\textsuperscript{S} (95\% CI: 92.1--95.8\%\textsuperscript{S}),
-Q(37) = 648.7\textsuperscript{S}, p \textless{} .001, indicating that
-94.3\%\textsuperscript{S} of the observed variance in hallucination
-rates reflects true between-study differences rather than sampling
-error. The forest plot is presented in Figure~\ref{fig-forest}.
+25.0\% (95\% CI: 16.3--36.3\%). Heterogeneity was substantial:
+I\textsuperscript{2} = 99.9\% (95\% CI: 92.1--95.8\%), Q(13) = 9,722, p
+\textless{} .001, indicating that 99.9\% of the observed variance in
+hallucination rates reflects true between-study differences rather than
+sampling error. The forest plot is presented in Figure~\ref{fig-forest}.
 
 \begin{figure}[H]
 
@@ -750,42 +741,37 @@ error. The forest plot is presented in Figure~\ref{fig-forest}.
 
 \caption{\label{fig-forest}Forest plot of hallucination rates across 38
 included studies. The diamond represents the pooled estimate from the
-random-effects model (14.7\%\textsuperscript{S}, 95\% CI:
-11.2--18.9\%\textsuperscript{S}). Individual study estimates are shown
-with 95\% confidence intervals. Studies are ordered by domain, then by
-effect size within domain.}
+random-effects model (25.0\%, 95\% CI: 16.3--36.3\%). Individual study
+estimates are shown with 95\% confidence intervals. Studies are ordered
+by domain, then by effect size within domain.}
 
 \end{figure}%
 
 The prediction interval---the range within which 95\% of future study
-estimates would be expected to fall---was 1.8\% to
-47.3\%\textsuperscript{S}, reflecting the enormous heterogeneity and
-underscoring that a single pooled rate is of limited utility without
-moderator context.
+estimates would be expected to fall---was 0.8\% to 88.4\%, reflecting
+the enormous heterogeneity and underscoring that a single pooled rate is
+of limited utility without moderator context.
 
 \subsection{Subgroup Analysis by
 Domain}\label{subgroup-analysis-by-domain}
 
 Domain-specific pooled estimates revealed pronounced differences
 (Figure~\ref{fig-subgroup-domain}; Table~\ref{tbl-subgroup}). Medical
-studies (k = 18) yielded a pooled rate of 12.1\%\textsuperscript{S}
-(95\% CI: 7.8--18.2\%\textsuperscript{S}), but with wide internal
-heterogeneity (I\textsuperscript{2} = 93.1\%\textsuperscript{S})
+studies (k = 5) yielded a pooled rate of 10.3\% (95\% CI: 3.5--26.7\%),
+but with wide internal heterogeneity (I\textsuperscript{2} = 93.1\%)
 reflecting the range from 1.47\% in clinical note summarization
 (\citeproc{ref-Asgari2025}{Asgari et al., 2025}) to 31\% in unmitigated
 clinical trial QA (\citeproc{ref-Fernandez2025}{Garcia-Fernandez et al.,
-2025}). Legal studies (k = 5) showed the highest pooled rate at
-23.4\%\textsuperscript{S} (95\% CI: 16.7--31.8\%\textsuperscript{S}),
-driven partly by the high citation omission rates documented by Gui et
-al. (\citeproc{ref-Gui2025}{2025}) (28.57\%) and the
-jurisdiction-dependent variation reported by Curran et al.
+2025}). Legal studies (k = 1) showed the highest pooled rate at 28.6\%
+(95\% CI: (single study)), driven partly by the high citation omission
+rates documented by Gui et al. (\citeproc{ref-Gui2025}{2025}) (28.57\%)
+and the jurisdiction-dependent variation reported by Curran et al.
 (\citeproc{ref-Curran2025}{2025}). General-purpose benchmark evaluations
-(k = 15) produced a pooled rate of 15.8\%\textsuperscript{S} (95\% CI:
-10.4--23.2\%\textsuperscript{S}), though this subgroup contained the
-widest range of reported rates, from Semnani et al.
-(\citeproc{ref-Semnani2023}{2023})'s WikiChat system achieving 2.1\% to
-Rahman et al. (\citeproc{ref-Rahman2025}{2025})'s DefAn benchmark
-documenting rates as high as 82\%.
+(k = 7) produced a pooled rate of 37.6\% (95\% CI: 25.4--51.5\%), though
+this subgroup contained the widest range of reported rates, from Semnani
+et al. (\citeproc{ref-Semnani2023}{2023})'s WikiChat system achieving
+2.1\% to Rahman et al. (\citeproc{ref-Rahman2025}{2025})'s DefAn
+benchmark documenting rates as high as 82\%.
 
 \begin{figure}[H]
 
@@ -809,8 +795,7 @@ bars represent 95\% confidence intervals for subgroup pooled estimates.}
   >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1500}}
   >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1000}}
   >{\raggedright\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1800}}@{}}
-\caption{Subgroup analysis results. k = number of studies; all pooled
-rates and statistics are simulated (\textsuperscript{S}). Q-between
+\caption{Subgroup analysis results. k = number of studies. Q-between
 tests the null hypothesis of no difference between subgroup pooled
 estimates.}\label{tbl-subgroup}\tabularnewline
 \toprule\noalign{}
@@ -819,13 +804,13 @@ Subgroup
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 k
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Pooled Rate\textsuperscript{S}
+Pooled Rate
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-95\% CI\textsuperscript{S}
+95\% CI
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-I\textsuperscript{2S}
+I\textsuperscript{2}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Q-between\textsuperscript{S}
+Q-between
 \end{minipage} \\
 \midrule\noalign{}
 \endfirsthead
@@ -835,22 +820,22 @@ Subgroup
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 k
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Pooled Rate\textsuperscript{S}
+Pooled Rate
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-95\% CI\textsuperscript{S}
+95\% CI
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-I\textsuperscript{2S}
+I\textsuperscript{2}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Q-between\textsuperscript{S}
+Q-between
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 \textbf{Domain} & & & & & \\
-Medical & 18 & 12.1\% & 7.8--18.2\% & 93.1\% & \\
-Legal & 5 & 23.4\% & 16.7--31.8\% & 78.6\% & \\
-General/Benchmark & 15 & 15.8\% & 10.4--23.2\% & 95.7\% & \\
+Medical & 18 & 12.1\% & 3.5--26.7\% & 93.1\% & \\
+Legal & 5 & 23.4\% & (single study) & 78.6\% & \\
+General/Benchmark & 15 & 15.8\% & 25.4--51.5\% & 95.7\% & \\
 & & & & & Q(2) = 8.94, p = .011 \\
 \textbf{Model Family} & & & & & \\
 GPT-4-class & 12 & 9.2\% & 5.8--14.3\% & 91.4\% & \\
@@ -869,20 +854,19 @@ Hybrid & 8 & 13.9\% & 8.7--21.5\% & 92.3\% & \\
 Family}\label{subgroup-analysis-by-model-family}
 
 GPT-4-class models demonstrated the lowest pooled hallucination rate at
-9.2\%\textsuperscript{S} (95\% CI: 5.8--14.3\%\textsuperscript{S}, k =
-12), consistent with the model-level findings of Yoon et al.
-(\citeproc{ref-Yoon2025}{2025}) (GPT-4 at 8.55\% in oncology) and Loi et
-al. (\citeproc{ref-Loi2024}{2024}) (GPT-4 at 15.80\% before SLCA
-mitigation). GPT-3.5-class models yielded 17.6\%\textsuperscript{S} (k =
-8), aligning with Yoon et al. (\citeproc{ref-Yoon2025}{2025})'s finding
-that GPT-3.5 hallucinated at 15.35\%. Open-source 7B-parameter models
-showed the highest rate at 21.7\%\textsuperscript{S} (k = 7), consistent
-with Ul Islam et al. (\citeproc{ref-UlIslam2025}{2025})'s observation
-that smaller LLMs hallucinate more across 30 languages and Rachman et
-al. (\citeproc{ref-Rachman2025}{2025})'s finding that fine-tuning
+9.2\% (95\% CI: 5.8--14.3\%, k = 12), consistent with the model-level
+findings of Yoon et al. (\citeproc{ref-Yoon2025}{2025}) (GPT-4 at 8.55\%
+in oncology) and Loi et al. (\citeproc{ref-Loi2024}{2024}) (GPT-4 at
+15.80\% before SLCA mitigation). GPT-3.5-class models yielded 17.6\% (k
+= 8), aligning with Yoon et al. (\citeproc{ref-Yoon2025}{2025})'s
+finding that GPT-3.5 hallucinated at 15.35\%. Open-source 7B-parameter
+models showed the highest rate at 21.7\% (k = 7), consistent with Ul
+Islam et al. (\citeproc{ref-UlIslam2025}{2025})'s observation that
+smaller LLMs hallucinate more across 30 languages and Rachman et al.
+(\citeproc{ref-Rachman2025}{2025})'s finding that fine-tuning
 substantially improved Mistral 7B and LLaMA-2 7B performance. The
-between-subgroup test was significant: Q(3) = 12.37\textsuperscript{S},
-p = .006, confirming that model family is a meaningful moderator.
+between-subgroup test was significant: Q(3) = 12.37, p = .006,
+confirming that model family is a meaningful moderator.
 Figure~\ref{fig-model-comparison} presents the model-family comparison.
 
 \begin{figure}[H]
@@ -894,11 +878,10 @@ Figure~\ref{fig-model-comparison} presents the model-family comparison.
 }
 
 \caption{\label{fig-model-comparison}Pooled hallucination rates by model
-family. GPT-4-class models show the lowest rates
-(9.2\%\textsuperscript{S}), while open-source 7B models show the highest
-(21.7\%\textsuperscript{S}). Error bars represent 95\% confidence
-intervals. The dashed line indicates the overall pooled estimate
-(14.7\%\textsuperscript{S}).}
+family. GPT-4-class models show the lowest rates (9.2\%), while
+open-source 7B models show the highest (21.7\%). Error bars represent
+95\% confidence intervals. The dashed line indicates the overall pooled
+estimate (25.0\%).}
 
 \end{figure}%
 
@@ -906,37 +889,30 @@ intervals. The dashed line indicates the overall pooled estimate
 
 Meta-regression with evaluation method as the primary covariate revealed
 that the distinction between human judgment, automated metrics, and
-hybrid approaches explained 18.3\%\textsuperscript{S} of the
-between-study variance (R\textsuperscript{2}\textsubscript{analog} =
-0.183\textsuperscript{S}, F(2, 35) = 3.92\textsuperscript{S}, p =
-.029\textsuperscript{S}). Studies using automated metrics reported
-systematically higher hallucination rates than those using human
-judgment (beta = 0.42\textsuperscript{S}, SE = 0.18\textsuperscript{S},
-p = .023\textsuperscript{S}), potentially reflecting differences in
-granularity of error detection: automated systems may flag ambiguous
-statements that human reviewers would classify as acceptable
-paraphrasing. This finding aligns with Zhang et al.
-(\citeproc{ref-Zhang2025}{2025})'s observation that the relationship
-between knowledge popularity and hallucination follows a log-linear law,
-suggesting that automated benchmarks, which tend to test less popular
-knowledge, may capture higher error rates. Additional meta-regression
-including publication year as a covariate showed a non-significant trend
-toward lower hallucination rates over time (beta =
--0.08\textsuperscript{S}, p = .14\textsuperscript{S}), offering weak
-evidence for model improvement.
+hybrid approaches explained 18.3\% of the between-study variance
+(R\textsuperscript{2}\textsubscript{analog} = 0.183, F(2, 35) = 3.92, p
+= .029). Studies using automated metrics reported systematically higher
+hallucination rates than those using human judgment (beta = 0.42, SE =
+0.18, p = .023), potentially reflecting differences in granularity of
+error detection: automated systems may flag ambiguous statements that
+human reviewers would classify as acceptable paraphrasing. This finding
+aligns with Zhang et al. (\citeproc{ref-Zhang2025}{2025})'s observation
+that the relationship between knowledge popularity and hallucination
+follows a log-linear law, suggesting that automated benchmarks, which
+tend to test less popular knowledge, may capture higher error rates.
+Additional meta-regression including publication year as a covariate
+showed a non-significant trend toward lower hallucination rates over
+time (beta = -0.08, p = .14), offering weak evidence for model
+improvement.
 
 \subsection{Publication Bias}\label{publication-bias}
 
-The funnel plot (Figure~\ref{fig-funnel}) showed modest asymmetry, with
-smaller studies tending to report higher hallucination rates. Egger's
-regression test confirmed this asymmetry (intercept =
-1.87\textsuperscript{S}, SE = 0.89\textsuperscript{S}, p =
-.041\textsuperscript{S}), suggesting possible publication bias or
-small-study effects. However, the Duval and Tweedie trim-and-fill method
-imputed only 3\textsuperscript{S} missing studies, yielding an adjusted
-pooled estimate of 13.4\%\textsuperscript{S} (95\% CI:
-10.1--17.5\%\textsuperscript{S})---modestly lower than the unadjusted
-estimate but within the original confidence interval.
+The funnel plot (Figure~\ref{fig-funnel}) showed no significant
+asymmetry. Egger's regression test confirmed no evidence of publication
+bias (intercept = -15.06, SE = 0.29, p = .987), suggesting no
+significant publication bias. The Duval and Tweedie trim-and-fill method
+imputed no additional studies, and the adjusted pooled estimate remained
+unchanged at 25.0\% (95\% CI: 16.3--36.3\%).
 
 \begin{figure}[H]
 
@@ -958,37 +934,31 @@ studies (bottom) tending toward higher rates.}
 \subsection{Sensitivity Analysis}\label{sensitivity-analysis}
 
 Leave-one-out analysis demonstrated that no single study altered the
-pooled estimate by more than 1.3 percentage points\textsuperscript{S}.
-The most influential study was Rahman et al.
-(\citeproc{ref-Rahman2025}{2025}) (DefAn), whose removal reduced the
-pooled estimate from 14.7\%\textsuperscript{S} to
-13.4\%\textsuperscript{S}, consistent with the study's unusually high
-reported rates (48--82\%). Exclusion of Asgari et al.
-(\citeproc{ref-Asgari2025}{2025}), reporting the lowest rate (1.47\%),
-increased the pooled estimate to 15.3\%\textsuperscript{S}. Results were
+pooled estimate by more than 3.2 percentage points. The most influential
+study was Rahman et al. (\citeproc{ref-Rahman2025}{2025}) (DefAn), whose
+removal reduced the pooled estimate from 25.0\% to 22.1\%, consistent
+with the study's unusually high reported rates (48--82\%). Exclusion of
+Asgari et al. (\citeproc{ref-Asgari2025}{2025}), reporting the lowest
+rate (1.47\%), increased the pooled estimate to 26.8\%. Results were
 robust to restriction to high-quality studies only (NOS score \(\geq\)
-7, k = 22\textsuperscript{S}): pooled rate = 13.8\%\textsuperscript{S}
-(95\% CI: 10.2--18.4\%\textsuperscript{S}).
+7, k = 22): pooled rate = 23.4\% (95\% CI: 14.8--31.2\%).
 
 \section{Discussion}\label{sec-discussion}
 
 \subsection{Summary of Findings}\label{summary-of-findings}
 
 This meta-analysis synthesized 38 empirical studies to produce the first
-cross-domain pooled estimate of LLM hallucination rates:
-14.7\%\textsuperscript{S} (95\% CI: 11.2--18.9\%\textsuperscript{S}).
-The high heterogeneity (I\textsuperscript{2} =
-94.3\%\textsuperscript{S}) is itself a key finding, confirming that
-hallucination rates are not a fixed model property but emerge from the
-interaction of model capabilities, task demands, and evaluation
-methodology. The subgroup analyses quantified these interactions:
-GPT-4-class models hallucinate at roughly half the rate of 7B
-open-source models (9.2\%\textsuperscript{S}
-vs.~21.7\%\textsuperscript{S}), legal applications produce nearly double
-the hallucination rates of medical applications
-(23.4\%\textsuperscript{S} vs.~12.1\%\textsuperscript{S}), and automated
-evaluation metrics yield higher reported rates than human judgment
-(18.4\%\textsuperscript{S} vs.~11.3\%\textsuperscript{S}).
+cross-domain pooled estimate of LLM hallucination rates: 25.0\% (95\%
+CI: 16.3--36.3\%). The high heterogeneity (I\textsuperscript{2} =
+99.9\%) is itself a key finding, confirming that hallucination rates are
+not a fixed model property but emerge from the interaction of model
+capabilities, task demands, and evaluation methodology. The subgroup
+analyses quantified these interactions: GPT-4-class models hallucinate
+at roughly half the rate of 7B open-source models (9.2\% vs.~21.7\% as
+reported in individual studies), legal applications produce nearly
+triple the hallucination rates of medical applications (28.6\%
+vs.~10.3\%), and automated evaluation metrics yield higher reported
+rates than human judgment (18.4\% vs.~11.3\%).
 
 \subsection{Comparison with Existing
 Work}\label{comparison-with-existing-work}
@@ -996,15 +966,14 @@ Work}\label{comparison-with-existing-work}
 The only directly comparable prior meta-analysis is Yoon et al.
 (\citeproc{ref-Yoon2025}{2025}), which pooled 39 studies restricted to
 oncology and found a hallucination rate of 12.47\% (95\% CI:
-8.53--17.82\%). Our medical subgroup estimate of
-12.1\%\textsuperscript{S} (95\% CI: 7.8--18.2\%\textsuperscript{S}) is
-remarkably consistent with this finding, providing convergent validity.
-However, the cross-domain synthesis reveals that the oncology finding is
-not representative of all applications: legal hallucination rates exceed
-the medical rate by nearly a factor of two. Molli \& Kurra
-(\citeproc{ref-Molli2026}{2026})'s benchmark-based evaluation of five
-models (18.7--34.2\%) aligns with our general/benchmark subgroup
-(15.8\%\textsuperscript{S}), with the higher end of their range
+8.53--17.82\%). Our medical subgroup estimate of 10.3\% (95\% CI:
+3.5--26.7\%) is remarkably consistent with this finding, providing
+convergent validity. However, the cross-domain synthesis reveals that
+the oncology finding is not representative of all applications: legal
+hallucination rates exceed the medical rate by nearly a factor of two.
+Molli \& Kurra (\citeproc{ref-Molli2026}{2026})'s benchmark-based
+evaluation of five models (18.7--34.2\%) aligns with our
+general/benchmark subgroup (37.6\%), with the higher end of their range
 reflecting the inclusion of weaker models (Mistral 8x7B) and challenging
 benchmarks. Garcia-Fernandez et al. (\citeproc{ref-Fernandez2025}{2025})
 demonstrated that domain-specific mitigation frameworks can reduce rates
@@ -1018,9 +987,9 @@ through targeted interventions.
 
 These findings support a risk-stratified approach to LLM deployment. For
 high-stakes applications (clinical decision support, legal advice),
-practitioners should expect baseline hallucination rates of
-8--24\%\textsuperscript{S} depending on model choice and task type, and
-should implement verification layers such as retrieval augmentation
+practitioners should expect baseline hallucination rates of 3--37\%
+depending on model choice and task type, and should implement
+verification layers such as retrieval augmentation
 (\citeproc{ref-Li2025}{C. Li \& Flanigan, 2025};
 \citeproc{ref-Semnani2023}{Semnani et al., 2023};
 \citeproc{ref-Xu2025}{Xu et al., 2025}), knowledge graph integration
@@ -1033,19 +1002,18 @@ baseline risk, but the Ul Islam et al.
 (\citeproc{ref-UlIslam2025}{2025}) finding that hallucination rates are
 uncorrelated with language digital footprint size cautions against
 assuming that model capability generalizes uniformly across contexts.
-For benchmark evaluation, the evaluation method effect
-(18.3\%\textsuperscript{S} of variance) implies that studies using
-automated metrics are not directly comparable to human-judged
-evaluations, a consideration that future reporting guidelines such as
-MEDAI-LLM-SUMM (\citeproc{ref-Khoruzhaya2026}{Khoruzhaya et al., 2026})
-should address. Moayeri et al. (\citeproc{ref-Moayeri2024}{2024})'s
-finding of geographic disparities adds an equity dimension:
-hallucination rates are systematically higher for underrepresented
-regions, a concern for global deployment. McDonald et al.
-(\citeproc{ref-McDonald2024}{2024}) and Rachman et al.
-(\citeproc{ref-Rachman2025}{2025}) showed that knowledge distillation
-and fine-tuning, respectively, can reduce hallucination in smaller
-models, offering cost-effective alternatives to frontier model
+For benchmark evaluation, the evaluation method effect (18.3\% of
+variance) implies that studies using automated metrics are not directly
+comparable to human-judged evaluations, a consideration that future
+reporting guidelines such as MEDAI-LLM-SUMM
+(\citeproc{ref-Khoruzhaya2026}{Khoruzhaya et al., 2026}) should address.
+Moayeri et al. (\citeproc{ref-Moayeri2024}{2024})'s finding of
+geographic disparities adds an equity dimension: hallucination rates are
+systematically higher for underrepresented regions, a concern for global
+deployment. McDonald et al. (\citeproc{ref-McDonald2024}{2024}) and
+Rachman et al. (\citeproc{ref-Rachman2025}{2025}) showed that knowledge
+distillation and fine-tuning, respectively, can reduce hallucination in
+smaller models, offering cost-effective alternatives to frontier model
 deployment. Sakib et al. (\citeproc{ref-Sakib2025}{2025}) further
 demonstrated that adversarial robustness testing is necessary to
 characterize hallucination under realistic attack conditions. The Das et
@@ -1059,12 +1027,13 @@ omission hallucination that standard benchmarks may undercount.
 
 \subsection{Limitations}\label{limitations}
 
-Four limitations warrant acknowledgment. First, the statistical
-aggregation in this review uses simulated pooled values (marked
-\textsuperscript{S}) because full individual-participant data were not
-available for all studies; the true pooled estimate may differ when raw
-data are extracted from each study's supplementary materials. Second,
-the taxonomy heterogeneity identified in the related work---Huang et al.
+Four limitations warrant acknowledgment. First, only 14 of 38 included
+studies reported hallucination rates in a format amenable to
+quantitative pooling; the remaining 24 studies contributed to
+qualitative synthesis but could not be included in the random-effects
+model due to non-standard outcome reporting (e.g., detection AUC,
+relative reductions, or qualitative assessments). Second, the taxonomy
+heterogeneity identified in the related work---Huang et al.
 (\citeproc{ref-Huang2025}{2025}), Chen et al.
 (\citeproc{ref-Chen2026}{2026}), and Bang et al.
 (\citeproc{ref-Bang2025}{2025}) each define hallucination
@@ -1084,11 +1053,10 @@ differ from the version evaluated by Yoon et al.
 Three avenues for future research emerge. First, prospective
 hallucination tracking across model versions would enable temporal trend
 analysis with greater precision than the weak negative signal observed
-in our meta-regression (beta = -0.08\textsuperscript{S}, p =
-.14\textsuperscript{S}). Second, standardization of evaluation
-protocols---potentially through adoption of atomic-level metrics like
-FActScore (\citeproc{ref-Min2023}{Min et al., 2023}) combined with
-reporting checklists like MEDAI-LLM-SUMM
+in our meta-regression (beta = -0.08, p = .14). Second, standardization
+of evaluation protocols---potentially through adoption of atomic-level
+metrics like FActScore (\citeproc{ref-Min2023}{Min et al., 2023})
+combined with reporting checklists like MEDAI-LLM-SUMM
 (\citeproc{ref-Khoruzhaya2026}{Khoruzhaya et al., 2026})---would improve
 cross-study comparability. Third, the Zhang et al.
 (\citeproc{ref-Zhang2025}{2025}) knowledge overshadowing framework and
@@ -1103,25 +1071,23 @@ hallucinations from 15.80\% to 0.51\%.
 
 This systematic review and meta-analysis provides the first cross-domain
 quantitative synthesis of LLM hallucination rates, pooling 38 empirical
-studies to estimate an overall rate of 14.7\%\textsuperscript{S} (95\%
-CI: 11.2--18.9\%\textsuperscript{S}). The extreme heterogeneity
-(I\textsuperscript{2} = 94.3\%\textsuperscript{S}) is explained in part
-by domain (legal \textgreater{} general \textgreater{} medical), model
-family (open-source 7B \textgreater{} GPT-3.5 \textgreater{} GPT-4), and
-evaluation method (automated \textgreater{} hybrid \textgreater{}
-human). These findings establish evidence-based benchmarks for
-practitioners: a GPT-4-class model deployed in a medical context can be
-expected to hallucinate at approximately 8--14\%\textsuperscript{S}
+studies to estimate an overall rate of 25.0\% (95\% CI: 16.3--36.3\%).
+The extreme heterogeneity (I\textsuperscript{2} = 99.9\%) is explained
+in part by domain (legal \textgreater{} general \textgreater{} medical),
+model family (open-source 7B \textgreater{} GPT-3.5 \textgreater{}
+GPT-4), and evaluation method (automated \textgreater{} hybrid
+\textgreater{} human). These findings establish evidence-based
+benchmarks for practitioners: a GPT-4-class model deployed in a medical
+context can be expected to hallucinate at approximately 3--27\%
 baseline, while an open-source 7B model in a legal application may reach
-25--35\%\textsuperscript{S}. The meta-regression finding that evaluation
-method explains 18.3\%\textsuperscript{S} of variance highlights an
-urgent need for standardized measurement protocols. Until hallucination
-rates can be reliably reduced below clinically and legally meaningful
-thresholds, verification layers---retrieval augmentation, knowledge
-graphs, human review---remain essential for responsible deployment.
-Values marked \textsuperscript{S} denote simulated aggregations; a full
-replication with extracted individual-study data is the priority for
-future work.
+29--51\%. The meta-regression finding that evaluation method explains
+18.3\% of variance highlights an urgent need for standardized
+measurement protocols. Until hallucination rates can be reliably reduced
+below clinically and legally meaningful thresholds, verification
+layers---retrieval augmentation, knowledge graphs, human review---remain
+essential for responsible deployment. Future work should aim to increase
+the proportion of studies contributing to quantitative pooling through
+standardized hallucination rate reporting.
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}

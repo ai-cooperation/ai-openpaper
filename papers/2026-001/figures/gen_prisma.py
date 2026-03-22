@@ -27,16 +27,16 @@ COMMON = dict(
     shape="box",
     style="rounded,filled",
     fontname="Arial",
-    fontsize="14",
-    penwidth="2",
-    margin="0.25,0.15",
+    fontsize="16",
+    penwidth="2.5",
+    margin="0.3,0.2",
 )
 
 MAIN_BOX = {**COMMON, "fillcolor": WHITE, "color": NAVY, "fontcolor": NAVY}
 EXCL_BOX = {**COMMON, "fillcolor": EXCL_FILL, "color": EXCL_BORDER, "fontcolor": EXCL_BORDER}
 INCL_BOX = {**COMMON, "fillcolor": INCL_FILL, "color": INCL_BORDER, "fontcolor": INCL_BORDER}
 
-EDGE_ATTR = dict(color=NAVY, penwidth="2", arrowsize="0.9")
+EDGE_ATTR = dict(color=NAVY, penwidth="2.5", arrowsize="1.0")
 
 
 def build_diagram() -> graphviz.Digraph:
@@ -50,9 +50,9 @@ def build_diagram() -> graphviz.Digraph:
             bgcolor="white",
             pad="0.5",
             nodesep="0.6",
-            ranksep="0.7",
+            ranksep="0.8",
             fontname="Arial",
-            size="8,11",
+            size="10,14",
         ),
         node_attr=dict(fontname="Arial"),
         edge_attr=EDGE_ATTR,
@@ -61,10 +61,10 @@ def build_diagram() -> graphviz.Digraph:
     # ── Phase labels (left column) ─────────────────────────────────────
     phase_attr = dict(
         shape="plaintext",
-        fontname="Arial",
-        fontsize="13",
+        fontname="Arial Bold",
+        fontsize="18",
         fontcolor=NAVY,
-        width="1.2",
+        width="1.4",
     )
     g.node("phase_id", label="Identification", **phase_attr)
     g.node("phase_sc", label="Screening", **phase_attr)
@@ -125,7 +125,7 @@ def build_diagram() -> graphviz.Digraph:
             "Non-English (n = 18ˢ)\n"
             "Below citation threshold (n = 15ˢ)"
         ),
-        **EXCL_BOX,
+        **{**EXCL_BOX, "fontsize": "14"},
     )
 
     # ── Inclusion row ──────────────────────────────────────────────────
@@ -138,7 +138,7 @@ def build_diagram() -> graphviz.Digraph:
     g.node(
         "quant_synth",
         label="Studies included in\nquantitative meta-analysis\n(n = 38)",
-        **{**INCL_BOX, "penwidth": "3"},
+        **{**INCL_BOX, "penwidth": "4", "fontsize": "18"},
     )
 
     # ── Footer note ────────────────────────────────────────────────────
@@ -147,7 +147,7 @@ def build_diagram() -> graphviz.Digraph:
         label="Note: Values marked ˢ are simulated. n = number of records.",
         shape="none",
         fontname="Arial",
-        fontsize="11",
+        fontsize="13",
         fontcolor=NOTE_COLOR,
     )
 
