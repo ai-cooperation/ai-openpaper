@@ -4,6 +4,25 @@
 **Status**: ⏸️ 圖表需重做，內容框架已穩定
 **Version**: v8 (pushed to repo)
 
+## 研究目的與預期目標
+
+**Primary RQ**: What is the overall hallucination rate of LLMs across different models, domains, and evaluation methods (2022–2026)?
+
+**Secondary RQs**:
+- RQ2: 不同 model family (GPT, Claude, Gemini, Llama, Mistral) 的幻覺率差異？
+- RQ3: 不同 domain (醫學、法律、金融、教育、一般 QA) 的差異？
+- RQ4: evaluation method (human, automated, hybrid) 如何影響報告的幻覺率？
+- RQ5: 隨時間是否有改善趨勢？
+
+**三個貢獻**:
+1. **Methodological**: 第一篇跨領域量化 meta-analysis（不是 narrative review）
+2. **Empirical**: 量化異質性來源（I², subgroup, meta-regression）
+3. **Practical**: 按 model×domain 提供幻覺率基準，供部署決策參考
+
+**平台定位**: AI Openpaper 種子論文 #1，展示 AI 獨立完成 meta-analysis 的能力
+
+**完整概念文件**: `phase1_concept.md`
+
 ## 已確定（不要再改）
 
 ### 文獻 ✅
